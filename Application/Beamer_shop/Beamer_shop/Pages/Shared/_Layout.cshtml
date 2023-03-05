@@ -19,23 +19,18 @@
         <!-- Navigation -->
         <div class="nav">
             <ul>
-                <li style="font-weight:800"><a class="logo" href="#home">Beamer Shop</a></li>
-                <li><a href="#home">Account</a></li>
-                <li><a href="#news">About us</a></li>
-                <li><a href="#contact">Cars</a></li>
-                <li style="float: right"><a class="active" href="#about">Cart</a></li>
+                <li style="font-weight:800"><a class="logo" asp-page="#home">Beamer Shop</a></li>
+                <li><a asp-page="#home">Account</a></li>
+                <li><a asp-page="/About">About us </a></li>
+                <li><a asp-page="#contact">Cars</a></li>
+                <li style="float: right"><a class="active" asp-page="#about">Cart</a></li>
             </ul>
         </div>
         <!-- main center container -->
         <div class="center-main">
 
-            <img id="landing-car" src="/Images/bmwi8-home.png" alt="Flowers in Chania" width="" height="" />
-
             @RenderBody()
 
-            <div id="btnCollection">
-                <a href="#cars">View collection</a>
-            </div>
         </div>
 
         <!-- footer -->
