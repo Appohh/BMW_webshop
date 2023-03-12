@@ -11,4 +11,8 @@
     <None Include="wwwroot\Images\bmwi8-home.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\WebshopCL\WebshopCL.csproj" />
+  </ItemGroup>
+
 </Project>

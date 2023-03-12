@@ -1,0 +1,12 @@
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\WebshopCL\bin\Debug\net6.0\WebshopCL.deps.json
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\WebshopCL\bin\Debug\net6.0\WebshopCL.dll
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\WebshopCL\bin\Debug\net6.0\WebshopCL.pdb
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\WebshopCL\obj\Debug\net6.0\WebshopCL.csproj.AssemblyReference.cache
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\WebshopCL\obj\Debug\net6.0\WebshopCL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\WebshopCL\obj\Debug\net6.0\WebshopCL.AssemblyInfoInputs.cache
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\WebshopCL\obj\Debug\net6.0\WebshopCL.AssemblyInfo.cs
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\WebshopCL\obj\Debug\net6.0\WebshopCL.csproj.CoreCompileInputs.cache
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\WebshopCL\obj\Debug\net6.0\WebshopCL.dll
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\WebshopCL\obj\Debug\net6.0\refint\WebshopCL.dll
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\WebshopCL\obj\Debug\net6.0\WebshopCL.pdb
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\WebshopCL\obj\Debug\net6.0\ref\WebshopCL.dll

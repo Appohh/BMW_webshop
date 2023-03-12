@@ -19,11 +19,20 @@
         <!-- Navigation -->
         <div class="nav">
             <ul>
-                <li style="font-weight:800"><a class="logo" asp-page="#home">Beamer Shop</a></li>
+                <li style="font-weight:800"><a class="logo" asp-page="/Index">Beamer Shop</a></li>
                 <li><a asp-page="#home">Account</a></li>
-                <li><a asp-page="/About">About us </a></li>
-                <li><a asp-page="#contact">Cars</a></li>
-                <li style="float: right"><a class="active" asp-page="#about">Cart</a></li>
+               <!-- <li><a asp-page="/About">About us </a></li> -->
+                <li><a asp-page="#cars">Cars</a></li>
+                <li><a asp-page="/Contact">Contact </a></li>
+                @if(ViewData.ContainsKey("ActiveLink")
+                    && (string)ViewData["ActiveLink"] == "fdas")
+                {
+                    <li style="float: right"><a class="active" asp-page="#about">Cart</a></li>
+                }
+                else
+                {
+                    <li style="float: right"><a asp-page="#about">Cart</a></li>
+                }
             </ul>
         </div>
         <!-- main center container -->
@@ -53,7 +62,11 @@
     </div>
 
     <!-- JS -->
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+
 
 </body>
 </html>

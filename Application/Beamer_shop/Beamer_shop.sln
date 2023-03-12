@@ -5,6 +5,8 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beamer_shop", "Beamer_shop\Beamer_shop.csproj", "{EA496EDF-D588-43A2-BA04-3C9B13CB9A64}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebshopCL", "WebshopCL\WebshopCL.csproj", "{7BEB00D6-7E8D-4A3B-9809-28A2862A1C0F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{EA496EDF-D588-43A2-BA04-3C9B13CB9A64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA496EDF-D588-43A2-BA04-3C9B13CB9A64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA496EDF-D588-43A2-BA04-3C9B13CB9A64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BEB00D6-7E8D-4A3B-9809-28A2862A1C0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BEB00D6-7E8D-4A3B-9809-28A2862A1C0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BEB00D6-7E8D-4A3B-9809-28A2862A1C0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BEB00D6-7E8D-4A3B-9809-28A2862A1C0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
