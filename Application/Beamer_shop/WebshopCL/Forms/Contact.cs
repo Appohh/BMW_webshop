@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebshopCL
+namespace WebshopCL.Forms
 {
     public class Contact
     {
@@ -13,21 +13,21 @@ namespace WebshopCL
         public string Country { get; set; }
         [MaxLength(100)]
         public string Message { get; set; }
-  
+
 
 
         public Contact()
         {
-    
+
         }
 
         public Contact(string firstname, string lastname, string email, string country, string message)
         {
-            this.Firstname = firstname;
-            this.Lastname = lastname;
-            this.Email = email;
-            this.Country = country;
-            this.Message = message;
+            Firstname = firstname;
+            Lastname = lastname;
+            Email = email;
+            Country = country;
+            Message = message;
         }
 
     }

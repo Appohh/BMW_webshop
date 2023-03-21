@@ -69,7 +69,7 @@ li a:hover:not(.active, .logo, .fa) {
     top: 0px;
     position: absolute;
     white-space: nowrap;
-    height: 1310px;
+    height: 100%;
     z-index: 2;
 }
 
@@ -214,22 +214,95 @@ span.field-validation-error {
     color: #e60101;
 }
 
+/*Filter section*/
+.filter-container {
+    grid-column: 1;
+    padding: 8px;
+    border-radius: 10px;
+    background: #f2f2f2;
+    margin-bottom:auto;
+}
+
+/*Product catalog*/
+.product-container {
+    grid-column: 2 / 6;
+    height: 100%;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.card {
+    width: 300px;
+    height: 430px;
+    border-radius: 5px;
+    margin: 5px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+    z-index: 3;
+    background: white;
+}
+
+.card > *:not(img) {
+    padding: 5px 10px;
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.card-body {
+    padding: 5px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+
+.card-body p {
+    color: #3d3d3d;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.view-btn a {
+    border: 1.5px solid #007bff;
+    border-radius: 3px;
+    text-decoration: none;
+    color: #007bff;
+}
+
 
 /*Media querries*/
+@media screen and (max-width: 1221px) {
+    .product-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .product-container {
+        grid-template-columns: 1fr;
+    }
+}
 
 @media screen and (max-width: 800px) {
-img#landing-car {
-   width: 25rem !important;
-}
+    img#landing-car {
+        width: 25rem !important;
+    }
 
-.foot {
-   font-size: 8px;
-}
+    .foot {
+        font-size: 8px;
+    }
 
-.nav {
-   font-size: 12px;
-}
-
+    .nav {
+        font-size: 12px;
+    }
 }
 
 

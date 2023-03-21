@@ -22,17 +22,25 @@
                 <li style="font-weight:800"><a class="logo" asp-page="/Index">Beamer Shop</a></li>
                 <li><a asp-page="#home">Account</a></li>
                <!-- <li><a asp-page="/About">About us </a></li> -->
-                <li><a asp-page="#cars">Cars</a></li>
-                <li><a asp-page="/Contact">Contact </a></li>
-                @if(ViewData.ContainsKey("ActiveLink")
-                    && (string)ViewData["ActiveLink"] == "fdas")
+                @if (ViewData.ContainsKey("ActiveLink")
+                && (string)ViewData["ActiveLink"] == "shop")
                 {
-                    <li style="float: right"><a class="active" asp-page="#about">Cart</a></li>
+                    <li><a class="active" asp-page="/Shop">Shop</a></li>
+
                 }
                 else
                 {
-                    <li style="float: right"><a asp-page="#about">Cart</a></li>
+                    <li><a asp-page="/Shop">Shop</a></li>
                 }
+                @if (ViewData.ContainsKey("ActiveLink")
+              && (string)ViewData["ActiveLink"] == "contact")
+                {
+                    <li><a class="active" asp-page="/Contact">Contact </a></li>
+                }
+                else {
+                    <li><a asp-page="/Contact">Contact </a></li>
+                }
+                     <li style="float: right"><a asp-page="#about">Cart</a></li>
             </ul>
         </div>
         <!-- main center container -->
