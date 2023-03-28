@@ -27,10 +27,7 @@ namespace WebshopCL
             Role = role;
         }
 
-        public virtual string getDetails()
-        {
-            return "";
-        }
+        public abstract string getDetails();
   
     }
 }

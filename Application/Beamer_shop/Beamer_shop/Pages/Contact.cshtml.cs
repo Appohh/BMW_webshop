@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Text.Json;
 using WebshopCL.Forms;
 
 namespace Beamer_shop.Pages
@@ -11,8 +12,10 @@ namespace Beamer_shop.Pages
 
         public IActionResult OnPost()
         {
+            //filters
             if (ModelState.IsValid)
             {
+                TempData["Contact"] = JsonSerializer.Serialize(contact);
                 return new RedirectToPageResult("Index");
             }
             else
