@@ -11,28 +11,28 @@
 <h3>Contact Form</h3>
     <form method="post">
         <label asp-for="contact.Firstname">First Name</label>
-        <input asp-for="contact.Firstname" type="text" placeholder="Your name..">
         <span asp-validation-for="contact.Firstname"></span>
+        <input asp-for="contact.Firstname" type="text" placeholder="Your name..">
 
         <label asp-for="contact.Lastname">Last Name</label>
-        <input asp-for="contact.Lastname" type="text" placeholder="Your last name..">
         <span asp-validation-for="contact.Lastname"></span>
+        <input asp-for="contact.Lastname" type="text" placeholder="Your last name..">
 
         <label asp-for="contact.Email">Email</label>
-        <input asp-for="contact.Email" placeholder="Your email..">
         <span asp-validation-for="contact.Email"></span>
+        <input asp-for="contact.Email" placeholder="Your email..">
 
         <label asp-for="contact.Country">Country</label>
+        <span asp-validation-for="contact.Country"></span>
         <select asp-for="contact.Country">
             <option value="australia">Australia</option>
             <option value="canada">Canada</option>
             <option value="usa">USA</option>
         </select>
-        <span asp-validation-for="contact.Country"></span>
 
         <label asp-for="contact.Message">Message</label>
-        <textarea asp-for="contact.Message" placeholder="Write something.." style="height:200px"></textarea>
         <span asp-validation-for="contact.Message"></span>
+        <textarea asp-for="contact.Message" placeholder="Write something.." style="height:200px"></textarea>
 
         <input type="submit" value="Submit">
     </form>

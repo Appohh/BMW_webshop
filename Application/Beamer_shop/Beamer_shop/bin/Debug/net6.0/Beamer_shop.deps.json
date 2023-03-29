@@ -7,27 +7,14 @@
   "targets": {
     ".NETCoreApp,Version=v6.0": {
       "Beamer_shop/1.0.0": {
-        "dependencies": {
-          "WebshopCL": "1.0.0"
-        },
         "runtime": {
           "Beamer_shop.dll": {}
-        }
-      },
-      "WebshopCL/1.0.0": {
-        "runtime": {
-          "WebshopCL.dll": {}
         }
       }
     }
   },
   "libraries": {
     "Beamer_shop/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "WebshopCL/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

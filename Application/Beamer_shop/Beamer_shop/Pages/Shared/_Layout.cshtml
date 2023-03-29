@@ -20,8 +20,38 @@
         <div class="nav">
             <ul>
                 <li style="font-weight:800"><a class="logo" asp-page="/Index">Beamer Shop</a></li>
-                <li><a asp-page="#home">Account</a></li>
-               <!-- <li><a asp-page="/About">About us </a></li> -->
+
+                @if (ViewData.ContainsKey("ActiveLink")
+                && (string)ViewData["ActiveLink"] == "account")
+                {
+                    if (User?.Identity?.IsAuthenticated ?? false)
+                    {
+                        <li><a class="active" asp-page="/About">Account</a></li>
+                    } else {
+                        <li><a class="active" asp-page="/Login">Login</a></li>
+                    }
+                }
+                else
+                {
+                    if (User?.Identity?.IsAuthenticated ?? false)
+                    {
+                        <li><a asp-page="/About">Account</a></li>
+                    }
+                    else
+                    {
+                        <li><a asp-page="/Login">Login</a></li>
+                    }
+                }
+
+
+                @if (User?.Identity?.IsAuthenticated ?? false)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/Logout">Log out</a>
+                    </li>
+                }
+
+
                 @if (ViewData.ContainsKey("ActiveLink")
                 && (string)ViewData["ActiveLink"] == "shop")
                 {
@@ -70,7 +100,8 @@
     </div>
 
     <!-- JS -->
-    
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 

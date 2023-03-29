@@ -183,7 +183,7 @@ img#landing-car {
     grid-column-end: 5;
 }
 
-input[type=text], input[type=email], select, textarea {
+input[type=text], input[type=email], input[type=password], select, textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -194,7 +194,7 @@ input[type=text], input[type=email], select, textarea {
     resize: vertical;
 }
 
-input[type=submit] {
+input[type=submit], input[type=button] {
     background-color: #2f85df;
     color: white;
     padding: 12px 20px;
@@ -209,9 +209,13 @@ input[type=submit]:hover {
 
 
 span.field-validation-error {
-    width: 100%;
+    width: unset;
     display: inherit;
     color: #e60101;
+}
+
+form span {
+    float: right;
 }
 
 /*Filter section*/
