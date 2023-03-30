@@ -15,8 +15,8 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/alpay/Dev_projects/Beamer_Shop/Application/Beamer_shop/Beamer_shop/Pages/About.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWJvdXQuY3NodG1s
+[C:/Users/alpay/Dev_projects/Beamer_Shop/Application/Beamer_shop/Beamer_shop/Pages/Account.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/alpay/Dev_projects/Beamer_Shop/Application/Beamer_shop/Beamer_shop/Pages/Contact.cshtml]

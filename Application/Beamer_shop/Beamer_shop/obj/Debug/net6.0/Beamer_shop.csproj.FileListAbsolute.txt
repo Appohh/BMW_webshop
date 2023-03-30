@@ -24,3 +24,16 @@ C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\obj\
 C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\obj\Debug\net6.0\Beamer_shop.pdb
 C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\obj\Debug\net6.0\Beamer_shop.genruntimeconfig.cache
 C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\obj\Debug\net6.0\ref\Beamer_shop.dll
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\bin\Debug\net6.0\System.Data.SqlClient.dll
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\bin\Debug\net6.0\runtimes\win-arm64\native\sni.dll
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\bin\Debug\net6.0\runtimes\win-x64\native\sni.dll
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\bin\Debug\net6.0\Data.dll
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\bin\Debug\net6.0\Factory.dll
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\bin\Debug\net6.0\Logic.dll
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\bin\Debug\net6.0\Factory.pdb
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\bin\Debug\net6.0\Data.pdb
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\bin\Debug\net6.0\Logic.pdb
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\obj\Debug\net6.0\Beamer_shop.csproj.CopyComplete

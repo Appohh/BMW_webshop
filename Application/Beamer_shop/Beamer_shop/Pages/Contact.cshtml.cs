@@ -1,4 +1,4 @@
-using Beamer_shop.Forms;
+using Logic.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Text.Json;
