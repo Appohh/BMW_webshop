@@ -1,0 +1,17 @@
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Factory\bin\Debug\net6.0\Factory.deps.json
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Factory\bin\Debug\net6.0\Factory.dll
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Factory\bin\Debug\net6.0\Factory.pdb
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Factory\bin\Debug\net6.0\Data.dll
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Factory\bin\Debug\net6.0\Logic.dll
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Factory\bin\Debug\net6.0\Data.pdb
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Factory\bin\Debug\net6.0\Logic.pdb
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Factory\obj\Debug\net6.0\Factory.csproj.AssemblyReference.cache
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Factory\obj\Debug\net6.0\Factory.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Factory\obj\Debug\net6.0\Factory.AssemblyInfoInputs.cache
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Factory\obj\Debug\net6.0\Factory.AssemblyInfo.cs
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Factory\obj\Debug\net6.0\Factory.csproj.CoreCompileInputs.cache
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Factory\obj\Debug\net6.0\Factory.csproj.CopyComplete
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Factory\obj\Debug\net6.0\Factory.dll
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Factory\obj\Debug\net6.0\refint\Factory.dll
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Factory\obj\Debug\net6.0\Factory.pdb
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Factory\obj\Debug\net6.0\ref\Factory.dll

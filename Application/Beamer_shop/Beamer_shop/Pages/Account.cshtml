@@ -1,0 +1,11 @@
+﻿@page
+@model Beamer_shop.Pages.AccountModel
+@{
+    ViewData["Title"] = "About us";
+    ViewData["ActiveLink"] = "about";
+}
+<h1>Hello, <br /> @User.Identity.Name</h1>
+
+<form method="post">
+    <input type="submit" value="Log out" asp-page-handler="LogOut" />
+</form>

@@ -1,0 +1,28 @@
+﻿@page
+@model Beamer_shop.Pages.LoginModel
+@{
+    ViewData["Title"] = "Login";
+    ViewData["ActiveLink"] = "account";
+    
+
+}
+
+<div class="container">
+<h3>Login</h3>
+    <form method="post">
+        <label asp-for="login.Email">Email</label>
+        <span asp-validation-for="login.Email"></span>
+        <input asp-for="login.Email" type="email" placeholder="Your email..">
+
+        <label asp-for="login.Password">Password</label>
+        <span asp-validation-for="login.Password"></span>
+        <input asp-for="login.Password" type="password" placeholder="Your password..">
+
+        <input type="submit" value="Log in">
+        <h4>No account? <a href="/Register" style="text-decoration: underline; color: #117cec;">Sign up</a></h4>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

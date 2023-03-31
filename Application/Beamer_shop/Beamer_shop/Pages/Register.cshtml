@@ -1,0 +1,54 @@
+﻿@page
+@model Beamer_shop.Pages.RegisterModel
+@{
+    ViewData["Title"] = "Register";
+    ViewData["ActiveLink"] = "account";
+}
+
+
+
+<div class="container">
+    <h3>Register</h3>
+    <form method="post">
+        <label asp-for="newCustomer.FirstName">First Name</label>
+        <span asp-validation-for="newCustomer.FirstName"></span>
+        <input asp-for="newCustomer.FirstName" type="text" placeholder="Your name..">
+
+        <label asp-for="newCustomer.LastName">Last Name</label>
+        <span asp-validation-for="newCustomer.LastName"></span>
+        <input asp-for="newCustomer.LastName" type="text" placeholder="Your last name..">
+
+        <label asp-for="newCustomer.Email">Email</label>
+        <span asp-validation-for="newCustomer.Email"></span>
+        <input asp-for="newCustomer.Email" placeholder="Your email..">
+
+        <label asp-for="newCustomer.BirthDate">Birthdate</label>
+        <span asp-validation-for="newCustomer.BirthDate"></span>
+        <input asp-for="newCustomer.BirthDate" type="date" placeholder="Your birthdate..">
+
+        <label asp-for="newCustomer.Address">Address</label>
+        <span asp-validation-for="newCustomer.Address"></span>
+        <input asp-for="newCustomer.Address" placeholder="Your address..">
+
+        <label asp-for="newCustomer.ZipCode">Zipcode</label>
+        <span asp-validation-for="newCustomer.ZipCode"></span>
+        <input asp-for="newCustomer.ZipCode" placeholder="Your zipcode..">
+
+        <label asp-for="newCustomer.City">City</label>
+        <span asp-validation-for="newCustomer.City"></span>
+        <input asp-for="newCustomer.City" placeholder="Your city..">
+
+        <label asp-for="newCustomer.Password">Password</label>
+        <span asp-validation-for="newCustomer.Password"></span>
+        <input asp-for="newCustomer.Password" type="password" placeholder="Your password..">
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+   
+}
