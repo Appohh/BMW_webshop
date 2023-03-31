@@ -9,25 +9,26 @@ namespace Beamer_shop.Pages
 {
     public class ShopModel : PageModel
     {
-        public string ModelFilter { get; set; }
-        public string MakeFilter { get; set; }
-
-
         CarService carService = CarFactory.CarService;
-        public List<Product> cars = new List<Product>();
+
+        [BindProperty]
+        public ProductFilter ProductFilter { get; set; }
+
+        public List<Product> storedProductCollection = new List<Product>();
+        public List<Product> productCollection = new List<Product>();
 
         public ShopModel()
         {
-            cars.AddRange(carService.GetAllCars());
+            productCollection = carService.GetAllCars();
+            storedProductCollection = productCollection;
         }
 
-        public void OnGet()
+        public void OnPost()
         {
-            var carFiltered = cars.OfType<Car>().Where(c => c.Make == "2019").ToList();
-            var filteredProducts = cars.Cast<Product>().ToList();
-            cars.Clear();
-            cars.AddRange(filteredProducts);
-
+            if (ProductFilter != null)
+            {
+                productCollection = ProductFilter.FilterProducts(productCollection);
+            }
         }
     }
 }

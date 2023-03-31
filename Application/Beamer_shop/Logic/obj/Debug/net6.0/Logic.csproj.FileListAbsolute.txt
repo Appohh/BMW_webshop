@@ -10,3 +10,15 @@ C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Logic\obj\Debug\
 C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Logic\obj\Debug\net6.0\refint\Logic.dll
 C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Logic\obj\Debug\net6.0\Logic.pdb
 C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Logic\obj\Debug\net6.0\ref\Logic.dll
+C:\dev_projects_pc\beamer_shop\Application\Beamer_shop\Logic\bin\Debug\net6.0\Logic.deps.json
+C:\dev_projects_pc\beamer_shop\Application\Beamer_shop\Logic\bin\Debug\net6.0\Logic.dll
+C:\dev_projects_pc\beamer_shop\Application\Beamer_shop\Logic\bin\Debug\net6.0\Logic.pdb
+C:\dev_projects_pc\beamer_shop\Application\Beamer_shop\Logic\obj\Debug\net6.0\Logic.csproj.AssemblyReference.cache
+C:\dev_projects_pc\beamer_shop\Application\Beamer_shop\Logic\obj\Debug\net6.0\Logic.GeneratedMSBuildEditorConfig.editorconfig
+C:\dev_projects_pc\beamer_shop\Application\Beamer_shop\Logic\obj\Debug\net6.0\Logic.AssemblyInfoInputs.cache
+C:\dev_projects_pc\beamer_shop\Application\Beamer_shop\Logic\obj\Debug\net6.0\Logic.AssemblyInfo.cs
+C:\dev_projects_pc\beamer_shop\Application\Beamer_shop\Logic\obj\Debug\net6.0\Logic.csproj.CoreCompileInputs.cache
+C:\dev_projects_pc\beamer_shop\Application\Beamer_shop\Logic\obj\Debug\net6.0\Logic.dll
+C:\dev_projects_pc\beamer_shop\Application\Beamer_shop\Logic\obj\Debug\net6.0\refint\Logic.dll
+C:\dev_projects_pc\beamer_shop\Application\Beamer_shop\Logic\obj\Debug\net6.0\Logic.pdb
+C:\dev_projects_pc\beamer_shop\Application\Beamer_shop\Logic\obj\Debug\net6.0\ref\Logic.dll

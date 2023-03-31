@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "d/ThUnk+Hu8xTCA+vbcsJI25tYzl14GFjwjHWTmAUgB9C1KPuLkZ3IRGlPLoF5JJU+PkFyH/tqzvSXaf+Hb2nQ==",
+  "dgSpecHash": "izSa1cwimLHCjYqCT87QximgXdGYuWfQwPtTEmQbco1v2m4a26749VO8NCnWk2LBCChu9ElP1bcsXItN//wS5A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\alpay\\Dev_projects\\Beamer_Shop\\Application\\Beamer_shop\\Beamer_shop\\Beamer_shop.csproj",
+  "projectFilePath": "C:\\dev_projects_pc\\beamer_shop\\Application\\Beamer_shop\\Beamer_shop\\Beamer_shop.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alpay\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\alpay\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",

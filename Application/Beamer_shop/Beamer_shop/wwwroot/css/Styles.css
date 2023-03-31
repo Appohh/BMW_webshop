@@ -194,7 +194,7 @@ input[type=text], input[type=email], input[type=password], input[type="date" i],
     resize: vertical;
 }
 
-input[type=submit], input[type=button] {
+input[type=submit], input[type=button]{
     background-color: #2f85df;
     color: white;
     padding: 12px 20px;

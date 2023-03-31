@@ -10,25 +10,25 @@
 <div class="filter-container">
     <h1>Filter</h1>
     <div class="filter-section">
-        <form method="post">
+        <form method="post" id="prodFilter">
 
         <h2>Type</h2>
         <h3>---Accessory---</h3>
         <h3>---Car---</h3>
 
-        <label asp-for="ModelFilter">Model</label>
-            <span asp-validation-for="ModelFilter"></span>
-            <select asp-for="ModelFilter">
-                @foreach (string _model in Model.cars.OfType<Car>().Select(car => car.Model).Distinct().ToList())
+        <label asp-for="ProductFilter.Model">Model</label>
+            <span asp-validation-for="ProductFilter.Model"></span>
+            <select asp-for="ProductFilter.Model">
+                @foreach (string _model in Model.storedProductCollection.OfType<Car>().Select(car => car.Model).Distinct().ToList())
                 {
                     <option value="@_model">@_model</option>
                 }
             </select>
 
-            <label asp-for="MakeFilter">Model</label>
-            <span asp-validation-for="MakeFilter"></span>
-            <select asp-for="MakeFilter">
-                @foreach (string make in Model.cars.OfType<Car>().Select(car => car.Make).Distinct().ToList())
+            <label asp-for="ProductFilter.Make">Make</label>
+            <span asp-validation-for="ProductFilter.Make"></span>
+            <select asp-for="ProductFilter.Make">
+                @foreach (string make in Model.storedProductCollection.OfType<Car>().Select(car => car.Make).Distinct().ToList())
                 {
                     DateTime datetime = DateTime.Parse(make);
                     string makeFormat = datetime.ToString("yyyy");
@@ -50,7 +50,7 @@
 </div>
 
 <div class="product-container">
-    @foreach (Product product in Model.cars) 
+    @foreach (Product product in Model.productCollection)
     {
       @if(product is Car) {
 
