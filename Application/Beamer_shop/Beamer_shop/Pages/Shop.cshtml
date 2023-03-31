@@ -1,29 +1,41 @@
 ﻿@page
+@using Logic.Models
 @model Beamer_shop.Pages.ShopModel
 @{
     ViewData["Title"] = "Shop";
     ViewData["ActiveLink"] = "shop";
 }
 
+
 <div class="filter-container">
     <h1>Filter</h1>
     <div class="filter-section">
+        <form method="post">
 
         <h2>Type</h2>
         <h3>---Accessory---</h3>
         <h3>---Car---</h3>
 
-        <h2>Models</h2>
-        <h3>---dummy---</h3>
-        <h3>---dummy---</h3>
-        <h3>---dummy---</h3>
-        <h3>---dummy---</h3>
+        <label asp-for="ModelFilter">Model</label>
+            <span asp-validation-for="ModelFilter"></span>
+            <select asp-for="ModelFilter">
+                @foreach (string _model in Model.cars.OfType<Car>().Select(car => car.Model).Distinct().ToList())
+                {
+                    <option value="@_model">@_model</option>
+                }
+            </select>
 
-        <h2>Make</h2>
-        <h3>---dummy---</h3>
-        <h3>---dummy---</h3>
-        <h3>---dummy---</h3>
-        <h3>---dummy---</h3>
+            <label asp-for="MakeFilter">Model</label>
+            <span asp-validation-for="MakeFilter"></span>
+            <select asp-for="MakeFilter">
+                @foreach (string make in Model.cars.OfType<Car>().Select(car => car.Make).Distinct().ToList())
+                {
+                    DateTime datetime = DateTime.Parse(make);
+                    string makeFormat = datetime.ToString("yyyy");
+                    <option value="@makeFormat">@makeFormat</option>
+                }
+            </select>
+
 
         <h2>Fuel</h2>
         <h3>---dummy---</h3>
@@ -31,30 +43,41 @@
         <h3>---dummy---</h3>
         <h3>---dummy---</h3>
 
+            <input type="submit" value="Filter">
+
+        </form>
     </div>
 </div>
 
 <div class="product-container">
-    
-    <div class="card">
-        <img src="https://images2.alphacoders.com/472/472428.jpg" alt="" />
-        <div class="card-body">
-            <div class="row">
-                <div class="card-title">
-                    <h4>BMW M4 Coupe</h4>
-                    <h3>€120k</h3>
+    @foreach (Product product in Model.cars) 
+    {
+      @if(product is Car) {
+
+            Car? car = product as Car;
+            DateTime datetime = DateTime.Parse(car.Make);
+            string make = datetime.ToString("yyyy");
+
+            <div class="card">
+            <img src="@car.ImageUrl" alt="Image" />
+            <div class="card-body">
+                <div class="row">
+                    <div class="card-title">
+                        <h4>@car.Name</h4>
+                        <h3>@make</h3>
+                        <h3>€@car.Price</h3>
+                    </div>
+                    <div class="view-btn">
+                        <a href="/Product?@car.Id">View Details</a>
+                    </div>
                 </div>
-                <div class="view-btn">
-                    <a href="">View Details</a>
-                </div>
+                <hr />
+                <p>@car.Description</p>
             </div>
-            <hr />
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi,
-                dignissimos.
-            </p>
         </div>
-    </div>
+        }
+    }
+   
 
     <div class="card">
         <img src="https://images2.alphacoders.com/472/472428.jpg" alt="" />

@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logic", "Logic\Logic.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{83A3674B-7506-4AA3-8306-1AC5FAA6EDF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Factory", "Factory\Factory.csproj", "{FE9460DB-EBF3-4B58-A2DB-4D3C2F945696}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Factory", "Factory\Factory.csproj", "{FE9460DB-EBF3-4B58-A2DB-4D3C2F945696}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
