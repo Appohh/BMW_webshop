@@ -15,10 +15,21 @@
         <h2>Type</h2>
         <h3>---Accessory---</h3>
         <h3>---Car---</h3>
+        
+        <label asp-for="ProductFilter.ProductType">Type</label>
+            <span asp-validation-for="ProductFilter.ProductType"></span>
+            <select asp-for="ProductFilter.ProductType">
+            <option value="">All</option>
+            @foreach (string _type in Model.storedProductCollection.Select(product => product.GetType().Name).Distinct().ToList())
+            {
+                    <option value="@_type">@_type</option>
+            }
+        </select>
 
         <label asp-for="ProductFilter.Model">Model</label>
             <span asp-validation-for="ProductFilter.Model"></span>
             <select asp-for="ProductFilter.Model">
+                <option value="">All</option>
                 @foreach (string _model in Model.storedProductCollection.OfType<Car>().Select(car => car.Model).Distinct().ToList())
                 {
                     <option value="@_model">@_model</option>
@@ -28,6 +39,7 @@
             <label asp-for="ProductFilter.Make">Make</label>
             <span asp-validation-for="ProductFilter.Make"></span>
             <select asp-for="ProductFilter.Make">
+                <option value="">All</option>
                 @foreach (string make in Model.storedProductCollection.OfType<Car>().Select(car => car.Make).Distinct().ToList())
                 {
                     DateTime datetime = DateTime.Parse(make);
@@ -36,12 +48,18 @@
                 }
             </select>
 
-
-        <h2>Fuel</h2>
-        <h3>---dummy---</h3>
-        <h3>---dummy---</h3>
-        <h3>---dummy---</h3>
-        <h3>---dummy---</h3>
+            <label asp-for="ProductFilter.Fuel">Fuel</label>
+            <span asp-validation-for="ProductFilter.Fuel"></span>
+            <select asp-for="ProductFilter.Fuel">
+                <option value="">All</option>
+                @foreach (int _fuel in Model.storedProductCollection.OfType<Car>().Select(car => car.Fuel).Distinct().ToList())
+                {
+                    string fuel = "";
+                    if(_fuel == 0){ fuel = "Petrol"; }
+                    if (_fuel == 1) { fuel = "Diesel"; }
+                    <option value="@_fuel">@fuel</option>
+                }
+            </select>
 
             <input type="submit" value="Filter">
 
@@ -75,6 +93,30 @@
                 <p>@car.Description</p>
             </div>
         </div>
+        }
+
+        @if (product is Accessory)
+        {
+
+            Accessory? accessory = product as Accessory;
+
+            <div class="card">
+                <img src="@accessory.ImageUrl" alt="Image" />
+                <div class="card-body">
+                    <div class="row">
+                        <div class="card-title">
+                            <h4>@accessory.Name</h4>
+                            <h3>@accessory.Type</h3>
+                            <h3>€@accessory.Price</h3>
+                        </div>
+                        <div class="view-btn">
+                            <a href="/Product?@accessory.Id">View Details</a>
+                        </div>
+                    </div>
+                    <hr />
+                    <p>@accessory.Description</p>
+                </div>
+            </div>
         }
     }
    

@@ -35,6 +35,9 @@ namespace Data
             //get datatable of queried data
             DataTable table = base.ReadData();
 
+            //!NEEDS BETTER ERROR HANDLING!
+            if (table == null) { return Cars; }
+
             //itterate trough all datarows, validate and convert to objects
             foreach (DataRow dr in table.Rows)
             {
@@ -45,7 +48,7 @@ namespace Data
             return Cars;
         }
 
-        public void refreshCustomerData()
+        public void refreshCarData()
         {
             _carList.Clear();
             _carList.AddRange(GetAllCars());

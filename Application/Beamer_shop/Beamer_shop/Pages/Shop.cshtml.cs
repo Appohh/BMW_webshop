@@ -10,6 +10,8 @@ namespace Beamer_shop.Pages
     public class ShopModel : PageModel
     {
         CarService carService = CarFactory.CarService;
+        AccessoryService accessoryService = AccessoryFactory.AccessoryService;
+
 
         [BindProperty]
         public ProductFilter ProductFilter { get; set; }
@@ -19,7 +21,8 @@ namespace Beamer_shop.Pages
 
         public ShopModel()
         {
-            productCollection = carService.GetAllCars();
+            productCollection.AddRange(carService.GetAllCars());
+            productCollection.AddRange(accessoryService.GetAllAccessories());
             storedProductCollection = productCollection;
         }
 

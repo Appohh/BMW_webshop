@@ -10,5 +10,6 @@ namespace Logic.Interfaces
     public interface ICarRepository
     {
         public List<Product> GetAllCars();
+        public void refreshCarData();
     }
 }
