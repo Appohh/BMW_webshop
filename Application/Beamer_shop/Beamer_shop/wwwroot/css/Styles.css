@@ -227,6 +227,11 @@ form span {
     margin-bottom:auto;
 }
 
+#clear-filter {
+    float: right;
+    padding: 10px;
+}
+
 /*Product catalog*/
 .product-container {
     grid-column: 2 / 6;
@@ -287,6 +292,35 @@ form span {
     white-space: nowrap;
 }
 
+/*Image selector*/
+.product-images {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+}
+
+.main-image {
+    grid-row: 1;
+    max-width: 100%;
+}
+
+.small-images {
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.small-images img {
+    max-width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+
+.small-images img:hover {
+    opacity: 0.8;
+}
+
 
 /*Media querries*/
 @media screen and (max-width: 1221px) {
@@ -315,6 +349,12 @@ form span {
     }
 }
 
+@media screen and (max-width: 809px) {
+    #clear-filter {
+        float:unset !important;
+        padding:0px;
+    }
+}
 
 @media screen and (max-width: 700px) {
     img#landing-car {

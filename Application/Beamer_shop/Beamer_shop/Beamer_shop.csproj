@@ -7,16 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\HTMLmethods\**" />
+    <Content Remove="Pages\HTMLmethods\**" />
+    <EmbeddedResource Remove="Pages\HTMLmethods\**" />
+    <None Remove="Pages\HTMLmethods\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\Images\bmw-home.png" />
     <None Include="wwwroot\Images\bmwi8-home.png" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Factory\Factory.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Pages\HTMLmethods\" />
   </ItemGroup>
 
   <ItemGroup>
