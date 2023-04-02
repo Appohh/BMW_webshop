@@ -1,0 +1,50 @@
+﻿@page
+@model Beamer_shop.Pages.ProductModel
+@{
+    @using Logic.Models
+}
+
+
+@if(Model.Product != null){
+    Product product = Model.Product;
+<div class="product-lr-container">
+    <div class="product-images">
+        <img src="@product.ImageUrl" class="main-image">
+            <div class="small-images">
+                <img src="@product.ImageUrl" onclick="changeMainImage('https://imageio.forbes.com/specials-images/imageserve/5d35eacaf1176b0008974b54/0x0.jpg?format=jpg&crop=4560,2565,x790,y784,safe&width=1200')">
+                <img src="@product.ImageUrl">
+                <img src="@product.ImageUrl">
+                <img src="@product.ImageUrl">
+            </div>
+    </div>
+
+    <div class="product-right">
+        <h1>@product.Name</h1>
+        <h1>€@product.Price</h1>
+        <form action="">
+            <input type="submit" value="Add to cart">
+        </form>
+    </div>
+
+    <div class="product-description">
+        <h2>Product details</h2>
+        <h3>@product.Description</h3>
+    </div>
+</div>
+
+
+    if(Model.Product is Car)
+    {
+        Car car = product as Car;
+
+
+
+    }
+}
+
+<script>
+    function changeMainImage(newSrc) {
+        const mainImage = document.querySelector('.main-image');
+        mainImage.src = newSrc;
+    }
+</script>
