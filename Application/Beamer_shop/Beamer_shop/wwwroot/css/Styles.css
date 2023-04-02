@@ -50,16 +50,17 @@ li a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    border-bottom: 1px solid transparent;
 }
 
 li a:hover:not(.active, .logo, .fa) {
-    color: #3125d2;
-    border-bottom: 1px solid #3125d2;
+    color: #198aff;
+    border-bottom: 1px solid #198aff;
 }
 
 .active {
-    color: #3125d2;
-    border-bottom: 1px solid #3125d2;
+    color: #198aff;
+    border-bottom: 1px solid #198aff;
 }
 
 
@@ -102,6 +103,7 @@ li a:hover:not(.active, .logo, .fa) {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: auto auto auto auto auto;
     align-items: center;
+    z-index: 2;
 }
 
 /*Call to action button landing*/
@@ -292,11 +294,23 @@ form span {
     white-space: nowrap;
 }
 
-/*Image selector*/
+/*Product detail page*/
+
+.product-lr-container {
+    grid-column: 1 / 6;
+    display: grid;
+    margin: auto;
+    grid-template-columns: 2fr 1fr;
+}
+
+/*Image showcase*/
 .product-images {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr auto;
+    grid-template-rows: auto 1fr;
+    max-width: 45vw;
+    justify-items: stretch;
+    gap: 4px;
 }
 
 .main-image {
@@ -308,7 +322,7 @@ form span {
     grid-row: 2;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    gap: 1%;
 }
 
 .small-images img {
@@ -320,6 +334,14 @@ form span {
 .small-images img:hover {
     opacity: 0.8;
 }
+
+
+.product-right {
+    background: radial-gradient(rgba(255, 255, 255, 0) 0%, rgb(255 255 255 / 36%) 10%, rgba(255, 255, 255, 0) 94%);
+    padding: 6%;
+    backdrop-filter: blur(1px);
+}
+
 
 
 /*Media querries*/
