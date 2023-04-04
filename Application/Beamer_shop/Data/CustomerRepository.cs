@@ -72,7 +72,7 @@ namespace Data
 
             string query = $"SELECT [customer_id], [password_hash], [salt] FROM Auth_credential WHERE [username] = '{customer.Email}'";
             DataTable? table = ReadData(query);
-            if(table == null) { return null; }
+            if(table.Rows.Count == 0) { return null; }
 
             DataRow row = table.Rows[0];
             int storedId = Convert.ToInt32(row["customer_id"]);

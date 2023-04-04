@@ -40,6 +40,64 @@
 
 
     }
+    /* Recomended */ 
+    <div class="product-container" id="recommendList">
+        <h2>Recommended products</h2>
+        @foreach (Product recomendedProduct in Model.productCollection)
+        {
+            @if (recomendedProduct is Car)
+            {
+
+                Car? car = recomendedProduct as Car;
+                DateTime datetime = DateTime.Parse(car.Make);
+                string make = datetime.ToString("yyyy");
+
+                <div class="card">
+                    <img src="@car.ImageUrl" alt="Image" />
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="card-title">
+                                <h4>@car.Name</h4>
+                                <h3>@make</h3>
+                                <h3>€@car.Price</h3>
+                            </div>
+                            <div class="view-btn">
+                                <a href="/Product?Id=@car.Id">View Details</a>
+                            </div>
+                        </div>
+                        <hr />
+                        <p>@car.Description</p>
+                    </div>
+                </div>
+            }
+
+            @if (recomendedProduct is Accessory)
+            {
+
+                Accessory? accessory = recomendedProduct as Accessory;
+
+                <div class="card">
+                    <img src="@accessory.ImageUrl" alt="Image" />
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="card-title">
+                                <h4>@accessory.Name</h4>
+                                <h3>@accessory.Type</h3>
+                                <h3>€@accessory.Price</h3>
+                            </div>
+                            <div class="view-btn">
+                                <a href="/Product?Id=@accessory.Id">View Details</a>
+                            </div>
+                        </div>
+                        <hr />
+                        <p>@accessory.Description</p>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+
+
 }
 
 <script>

@@ -35,24 +35,32 @@ namespace Logic
             {
                 FilteredProducts = FilteredProducts.Where(product => product.GetType().Name == ProductType).ToList();
             }
-            if (!string.IsNullOrEmpty(Model))
+
+            //car specific filters
+            if (ProductType == typeof(Car).Name || string.IsNullOrEmpty(ProductType))
             {
-                FilteredProducts = FilteredProducts.Where(product =>
-                    product is Car car && car.Model.Contains(Model) ||
-                    product is Accessory).ToList();
+                if (!string.IsNullOrEmpty(Model))
+                {
+                    FilteredProducts = FilteredProducts.Where(product =>
+                        product is Car car && car.Model.Contains(Model)).ToList();
+                }
+                if (!string.IsNullOrEmpty(Make))
+                {
+                    FilteredProducts = FilteredProducts.Where(product =>
+                        product is Car car && car.Make.Contains(Make)).ToList();
+                }
+                if (Fuel.HasValue)
+                {
+                    FilteredProducts = FilteredProducts.Where(product =>
+                        product is Car car && car.Fuel == Fuel).ToList();
+                }
+
+                if (string.IsNullOrEmpty(ProductType))
+                {
+                    FilteredProducts = FilteredProducts.Where(product => product.GetType().ToString() == typeof(Car).ToString()).ToList();
+                }
             }
-            if (!string.IsNullOrEmpty(Make))
-            {
-                FilteredProducts = FilteredProducts.Where(product =>
-                    product is Car car && car.Make.Contains(Make) ||
-                    product is Accessory).ToList();
-            }
-            if (Fuel.HasValue)
-            {
-                FilteredProducts = FilteredProducts.Where(product =>
-                    product is Car car && car.Fuel == Fuel ||
-                    product is Accessory).ToList();
-            }
+
             if (StartPrice.HasValue)
             {
                 FilteredProducts = FilteredProducts.Where(product =>

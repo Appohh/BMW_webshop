@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Factory
 {
-    public class AccessoryFactory
+    public class CarFactory
     {
-      public static AccessoryService AccessoryService { get; } =
-    new AccessoryService(new AccessoryRepository());
+      public static CarService CarService { get; } =
+            new CarService(new CarRepository());
     }
 }

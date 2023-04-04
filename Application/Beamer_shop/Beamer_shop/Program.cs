@@ -1,14 +1,19 @@
+using Factory;
+using Logic.Interfaces;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+//builder.Services.AddScoped<IAccessoryFactory, AccessoryFactory>();
+
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
         options.LoginPath = "/Login";
-        options.AccessDeniedPath = "/Error";
+        options.AccessDeniedPath = "/Oops";
     });
 
 

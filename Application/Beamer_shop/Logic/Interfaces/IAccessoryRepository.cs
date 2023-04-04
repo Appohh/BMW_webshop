@@ -10,7 +10,8 @@ namespace Logic.Interfaces
     public interface IAccessoryRepository
     {
         public List<Product> GetAllAccessories();
+        public List<Product> GetProductAccessories(int productId);
         public void refreshAccessoryData();
 
-    }
+    }   
 }

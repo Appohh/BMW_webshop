@@ -18,6 +18,11 @@ namespace Logic
                 ?? throw new ArgumentNullException(nameof(accessoryRepository));
         }
 
+        public List<Product> GetProductAccessories(Product product)
+        {
+            return accessoryRepository.GetProductAccessories(product.Id);
+        }
+
         public List<Product> GetAllAccessories()
         {
             return accessoryRepository.GetAllAccessories();

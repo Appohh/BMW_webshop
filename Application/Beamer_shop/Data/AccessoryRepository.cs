@@ -48,6 +48,29 @@ namespace Data
             return Accessories;
         }
 
+        public List<Product> GetProductAccessories(int productId)
+        {
+            AccessoryAutoMapper accessoryDataRowMapper = new AccessoryAutoMapper();
+
+            List<Product> Accessories = new List<Product>();
+
+            //get datatable of queried data
+            DataTable table = base.ReadData($"select AccProduct.Id from Product inner join [Accessory-Product] on Product.Id = [Accessory-Product].OriginalProductId inner join [Product] AS AccProduct on [Accessory-Product].AccessoryProductId = AccProduct.Id where [Accessory-Product].OriginalProductId = {productId};");
+
+            //!NEEDS BETTER ERROR HANDLING!
+            if (table == null) { return Accessories; }
+
+            //itterate trough all datarows, validate and convert to objects
+            foreach (DataRow dr in table.Rows)
+            {
+                Accessories.Add(accessoryDataRowMapper.MapDataRowToObject(dr));
+            }
+
+            //return collection of objects
+            return Accessories;
+        }
+
+
         public void refreshAccessoryData()
         {
             _accessoryList.Clear();

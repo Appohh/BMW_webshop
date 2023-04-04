@@ -12,8 +12,6 @@ namespace Data
             IDbConnection connection = new SqlConnection(_connectionString);
             return connection;
         }
-
-
     }
 
 }

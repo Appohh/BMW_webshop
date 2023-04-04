@@ -44,6 +44,6 @@ namespace Data
         public Car MapDataRowToObject(DataRow row)
         {
             return _mapper.Map<DataRow, Car>(row);
-        }
+        }   
     }
 }

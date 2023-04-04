@@ -5,9 +5,28 @@
     font-family: 'Syne', sans-serif;
 }
 
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 body {
     margin: 0px;
 }
+
 
 /*Main html template grid*/
 .mainwrap {
@@ -301,6 +320,7 @@ form span {
     display: grid;
     margin: auto;
     grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto auto
 }
 
 /*Image showcase*/
@@ -337,11 +357,20 @@ form span {
 
 
 .product-right {
-    background: radial-gradient(rgba(255, 255, 255, 0) 0%, rgb(255 255 255 / 36%) 10%, rgba(255, 255, 255, 0) 94%);
+    background: radial-gradient(rgb(239 239 239 / 62%) 0%, rgb(255 255 255) 10%, rgba(255, 255, 255, 0) 94%);
     padding: 6%;
     backdrop-filter: blur(1px);
 }
 
+#recommendList {
+    grid-column: 1 / 6 !important;
+    overflow: auto !important;
+}
+
+#recommendList .card {
+    grid-row: 2 !important;
+    margin: 10px !important;
+}
 
 
 /*Media querries*/
