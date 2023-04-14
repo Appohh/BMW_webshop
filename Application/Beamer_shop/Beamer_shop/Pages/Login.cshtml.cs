@@ -8,6 +8,7 @@ using System.Text.Json;
 using Logic.Models;
 using Logic;
 using Factory;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Beamer_shop.Pages
 {
@@ -24,29 +25,42 @@ namespace Beamer_shop.Pages
 
         public async Task<IActionResult> OnPostAsync()
         {
-            Customer validCustomer = customerService.ValidateCredentials(login);
 
-            // Validate
-            if (ModelState.IsValid && validCustomer != null)
+            Customer? validCustomer = null;
+            (string hash, string salt, int id)? output = customerService.GetHashSalt(login.Email);
+
+            if (output != null)
             {
-                ClaimsIdentity claimsIdentity = new ClaimsIdentity(
-                    new Claim[]
-                    {
+                //validate input hash
+                string inputHash = Security.CreateHash(output.Value.salt, login.Password);
+                if (output.Value.hash == inputHash)
+                {
+                    //User validated
+                    validCustomer = customerService.GetCustomerById(output.Value.id);
+                }
+
+                // Make claims
+                if (ModelState.IsValid && validCustomer != null)
+                {
+                    ClaimsIdentity claimsIdentity = new ClaimsIdentity(
+                        new Claim[]
+                        {
                         new Claim("id", validCustomer.Id.ToString()),
                         new Claim(ClaimTypes.Name, validCustomer.FirstName + " " + validCustomer.LastName),
                         new Claim(ClaimTypes.Role, "Customer"),
-                    }, CookieAuthenticationDefaults.AuthenticationScheme);
-                ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-                await HttpContext.SignInAsync(claimsPrincipal);
-                return RedirectToPage("/Account");
+                        }, CookieAuthenticationDefaults.AuthenticationScheme);
+                    ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+                    await HttpContext.SignInAsync(claimsPrincipal);
+                    return RedirectToPage("/Account");
+                }
+                
+                
+                
             }
-            else
-            {
-                await HttpContext.ForbidAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-                return Page();
-            }
+                    await HttpContext.ForbidAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+                    return Page();
+             
         }
-
 
     }
 }

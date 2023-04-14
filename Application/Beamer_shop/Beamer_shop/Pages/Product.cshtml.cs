@@ -12,6 +12,7 @@ namespace Beamer_shop.Pages
         AccessoryService accessoryService = AccessoryFactory.AccessoryService;
 
         public List<Product> productCollection = new List<Product>();
+        public List<Product> recommendedProducts = new List<Product>();
 
         public Product? Product { get; private set; }
 

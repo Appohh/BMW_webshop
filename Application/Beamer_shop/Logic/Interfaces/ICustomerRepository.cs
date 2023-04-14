@@ -9,10 +9,10 @@ namespace Logic.Interfaces
 {
     public interface ICustomerRepository
     {
-        public List<Customer> GetAllCustomers();
-        public bool RegisterCustomer(Register customer);
-        public Customer ValidateCredentials(Login customer);
-
+        List<Customer> GetAllCustomers();
+        bool RegisterCustomer(Register customer);
+        (string hash, string salt, int id)? GetHashSalt(string email);
+        Customer? GetCustomerById(int id);
 
     }
 }

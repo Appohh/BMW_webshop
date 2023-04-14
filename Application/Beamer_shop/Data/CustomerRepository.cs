@@ -67,10 +67,10 @@ namespace Data
             else return false;
         }
 
-        public Customer? ValidateCredentials(Login customer)
+        public (string hash, string salt, int id)? GetHashSalt(string username)
         {
 
-            string query = $"SELECT [customer_id], [password_hash], [salt] FROM Auth_credential WHERE [username] = '{customer.Email}'";
+            string query = $"SELECT [customer_id], [password_hash], [salt] FROM Auth_credential WHERE [username] = '{username}'";
             DataTable? table = ReadData(query);
             if(table.Rows.Count == 0) { return null; }
 
@@ -79,17 +79,14 @@ namespace Data
             string? storedHash = row["password_hash"].ToString();
             string? storedSalt = row["salt"].ToString();
 
-            //validate input hash
-            string inputHash = Security.CreateHash(storedSalt, customer.Password);
-            if(storedHash == inputHash)
-            {
-                //User validated
-                Customer? validCustomer = _customerList.Find(customer => customer.Id == storedId);
-                if (validCustomer == null) { return null; }
-                return validCustomer;
-            }
-            return null;    
+            return (storedHash, storedSalt, storedId);                         
+        }
 
+        public Customer? GetCustomerById(int id)
+        {
+            refreshCustomerData();
+            Customer? foundCustomer = _customerList.Find(customer => customer.Id == id);
+            return foundCustomer;
         }
     }
 }

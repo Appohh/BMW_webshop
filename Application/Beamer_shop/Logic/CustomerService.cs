@@ -23,10 +23,15 @@ namespace Logic
             return customerRepository.RegisterCustomer(customer);
         }
 
-        public Customer ValidateCredentials(Login customer)
+        public (string hash, string salt, int id)? GetHashSalt(string email)
         {
-            return customerRepository.ValidateCredentials(customer);
+            return customerRepository.GetHashSalt(email);
         }
+        public Customer? GetCustomerById(int id)
+        {
+            return customerRepository.GetCustomerById(id);
+        }
+
 
     }
 }
