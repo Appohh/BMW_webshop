@@ -30,5 +30,13 @@ namespace Logic
 
             return products;
         }
+
+        public List<string> GetProductImages(Product product)
+        {
+            if (product is Car)
+                return carRepository.GetCarImage(product.id);
+
+            throw new NotImplementedException();
+        }
     }
 }

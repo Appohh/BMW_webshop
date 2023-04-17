@@ -13,7 +13,7 @@ namespace Factory
         public ProductService ProductService { get; } =
            new ProductService(new CarRepository(), new AccessoryRepository());
 
-        public int createProduct(string type)
+        public int CreateProduct(string type)
         {
             switch (type)
             {
