@@ -26,7 +26,7 @@ namespace Beamer_shop.Pages
             Product = productCollection.FirstOrDefault(prod => prod.Id == Id);
             if (Product == null)
             {
-                Product notFoundProduct = new Accessory("", -99, "Oops! Product not found :/", 0, "", "");
+                Product notFoundProduct = new Accessory("", -99, "Oops! Product not found :/", 0, "", "", "");
                 Product = notFoundProduct;
             }
         }

@@ -22,10 +22,10 @@ namespace Logic.Models
         public int TopSpeed { get; set; }
         public int Weight { get; set; }
 
-        public Car() : base(0, "", 0, "", "")
+        public Car() : base(0, "", 0, "", "", "")
         {
         }
-        public Car(string chassisNumber, string plate, string brand, string model, string make, string milage, string engine, int fuel, int horsePower, int torque, decimal time0to60, int topSpeed, int weight, int id, string name, decimal price, string description, string imageUrl) : base(id, name, price, description, imageUrl)
+        public Car(string chassisNumber, string plate, string brand, string model, string make, string milage, string engine, int fuel, int horsePower, int torque, decimal time0to60, int topSpeed, int weight, int id, string name, decimal price, string description, string imageUrl, string keyword) : base(id, name, price, description, imageUrl, keyword)
         {
             ChassisNumber = chassisNumber;
             Plate = plate;

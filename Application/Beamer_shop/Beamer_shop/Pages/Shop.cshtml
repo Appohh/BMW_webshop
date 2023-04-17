@@ -66,53 +66,33 @@
 <div class="product-container">
     @foreach (Product product in Model.productCollection)
     {
-      @if(product is Car) {
 
-            Car? car = product as Car;
-            DateTime datetime = DateTime.Parse(car.Make);
-            string make = datetime.ToString("yyyy");
+            string formatKeyword = "";
+
+            DateTime dateValue;
+            if (DateTime.TryParse(product.Keyword, out dateValue))
+            {
+                formatKeyword = dateValue.ToString("yyyy");
+            } else { formatKeyword = product.Keyword; }
+
 
             <div class="card">
-            <img src="@car.ImageUrl" alt="Image" />
+            <img src="@product.ImageUrl" alt="Image" />
             <div class="card-body">
                 <div class="row">
                     <div class="card-title">
-                        <h4>@car.Name</h4>
-                        <h3>@make</h3>
-                            <h3>€@car.Price</h3>
+                            <h4>@product.Name</h4>
+                            <h3>@formatKeyword</h3>
+                            <h3>€@product.Price</h3>
                     </div>
                     <div class="view-btn">
-                        <a href="/Product?Id=@car.Id">View Details</a>
+                            <a href="/Product?Id=@product.Id">View Details</a>
                     </div>
                 </div>
                 <hr />
-                <p>@car.Description</p>
+                    <p>@product.Description</p>
             </div>
         </div>
-        }
-
-        @if (product is Accessory)
-        {
-
-            Accessory? accessory = product as Accessory;
-
-            <div class="card">
-                <img src="@accessory.ImageUrl" alt="Image" />
-                <div class="card-body">
-                    <div class="row">
-                        <div class="card-title">
-                            <h4>@accessory.Name</h4>
-                            <h3>@accessory.Type</h3>
-                            <h3>€@accessory.Price</h3>
-                        </div>
-                        <div class="view-btn">
-                            <a href="/Product?Id=@accessory.Id">View Details</a>
-                        </div>
-                    </div>
-                    <hr />
-                    <p>@accessory.Description</p>
-                </div>
-            </div>
-        }
+        
     }
 </div>

@@ -43,15 +43,6 @@
                     }
                 }
 
-
-                @if (User?.Identity?.IsAuthenticated ?? false)
-                {
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Logout">Log out</a>
-                    </li>
-                }
-
-
                 @if (ViewData.ContainsKey("ActiveLink")
                 && (string)ViewData["ActiveLink"] == "shop")
                 {
