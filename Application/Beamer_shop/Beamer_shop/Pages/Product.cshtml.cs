@@ -8,17 +8,19 @@ namespace Beamer_shop.Pages
 {
     public class ProductModel : PageModel
     {
-        CarService carService = CarFactory.CarService;
-        AccessoryService accessoryService = AccessoryFactory.AccessoryService;
-
+        ProductFactory productFactory = new ProductFactory();
+        ProductService productService;   
+        
         public List<Product> productCollection = new List<Product>();
         public List<Product> recommendedProducts = new List<Product>();
+        public List<string> productImages = new List<string>();
 
         public Product? Product { get; private set; }
 
         public ProductModel() {
-            productCollection.AddRange(carService.GetAllCars());
-            productCollection.AddRange(accessoryService.GetAllAccessories());
+            productService = productFactory.ProductService;
+
+            productCollection.AddRange(productService.GetAllProducts());
         }
 
         public void OnGet(int Id)
@@ -28,7 +30,11 @@ namespace Beamer_shop.Pages
             {
                 Product notFoundProduct = new Accessory("", -99, "Oops! Product not found :/", 0, "", "", "");
                 Product = notFoundProduct;
+                return;
             }
+            recommendedProducts.AddRange(productService.GetProductAccessories(Product));
+            productImages.AddRange(productService.GetProductImages(Product));
+
         }
     }
 }

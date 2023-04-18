@@ -63,7 +63,7 @@ namespace Data
             //itterate trough all datarows, validate and convert to objects
             foreach (DataRow dr in table.Rows)
             {
-                Accessories.Add(accessoryDataRowMapper.MapDataRowToObject(dr));
+                Accessories.Add(_accessoryList.Find(a => a.Id == Convert.ToInt32(dr["id"])));
             }
 
             //return collection of objects
@@ -75,6 +75,20 @@ namespace Data
         {
             _accessoryList.Clear();
             _accessoryList.AddRange(GetAllAccessories());
+        }
+
+        public List<string> GetProductImages(int productId)
+        {
+            List<string> images = new List<string>();
+            var result = base.ReadData($"SELECT [Image] FROM [Product-Image] WHERE [ProductId] = {productId}");
+
+            if (result == null) { return images; }
+
+            foreach (DataRow dr in result.Rows)
+            {
+                images.Add(dr["Image"].ToString());
+            }
+            return images;
         }
     }
 }

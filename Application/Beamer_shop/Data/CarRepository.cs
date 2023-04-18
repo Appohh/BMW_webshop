@@ -53,5 +53,19 @@ namespace Data
             _carList.Clear();
             _carList.AddRange(GetAllCars());
         }
+
+        public List<string> GetProductImages(int productId)
+        {
+            List<string> images = new List<string>();
+            var result = base.ReadData($"SELECT [Image] FROM [Product-Image] WHERE [ProductId] = {productId}");
+
+            if(result == null) { return images; }
+
+            foreach(DataRow dr in result.Rows)
+            {
+                images.Add(dr["Image"].ToString());
+            }
+            return images;
+        }
     }
 }

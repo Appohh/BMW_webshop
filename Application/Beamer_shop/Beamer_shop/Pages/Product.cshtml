@@ -11,10 +11,14 @@
     <div class="product-images">
         <img src="@product.ImageUrl" class="main-image">
             <div class="small-images">
-                <img src="@product.ImageUrl" onclick="changeMainImage('https://imageio.forbes.com/specials-images/imageserve/5d35eacaf1176b0008974b54/0x0.jpg?format=jpg&crop=4560,2565,x790,y784,safe&width=1200')">
-                <img src="@product.ImageUrl">
-                <img src="@product.ImageUrl">
-                <img src="@product.ImageUrl">
+                @if (Model.productImages.Count > 0)
+                {
+                    <img src="@product.ImageUrl" onclick="changeMainImage('@product.ImageUrl')">
+                }
+                 @foreach (string image in Model.productImages)
+                 {
+                    <img src="@image" onclick="changeMainImage('@image')">
+                }
             </div>
     </div>
 
@@ -42,58 +46,41 @@
     }
     /* Recomended */ 
     <div class="product-container" id="recommendList">
+       @if (Model.recommendedProducts.Count > 0)
+       {
         <h2>Recommended products</h2>
-        @foreach (Product recomendedProduct in Model.productCollection)
+       }
+        @foreach (Product recommendedProduct in Model.recommendedProducts)
         {
-            @if (recomendedProduct is Car)
+
+            string formatKeyword = "";
+
+            DateTime dateValue;
+            if (DateTime.TryParse(recommendedProduct.Keyword, out dateValue))
             {
-
-                Car? car = recomendedProduct as Car;
-                DateTime datetime = DateTime.Parse(car.Make);
-                string make = datetime.ToString("yyyy");
-
-                <div class="card">
-                    <img src="@car.ImageUrl" alt="Image" />
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="card-title">
-                                <h4>@car.Name</h4>
-                                <h3>@make</h3>
-                                <h3>€@car.Price</h3>
-                            </div>
-                            <div class="view-btn">
-                                <a href="/Product?Id=@car.Id">View Details</a>
-                            </div>
-                        </div>
-                        <hr />
-                        <p>@car.Description</p>
-                    </div>
-                </div>
+                formatKeyword = dateValue.ToString("yyyy");
             }
+            else { formatKeyword = recommendedProduct.Keyword; }
 
-            @if (recomendedProduct is Accessory)
-            {
 
-                Accessory? accessory = recomendedProduct as Accessory;
-
-                <div class="card">
-                    <img src="@accessory.ImageUrl" alt="Image" />
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="card-title">
-                                <h4>@accessory.Name</h4>
-                                <h3>@accessory.Type</h3>
-                                <h3>€@accessory.Price</h3>
-                            </div>
-                            <div class="view-btn">
-                                <a href="/Product?Id=@accessory.Id">View Details</a>
-                            </div>
+            <div class="card">
+                <img src="@recommendedProduct.ImageUrl" alt="Image" />
+                <div class="card-body">
+                    <div class="row">
+                        <div class="card-title">
+                            <h4>@recommendedProduct.Name</h4>
+                            <h3>@formatKeyword</h3>
+                            <h3>€@recommendedProduct.Price</h3>
                         </div>
-                        <hr />
-                        <p>@accessory.Description</p>
+                        <div class="view-btn">
+                            <a href="/Product?Id=@recommendedProduct.Id">View Details</a>
+                        </div>
                     </div>
+                    <hr />
+                    <p>@recommendedProduct.Description</p>
                 </div>
-            }
+            </div>
+
         }
     </div>
 

@@ -33,10 +33,16 @@ namespace Logic
 
         public List<string> GetProductImages(Product product)
         {
-            if (product is Car)
-                return carRepository.GetCarImage(product.id);
+           if (product is Car)
+                return carRepository.GetProductImages(product.Id);
+           if (product is Accessory)
+                return accessoryRepository.GetProductImages(product.Id);
+            else { return new List<string>(); }
+        }
 
-            throw new NotImplementedException();
+        public List<Product> GetProductAccessories(Product product)
+        {
+            return accessoryRepository.GetProductAccessories(product.Id);
         }
     }
 }

@@ -10,8 +10,12 @@ namespace Factory
 {
     public class ProductFactory
     {
-        public ProductService ProductService { get; } =
-           new ProductService(new CarRepository(), new AccessoryRepository());
+        public ProductService ProductService { get; }
+
+        public ProductFactory()
+        {
+            ProductService = new ProductService(new CarRepository(), new AccessoryRepository());
+        }
 
         public int CreateProduct(string type)
         {
