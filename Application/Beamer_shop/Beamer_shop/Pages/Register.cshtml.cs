@@ -20,7 +20,13 @@ namespace Beamer_shop.Pages
             //filters
             if (ModelState.IsValid)
             {
+                //Hash
+                (string Salt, string HashedPassword) output = Security.CreateSaltAndHash(newCustomer.Password);
+                newCustomer.Salt = output.Salt;
+                newCustomer.Hash = output.HashedPassword;
+                //Send
                 customerService.RegisterCustomer(newCustomer);
+
                 TempData["Contact"] = JsonSerializer.Serialize(newCustomer);
                 return new RedirectToPageResult("Index");
             }

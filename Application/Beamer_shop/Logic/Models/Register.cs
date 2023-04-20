@@ -26,5 +26,7 @@ namespace Logic.Models
         public string City { get; set; }
         [Required]
         public string Password { get; set; }
+        public string? Salt { get; set; }
+        public string? Hash { get; set; }
     }
 }

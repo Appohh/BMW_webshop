@@ -52,15 +52,15 @@ namespace Data
 
         public bool RegisterCustomer(Register customer)
         {
+            if(string.IsNullOrEmpty(customer.Salt) || string.IsNullOrEmpty(customer.Hash)) { return false; }
+
             string query = $"INSERT INTO Customer (Firstname, Lastname, Email, Birthdate, Address, Zipcode, City) OUTPUT INSERTED.Id " +
                            $"VALUES ('{customer.FirstName}', '{customer.LastName}', '{customer.Email}', '{customer.BirthDate}', '{customer.Address}', '{customer.ZipCode}', '{customer.City}' );";
             int createdId = executeIdScalar(query);
             if(createdId > 0)
-            {
-                (string Salt, string HashedPassword) output = Security.CreateSaltAndHash(customer.Password);
-               
+            {               
                 string followQuery = $"INSERT INTO Auth_credential (customer_id, username, password_hash, salt) VALUES " +
-                    $"({createdId}, '{customer.Email}', '{output.HashedPassword}', '{output.Salt}')";
+                    $"({createdId}, '{customer.Email}', '{customer.Hash}', '{customer.Salt}')";
                 refreshCustomerData();
                 return executeQuery(followQuery) == 0 ? false : true;
             }
