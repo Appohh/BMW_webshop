@@ -13,6 +13,7 @@ namespace Logic
         private readonly ICarRepository carRepository;
         private readonly IAccessoryRepository accessoryRepository;
 
+        private IDictionary<int, Product> _products;
 
         public ProductService(ICarRepository carRepository, IAccessoryRepository accessoryRepository)
         {
@@ -20,15 +21,25 @@ namespace Logic
                 ?? throw new ArgumentNullException(nameof(carRepository));
             this.accessoryRepository = accessoryRepository
                 ?? throw new ArgumentNullException(nameof(accessoryRepository));
+
+            _products = new Dictionary<int, Product>();
+            retrieveData(); //timer?
+        }
+
+        private void retrieveData() 
+        { 
+            _products = carRepository.GetAllCars().ToDictionary(p => p.Id, p => p);
+            _products = accessoryRepository.GetAllAccessories().ToDictionary(p => p.Id, p => p);
         }
 
         public List<Product> GetAllProducts()
         {
-            var products = new List<Product>();
-            products.AddRange(carRepository.GetAllCars());
-            products.AddRange(accessoryRepository.GetAllAccessories());
+            return _products.Values.ToList();
+        }
 
-            return products;
+        public Product getProductById(int id)
+        {
+            return _products[id];
         }
 
         public List<string> GetProductImages(Product product)

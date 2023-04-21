@@ -24,6 +24,11 @@ namespace Logic.Models
             ImageUrl = imageUrl;
             Keyword = keyword;
         }
+
+        public virtual string getDetails()
+        {
+            return "";
+        }
     }
 
 }

@@ -28,22 +28,19 @@
         <form action="">
             <input type="submit" value="Add to cart">
         </form>
+        <h2>@product.Description</h2>
     </div>
 
-    <div class="product-description">
-        <h2>Product details</h2>
-        <h3>@product.Description</h3>
+    <div class="product-description">    
+            @if (!string.IsNullOrEmpty(product.getDetails()))
+            {
+                <h2>Product details</h2>
+                <h3 id="product-details">@product.getDetails()</h3>
+            }
     </div>
 </div>
 
 
-    if(Model.Product is Car)
-    {
-        Car car = product as Car;
-
-
-
-    }
     /* Recomended */ 
     <div class="product-container" id="recommendList">
        @if (Model.recommendedProducts.Count > 0)

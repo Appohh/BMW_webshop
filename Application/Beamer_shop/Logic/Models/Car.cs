@@ -41,5 +41,10 @@ namespace Logic.Models
             TopSpeed = topSpeed;
             Weight = weight;
         }
+
+        public override string getDetails()
+        {
+            return base.getDetails() + $"Chassis Number: {ChassisNumber}\nPlate: {Plate}\nBrand: {Brand}\nModel: {Model}\nMake: {Make}\nMilage: {Milage}\nEngine: {Engine}\nFuel: {Fuel}\nHorsepower: {HorsePower}ps\nTorque: {Torque}nm\n0-60 Time: {Time0to60}/s\nTop Speed: {TopSpeed}km/h\nWeight: {Weight}kg";
+        }
     }
 }

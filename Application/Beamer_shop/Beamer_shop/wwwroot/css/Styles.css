@@ -328,6 +328,7 @@ form span {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
+    grid-column: 1;
     max-width: 45vw;
     justify-items: stretch;
     gap: 4px;
@@ -358,8 +359,14 @@ form span {
 
 .product-right {
     background: radial-gradient(rgb(239 239 239 / 62%) 0%, rgb(255 255 255) 10%, rgba(255, 255, 255, 0) 94%);
-    padding: 6%;
+    grid-column: 2;
+    grid-row: span 2;
+    /* padding: 6%; */
     backdrop-filter: blur(1px);
+}
+
+#product-details {
+    white-space: pre-line;
 }
 
 #recommendList {
@@ -370,6 +377,25 @@ form span {
 #recommendList .card {
     grid-row: 2 !important;
     margin: 10px !important;
+}
+
+/*Shopping cart*/
+.cart-wrap {
+    height: 389px;
+    display: grid;
+    z-index: 3;
+    width: 310px;
+    background: darkolivegreen;
+    grid-template-rows: auto 1fr 1fr 1fr;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+}
+
+.cart-top {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-items: center;
 }
 
 
