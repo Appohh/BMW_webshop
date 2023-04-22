@@ -9,7 +9,7 @@ namespace Logic
 {
     public class ShoppingCart
     {
-        private IDictionary<int, CartItem> _items;
+        public IDictionary<int, CartItem> _items;
 
         public ShoppingCart()
         {

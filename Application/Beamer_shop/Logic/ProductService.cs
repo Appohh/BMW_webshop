@@ -28,8 +28,10 @@ namespace Logic
 
         private void retrieveData() 
         { 
-            _products = carRepository.GetAllCars().ToDictionary(p => p.Id, p => p);
-            _products = accessoryRepository.GetAllAccessories().ToDictionary(p => p.Id, p => p);
+            if(_products.Count > 0) { _products.Clear(); }
+
+            foreach (Product car in carRepository.GetAllCars()) { _products.Add(car.Id, car); }
+            foreach (Product accessory in accessoryRepository.GetAllAccessories()) { _products.Add(accessory.Id, accessory); }
         }
 
         public List<Product> GetAllProducts()
@@ -37,9 +39,16 @@ namespace Logic
             return _products.Values.ToList();
         }
 
-        public Product getProductById(int id)
+        public Product? getProductById(int id)
         {
-            return _products[id];
+            if (_products.ContainsKey(id))
+            {
+                return _products[id];
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public List<string> GetProductImages(Product product)

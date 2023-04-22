@@ -1,11 +1,11 @@
 using Factory;
 using Logic;
 using Logic.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
 using System.Text;
+
 
 namespace Beamer_shop.Pages
 {
@@ -17,6 +17,9 @@ namespace Beamer_shop.Pages
 
         [BindProperty]
         public ProductFilter? ProductFilter { get; set; }
+
+        [BindProperty]
+        public int? CartReceivedProductId { get; set; }
 
         public List<Product> storedProductCollection = new List<Product>();
         public List<Product> productCollection = new List<Product>();
@@ -31,7 +34,39 @@ namespace Beamer_shop.Pages
             storedProductCollection = productCollection;
 
 
-            if (HttpContext.Session.TryGetValue("Cart", out byte[]? data))
+            retrieveShoppingCart();
+
+        }
+
+        public void OnPostFilterProducts()
+        {
+            if (ProductFilter != null)
+            {
+                productCollection = ProductFilter.FilterProducts(productCollection);
+            }
+        }
+
+        public void OnPostAddToCart()
+        {
+            if(CartReceivedProductId == null) { return; }
+
+            Product? foundProduct = productService.getProductById(CartReceivedProductId.Value);
+            if (foundProduct == null) { return; }
+
+
+            retrieveShoppingCart();
+
+            if(shoppingCart == null) { return; }
+
+            shoppingCart.AddItem(foundProduct);
+
+            saveShoppingCart();
+
+        }
+
+        public void retrieveShoppingCart()
+        {
+            if (HttpContext != null && HttpContext.Session != null && HttpContext.Session.TryGetValue("Cart", out byte[]? data))
             {
                 // Deserialize shopping cart object from session
                 var json = Encoding.UTF8.GetString(data);
@@ -42,18 +77,22 @@ namespace Beamer_shop.Pages
             if (shoppingCart == null)
             {
                 shoppingCart = new ShoppingCart();
+                saveShoppingCart();
             }
-
         }
 
-        public void OnPost()
+        public void saveShoppingCart()
         {
-            if (ProductFilter != null)
-            {
-                productCollection = ProductFilter.FilterProducts(productCollection);
-            }
+            if (HttpContext == null || shoppingCart == null) return;
+
+            // Serialize shoppingcart to JSON
+            var json = JsonConvert.SerializeObject(shoppingCart);
+            //byte[] data = Encoding.UTF8.GetBytes(json);
+
+            // Store shoppingcart in session
+            HttpContext.Session.SetString("Cart", json);
         }
 
-        //OnPostAddToCart(id){ }
+
     }
 }

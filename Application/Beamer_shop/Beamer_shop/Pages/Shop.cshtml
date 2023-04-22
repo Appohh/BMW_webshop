@@ -10,7 +10,7 @@
 <div class="filter-container">
     <h1>Filter</h1>
     <div class="filter-section">
-        <form method="post" id="prodFilter">
+        <form method="post" asp-page-handler="FilterProducts" id="prodFilter">
         
         <label asp-for="ProductFilter.ProductType">Type</label>
             <span asp-validation-for="ProductFilter.ProductType"></span>
@@ -77,7 +77,15 @@
 
 
             <div class="card">
+            <div class="image-container">
             <img src="@product.ImageUrl" alt="Image" />
+            <div class="image-overlay">
+                <form method="post" asp-page-handler="AddToCart" style="height:min-content;width:min-content">
+                    <input asp-for="CartReceivedProductId" type="hidden" value="@product.Id">
+                    <input type="submit" value="Add to cart">
+                </form>
+            </div>
+            </div>
             <div class="card-body">
                 <div class="row">
                     <div class="card-title">
