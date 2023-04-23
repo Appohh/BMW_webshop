@@ -66,11 +66,16 @@ namespace Beamer_shop.Pages
 
         public void retrieveShoppingCart()
         {
+            var settings = new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto
+            };
+
             if (HttpContext != null && HttpContext.Session != null && HttpContext.Session.TryGetValue("Cart", out byte[]? data))
             {
                 // Deserialize shopping cart object from session
                 var json = Encoding.UTF8.GetString(data);
-                shoppingCart = JsonConvert.DeserializeObject<ShoppingCart>(json);
+                shoppingCart = JsonConvert.DeserializeObject<ShoppingCart>(json, settings);
             }
 
             // If shoppingCart still null, create new shopping cart
@@ -83,10 +88,17 @@ namespace Beamer_shop.Pages
 
         public void saveShoppingCart()
         {
+            var settings = new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto
+            };
+
             if (HttpContext == null || shoppingCart == null) return;
 
+            var product1 = new Accessory("fd", 2, "fds", 1, "fdsg", "fdsfdsf", "fdss");
+            shoppingCart.AddItem(product1);
             // Serialize shoppingcart to JSON
-            var json = JsonConvert.SerializeObject(shoppingCart);
+            var json = JsonConvert.SerializeObject(shoppingCart, settings);
             //byte[] data = Encoding.UTF8.GetBytes(json);
 
             // Store shoppingcart in session
