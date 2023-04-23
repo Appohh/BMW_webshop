@@ -61,7 +61,7 @@
                 else {
                     <li><a asp-page="/Contact">Contact </a></li>
                 }
-                     <li style="float: right"><a asp-page="#about">Cart</a></li>
+                <li id="li-cart-open" style="float: right"><a id="a-cart-open" style="cursor:grab;">Cart</a></li>
             </ul>
         </div>
         <!-- main center container -->
@@ -90,9 +90,9 @@
 
         <div class="cart-wrap">
             <div class="cart-top">
-                <h2>X</h2>
+                <h2 id="cart-close">X</h2>
                 <h2>My Cart</h2>
-                <h2>Q</h2> 
+                <h2 id="cart-trash"><i class="fa fa-trash"></i></h2>
             </div>
             <div class="cart-content-container">
                 <div class="cart-content">
@@ -110,19 +110,47 @@
             </div>
             <div class="cart-subinfo">
                 <div class="sub1">
-                <h4>Subtotal: </h4>
-                <h4>$13000.99</h4>
+                    <h4 style="color:#9f9f9f;">Subtotal: </h4>
+                    <h4>$13000.99</h4>
                 </div>
                 <div class="sub2">
-                <h4>Tax: </h4>
-                <h4>$1330.00</h4>
+                    <h4 style="color:#9f9f9f;">Taxes: </h4>
+                    <h4>$1330.00</h4>
                 </div>
+            </div>
+            <div class="cart-total">
+                <h1>$54.390</h1>
+                <form class="checkout">
+                    <input type="submit" value="Checkout" />
+                </form>
             </div>
         </div>
 
     </div>
 
     <!-- JS -->
+    <script>
+        const cartOpenA = document.getElementById('a-cart-open');
+        const cartOpenLi = document.getElementById('li-cart-open');
+        const cartCloseX = document.getElementById('cart-close');
+
+        const cart = document.querySelector('.cart-wrap');
+
+        function showCart() {
+            cart.style.display = 'grid';
+        }
+
+        function closeCart() {
+            cart.style.display = 'none';
+        }
+
+
+
+        cartOpenA.addEventListener('click', showCart);
+        cartOpenLi.addEventListener('click', showCart);
+        cartCloseX.addEventListener('click', closeCart);
+    </script>
+
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

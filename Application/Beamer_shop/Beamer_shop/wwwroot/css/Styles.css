@@ -400,7 +400,6 @@ form span {
 .cart-wrap {
     min-height: 389px;
     box-shadow: -6px 9px 20px 1px;
-    display: grid;
     z-index: 3;
     min-width: 310px;
     border-radius: 12px;
@@ -410,6 +409,7 @@ form span {
     top: 0px;
     right: 0px;
     align-items: start;
+    display: none;
 }
 
 .cart-top {
@@ -453,6 +453,14 @@ form span {
     display: inline-flex;
     gap: 4px;
 }
+
+.cart-total {
+    display: inline-flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 23%;
+}
+
 
 
 
