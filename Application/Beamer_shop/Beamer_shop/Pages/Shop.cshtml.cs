@@ -4,6 +4,7 @@ using Logic.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
+using System.Dynamic;
 using System.Text;
 
 
@@ -24,7 +25,7 @@ namespace Beamer_shop.Pages
         public List<Product> storedProductCollection = new List<Product>();
         public List<Product> productCollection = new List<Product>();
 
-        public ShoppingCart? shoppingCart;
+        public ShoppingCart? shoppingCart = new ShoppingCart();
 
         public ShopModel()
         {
@@ -32,10 +33,11 @@ namespace Beamer_shop.Pages
             productCollection.AddRange(productService.GetAllProducts());
 
             storedProductCollection = productCollection;
+        }
 
-
-            retrieveShoppingCart();
-
+        public void OnGet()
+        {
+            shoppingCart = RetrieveShoppingCart();
         }
 
         public void OnPostFilterProducts()
@@ -53,56 +55,85 @@ namespace Beamer_shop.Pages
             Product? foundProduct = productService.getProductById(CartReceivedProductId.Value);
             if (foundProduct == null) { return; }
 
+            shoppingCart = RetrieveShoppingCart();
 
-            retrieveShoppingCart();
-
-            if(shoppingCart == null) { return; }
+            if (shoppingCart == null) { return; }
 
             shoppingCart.AddItem(foundProduct);
 
-            saveShoppingCart();
+            SaveShoppingCart(shoppingCart);
 
         }
 
-        public void retrieveShoppingCart()
+        public ShoppingCart RetrieveShoppingCart()
         {
             var settings = new JsonSerializerSettings
             {
                 TypeNameHandling = TypeNameHandling.Auto
             };
 
-            if (HttpContext != null && HttpContext.Session != null && HttpContext.Session.TryGetValue("Cart", out byte[]? data))
+
+            // Check for HttpContext and session availability
+            if (HttpContext?.Session == null)
             {
-                // Deserialize shopping cart object from session
-                var json = Encoding.UTF8.GetString(data);
-                shoppingCart = JsonConvert.DeserializeObject<ShoppingCart>(json, settings);
+                throw new Exception("Session not available.");
             }
 
-            // If shoppingCart still null, create new shopping cart
-            if (shoppingCart == null)
+            // Retrieve shopping cart object from session
+            if (HttpContext.Session.TryGetValue("Cart", out byte[] data))
             {
-                shoppingCart = new ShoppingCart();
-                saveShoppingCart();
+                try
+                {
+                    // Deserialize shopping cart object from session
+                    var json = Encoding.UTF8.GetString(data);
+
+                    if (json == null)
+                    {
+                        throw new ArgumentNullException(nameof(json));
+                    }
+
+
+                    return JsonConvert.DeserializeObject<ShoppingCart>(json, settings);
+                }
+
+
+                catch (Exception ex)
+                {
+                    throw new Exception("Failed to deserialize shopping cart from session.", ex);
+                }
             }
+
+            // Create new shopping cart object if not found in session
+            shoppingCart = new ShoppingCart();
+            SaveShoppingCart(shoppingCart);
+            return shoppingCart;
         }
 
-        public void saveShoppingCart()
+        public void SaveShoppingCart(ShoppingCart shoppingCart)
         {
             var settings = new JsonSerializerSettings
             {
                 TypeNameHandling = TypeNameHandling.Auto
             };
 
-            if (HttpContext == null || shoppingCart == null) return;
+            // Check for HttpContext and shopping cart
+            if (HttpContext?.Session == null || shoppingCart == null)
+            {
+                throw new ArgumentNullException();
+            }
 
-            var product1 = new Accessory("fd", 2, "fds", 1, "fdsg", "fdsfdsf", "fdss");
-            shoppingCart.AddItem(product1);
-            // Serialize shoppingcart to JSON
-            var json = JsonConvert.SerializeObject(shoppingCart, settings);
-            //byte[] data = Encoding.UTF8.GetBytes(json);
+            try
+            {
+                // Serialize shopping cart object to JSON format
+                var json = JsonConvert.SerializeObject(shoppingCart, settings);
 
-            // Store shoppingcart in session
-            HttpContext.Session.SetString("Cart", json);
+                // Store shopping cart object in session data
+                HttpContext.Session.SetString("Cart", json);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to serialize shopping cart object to session.", ex);
+            }
         }
 
 

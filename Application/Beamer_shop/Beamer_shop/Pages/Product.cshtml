@@ -59,9 +59,16 @@
             }
             else { formatKeyword = recommendedProduct.Keyword; }
 
-
             <div class="card">
-                <img src="@recommendedProduct.ImageUrl" alt="Image" />
+                <div class="image-container">
+                    <img src="@recommendedProduct.ImageUrl" alt="Image" />
+                    <div class="image-overlay">
+                        <form method="post" asp-page-handler="AddToCart" style="height:min-content;width:min-content">
+                            <input type="hidden" value="@recommendedProduct.Id"> <!--asp for-->
+                            <input type="submit" value="Add to cart">
+                        </form>
+                    </div>
+                </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="card-title">

@@ -7,9 +7,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
+builder.Services.AddDistributedMemoryCache();
 //builder.Services.AddScoped<IAccessoryFactory, AccessoryFactory>();
 builder.Services.AddSession(options => {
-    options.IdleTimeout = TimeSpan.FromMinutes(45);
+    options.IdleTimeout = TimeSpan.FromHours(45);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
 
 });
 
