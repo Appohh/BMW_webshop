@@ -1,0 +1,60 @@
+﻿@using Logic
+<div class="cart-wrap">
+    <div class="cart-top">
+        <h2 id="cart-close" style="cursor:grab">X</h2>
+        <h2>My Cart</h2>
+        <h2 id="cart-trash" style="cursor:grab"><i class="fa fa-trash"></i></h2>
+    </div>
+    <div class="cart-content-container">
+
+        @if (ShoppingCart == null || ShoppingCart.GetItems().Count <= 0)
+        {
+            <div class="cart-content">
+                <div class="content-info">
+                    <h4>Your cart is empty.</h4>
+                </div>
+            </div>
+        } else {
+            foreach (var item in ShoppingCart.GetItems())
+            {
+                <div class="cart-content">
+                    <img src="@item.Product.ImageUrl" alt="@item.Product.Name">
+                    <div class="content-info">
+                        <h4>@item.Product.Name</h4>
+                        <h3>€@item.Product.Price</h3>
+                    </div>
+                    <form class="content-quantity">
+                        <input type="submit" value="+">
+                        <h2 style="text-align: center;margin: 10px;">@item.Quantity</h2>
+                        <input type="submit" value="-">
+                    </form>
+                </div>
+            }
+        }
+    </div>
+    <div class="cart-subinfo">
+        <div class="sub1">
+            <h4 style="color:#9f9f9f;">Subtotal: </h4>
+            <h4>$13000.99</h4>
+        </div>
+        <div class="sub2">
+            <h4 style="color:#9f9f9f;">Taxes: </h4>
+            <h4>$1330.00</h4>
+        </div>
+    </div>
+    <div class="cart-total">
+        <h1>$54.390</h1>
+        <form class="checkout">
+            <input type="submit" value="Checkout" />
+        </form>
+    </div>
+</div>
+
+
+
+
+
+@code {
+    [Parameter]
+    public ShoppingCart? ShoppingCart { get; set; }
+}

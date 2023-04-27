@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "d/ThUnk+Hu8xTCA+vbcsJI25tYzl14GFjwjHWTmAUgB9C1KPuLkZ3IRGlPLoF5JJU+PkFyH/tqzvSXaf+Hb2nQ==",
+  "dgSpecHash": "4rX4cuG781alnG9uSvAccE/Wxvkuu/SMQGWQYBhIcW/6NFew/tlBRaLnCmkJOROFEo7xSzw7Oe2ZuZfiYzLlbQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\alpay\\Dev_projects\\Beamer_Shop\\Application\\Beamer_shop\\Beamer_shop\\Beamer_shop.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,8 @@
     "C:\\Users\\alpay\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\alpay\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
     "C:\\Users\\alpay\\.nuget\\packages\\messagepackanalyzer\\2.1.152\\messagepackanalyzer.2.1.152.nupkg.sha512",
+    "C:\\Users\\alpay\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\alpay\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\alpay\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.0\\microsoft.aspnetcore.razor.language.6.0.0.nupkg.sha512",
     "C:\\Users\\alpay\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\5.0.0\\microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512",
     "C:\\Users\\alpay\\.nuget\\packages\\microsoft.build\\17.3.2\\microsoft.build.17.3.2.nupkg.sha512",
@@ -33,6 +35,7 @@
     "C:\\Users\\alpay\\.nuget\\packages\\microsoft.dotnet.scaffolding.shared\\6.0.13\\microsoft.dotnet.scaffolding.shared.6.0.13.nupkg.sha512",
     "C:\\Users\\alpay\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\6.0.0\\microsoft.extensions.dependencyinjection.6.0.0.nupkg.sha512",
     "C:\\Users\\alpay\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\alpay\\.nuget\\packages\\microsoft.extensions.primitives\\2.2.0\\microsoft.extensions.primitives.2.2.0.nupkg.sha512",
     "C:\\Users\\alpay\\.nuget\\packages\\microsoft.net.stringtools\\17.3.2\\microsoft.net.stringtools.17.3.2.nupkg.sha512",
     "C:\\Users\\alpay\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.1\\microsoft.netcore.platforms.1.1.1.nupkg.sha512",
     "C:\\Users\\alpay\\.nuget\\packages\\microsoft.netcore.targets\\1.1.3\\microsoft.netcore.targets.1.1.3.nupkg.sha512",

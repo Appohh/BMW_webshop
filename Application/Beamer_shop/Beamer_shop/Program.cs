@@ -1,3 +1,5 @@
+using Beamer_shop.Interfaces;
+using Beamer_shop.Services;
 using Factory;
 using Logic.Interfaces;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -8,7 +10,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
 builder.Services.AddDistributedMemoryCache();
-//builder.Services.AddScoped<IAccessoryFactory, AccessoryFactory>();
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddScoped<IShoppingCartService, ShoppingCartService>();
+
 builder.Services.AddSession(options => {
     options.IdleTimeout = TimeSpan.FromHours(45);
     options.Cookie.HttpOnly = true;

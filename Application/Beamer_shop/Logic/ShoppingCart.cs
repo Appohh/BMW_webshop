@@ -1,13 +1,15 @@
-﻿using Logic.Models;
+﻿using Logic.Interfaces;
+using Logic.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Logic
 {
-    public class ShoppingCart
+    public class ShoppingCart : IShoppingCart
     {
         public IDictionary<int, CartItem> _items;
 
