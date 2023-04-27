@@ -11,6 +11,6 @@ namespace Beamer_shop.Interfaces
     public interface IShoppingCartService
     {
         ShoppingCart? RetrieveShoppingCart();
-        bool SaveShoppingCart(ShoppingCart shoppingCart);
+        string SaveShoppingCart(ShoppingCart shoppingCart);
     }
 }

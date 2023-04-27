@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Logic
 {
-    public class ProductService
+    public class ProductService : IProductService
     {
         private readonly ICarRepository carRepository;
         private readonly IAccessoryRepository accessoryRepository;
@@ -26,9 +26,9 @@ namespace Logic
             retrieveData(); //timer?
         }
 
-        private void retrieveData() 
-        { 
-            if(_products.Count > 0) { _products.Clear(); }
+        private void retrieveData()
+        {
+            if (_products.Count > 0) { _products.Clear(); }
 
             foreach (Product car in carRepository.GetAllCars()) { _products.Add(car.Id, car); }
             foreach (Product accessory in accessoryRepository.GetAllAccessories()) { _products.Add(accessory.Id, accessory); }
@@ -53,9 +53,9 @@ namespace Logic
 
         public List<string> GetProductImages(Product product)
         {
-           if (product is Car)
+            if (product is Car)
                 return carRepository.GetProductImages(product.Id);
-           if (product is Accessory)
+            if (product is Accessory)
                 return accessoryRepository.GetProductImages(product.Id);
             else { return new List<string>(); }
         }

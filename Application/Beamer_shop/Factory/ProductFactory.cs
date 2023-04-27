@@ -1,5 +1,7 @@
 ﻿using Data;
+using Factory.Interfaces;
 using Logic;
+using Logic.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +10,13 @@ using System.Threading.Tasks;
 
 namespace Factory
 {
-    public class ProductFactory
+    public class ProductFactory : IProductFactory
     {
-        public ProductService ProductService { get; }
+        public IProductService ProductService { get; }
 
-        public ProductFactory()
+        public ProductFactory(IProductService productService)
         {
-            ProductService = new ProductService(new CarRepository(), new AccessoryRepository());
+            ProductService = productService;
         }
 
         public int CreateProduct(string type)

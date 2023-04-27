@@ -61,19 +61,19 @@ namespace Beamer_shop.Services
             shoppingCart = new ShoppingCart();
 
             //Save cart to session
-            if (!SaveShoppingCart(shoppingCart)) { return null; }
+            if (SaveShoppingCart(shoppingCart) == "") { return null; }
 
             return shoppingCart;
         }
 
-        public bool SaveShoppingCart(ShoppingCart shoppingCart)
+        public string SaveShoppingCart(ShoppingCart shoppingCart)
         {
             var httpContext = _httpContextAccessor.HttpContext;
 
             //Check for HttpContext and cart
             if (httpContext?.Session == null)
             {
-                return false;
+                return "";
             }
 
             try
@@ -82,11 +82,11 @@ namespace Beamer_shop.Services
                 var json = JsonConvert.SerializeObject(shoppingCart, settings);
                 //Store cart object in session data
                 httpContext.Session.SetString("Cart", json);
-                return true;
+                return json;
             }
             catch
             {
-                return false;
+                return "";
             }
         }
     }

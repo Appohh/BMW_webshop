@@ -67,8 +67,6 @@
 <div class="product-container">
     @foreach (Product product in Model.productCollection)
     {
-
-        <component type="typeof(Components.CProductCard)" render-mode="Static" param-product='product' />
-        
+        <component type="typeof(Components.CProductCard)" render-mode="Static" param-product='product' />   
     }
 </div>

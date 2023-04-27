@@ -1,6 +1,9 @@
 using Beamer_shop.Interfaces;
 using Beamer_shop.Services;
+using Data;
 using Factory;
+using Factory.Interfaces;
+using Logic;
 using Logic.Interfaces;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
@@ -12,6 +15,10 @@ builder.Services.AddRazorPages();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddHttpContextAccessor();
 
+builder.Services.AddTransient<ICarRepository, CarRepository>();
+builder.Services.AddTransient<IAccessoryRepository, AccessoryRepository>();
+builder.Services.AddTransient<IProductService, ProductService>();
+builder.Services.AddTransient<IProductFactory, ProductFactory>();
 builder.Services.AddScoped<IShoppingCartService, ShoppingCartService>();
 
 builder.Services.AddSession(options => {

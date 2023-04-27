@@ -1,7 +1,8 @@
 using Beamer_shop.Interfaces;
 using Beamer_shop.Services;
-using Factory;
+using Factory.Interfaces;
 using Logic;
+using Logic.Interfaces;
 using Logic.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,9 +17,12 @@ namespace Beamer_shop.Pages
 {
     public class ShopModel : PageModel
     {
-        ProductFactory productFactory = new ProductFactory();
-        ProductService productService;
+        IProductFactory _productFactory;
+        IProductService _productService;
 
+        //Shopping cart
+        public ShoppingCart? shoppingCart;
+        private IShoppingCartService _shoppingCartService;
 
         [BindProperty]
         public ProductFilter? ProductFilter { get; set; }
@@ -29,14 +33,13 @@ namespace Beamer_shop.Pages
         public List<Product> storedProductCollection = new List<Product>();
         public List<Product> productCollection = new List<Product>();
 
-        //Shopping cart
-        public ShoppingCart? shoppingCart;
-        private IShoppingCartService? _shoppingCartService;
 
-        public ShopModel(IShoppingCartService shoppingCartService)
+
+        public ShopModel(IProductFactory productFactory, IShoppingCartService shoppingCartService)
         {
-            productService = productFactory.ProductService;
-            productCollection.AddRange(productService.GetAllProducts());
+            _productFactory = productFactory;
+            _productService = _productFactory.ProductService;
+            productCollection.AddRange(_productService.GetAllProducts());
 
             storedProductCollection = productCollection;
             _shoppingCartService = shoppingCartService;
@@ -55,26 +58,6 @@ namespace Beamer_shop.Pages
                 productCollection = ProductFilter.FilterProducts(productCollection);
             }
         }
-
-        public void OnPostAddToCart()
-        {
-            if(CartReceivedProductId == null) { return; }
-
-            Product? foundProduct = productService.getProductById(CartReceivedProductId.Value);
-            if (foundProduct == null) { return; }
-
-            shoppingCart = _shoppingCartService.RetrieveShoppingCart();
-
-            if (shoppingCart == null) { return; }
-
-            shoppingCart.AddItem(foundProduct);
-
-            _shoppingCartService.SaveShoppingCart(shoppingCart);
-
-        }
-
-
-
 
     }
 }

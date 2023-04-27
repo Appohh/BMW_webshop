@@ -225,7 +225,7 @@ input[type=text], input[type=email], input[type=password], input[type="date" i],
     resize: vertical;
 }
 
-input[type=submit], input[type=button]{
+input[type=submit], input[type=button], button{
     background-color: #2f85df;
     color: white;
     padding: 12px 20px;
@@ -446,7 +446,9 @@ form span {
     grid-row: 2;
     display: grid;
     padding: 12px;
+    overflow: auto;
     background: gainsboro;
+    max-height: 62vh;
 }
 .cart-content {
     display: grid;

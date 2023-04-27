@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "CWpVyy0E1sY/O3ARRqHWymjqUFZDRf2bf1d9mwhENGU=",
+  "Hash": "sA64RUJEEArk4vQtOmzjzwjwBw3MWSyyt5K5UlzqHkU=",
   "Source": "Beamer_shop",
   "BasePath": "_content/Beamer_shop",
   "Mode": "Default",
@@ -134,6 +134,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\bmwi8-home.png"
+    },
+    {
+      "Identity": "C:\\Users\\alpay\\Dev_projects\\Beamer_Shop\\Application\\Beamer_shop\\Beamer_shop\\wwwroot\\js\\Functions.js",
+      "SourceId": "Beamer_shop",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\alpay\\Dev_projects\\Beamer_Shop\\Application\\Beamer_shop\\Beamer_shop\\wwwroot\\",
+      "BasePath": "_content/Beamer_shop",
+      "RelativePath": "js/Functions.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Functions.js"
     },
     {
       "Identity": "C:\\Users\\alpay\\Dev_projects\\Beamer_Shop\\Application\\Beamer_shop\\Beamer_shop\\wwwroot\\js\\site.js",
