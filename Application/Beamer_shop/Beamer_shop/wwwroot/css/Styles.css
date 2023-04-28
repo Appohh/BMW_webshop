@@ -466,7 +466,7 @@ form span {
     border-radius: 50%;
     box-shadow: -4px 6px 0px 6px;
 }
-.content-quantity input[type=submit], input[type=button] {
+.content-quantity button {
     padding: 2px 12px !important;
 }
 

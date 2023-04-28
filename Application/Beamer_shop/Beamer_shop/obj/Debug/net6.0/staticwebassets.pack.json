@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\dev_projects_pc\\beamer_shop\\Application\\Beamer_shop\\Beamer_shop\\wwwroot\\js\\Functions.js",
+      "PackagePath": "staticwebassets\\js\\Functions.js"
+    },
+    {
       "Id": "C:\\dev_projects_pc\\beamer_shop\\Application\\Beamer_shop\\Beamer_shop\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

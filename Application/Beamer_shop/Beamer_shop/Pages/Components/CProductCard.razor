@@ -12,11 +12,7 @@
     <div class="image-container">
         <img src="@product.ImageUrl" alt="Image" />
         <div class="image-overlay">
-@*            <form method="post" asp-page-handler="AddToCart" style="height:min-content;width:min-content">
-                <input asp-for="CartReceivedProductId" type="hidden" value="@product.Id">
-                <input type="submit" value="Add to cart">
-            </form>*@
-            <button onclick="addToCartAjax(@product.Id)">Add to cart</button>
+            <button onclick="editCartAjax(@product.Id, 'add')">Add to cart</button>
         </div>
     </div>
     <div class="card-body">

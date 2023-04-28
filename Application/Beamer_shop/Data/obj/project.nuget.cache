@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2z3lZaCPimzMbfDTZj9Ew/VrvPIaAqOk9B9lApKOe1tAgbMQPiHSaUEiJpAYNT8z+rlRSztuBv0zXBlm2yXPbw==",
+  "dgSpecHash": "QI6yHG+PxAUv6Hyr4U1UIgobLbi8Zbhp6MmYL5x/j+icu4ENGwZg9ofbxLX2rKoWntqFsMNqNmA1xcmUk3kl3g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\alpay\\Dev_projects\\Beamer_Shop\\Application\\Beamer_shop\\Data\\Data.csproj",
+  "projectFilePath": "C:\\dev_projects_pc\\beamer_shop\\Application\\Beamer_shop\\Data\\Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alpay\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\alpay\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",

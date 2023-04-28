@@ -19,7 +19,7 @@ namespace Beamer_shop.Pages
             _shoppingCartService = shoppingCartService;
         }
 
-        public IActionResult OnGetAsync(int productId)
+        public IActionResult OnGetAsync(int productId, string action)
         {
 
             //Check if id is valid
@@ -39,14 +39,33 @@ namespace Beamer_shop.Pages
 
             if(_shoppingCart == null) { return NotFound("Cart not found."); }
 
-            _shoppingCart.AddItem(product);
-            
+
+            //Switch for action
+            switch (action)
+            {
+                case "add":
+                    _shoppingCart.AddItem(product);
+                    break;
+                case "remove":
+                    _shoppingCart.RemoveItem(product);
+                    break;
+                case "clear":
+                    _shoppingCart.Clear();
+                    break;
+                default:
+                    return BadRequest("Invalid action.");
+            }
+
             //Try to save cart to session
             string result = _shoppingCartService.SaveShoppingCart(_shoppingCart);
 
-            if(result.Length <= 0) { return BadRequest("Saving cart failed."); }
+            if (result.Length <= 0)
+            {
+                return BadRequest("Saving cart failed.");
+            }
             else
-            {   //If succes return cart in json format
+            {
+                //If success return cart in JSON format
                 return new JsonResult(result);
             }
         }

@@ -32,17 +32,17 @@ function addToCart(id) {
 
 
 ////////////////////////////////////////////////////////////////////////////
-function addToCartAjax(id) {
+//Add to cart on background /w jquery ajax
+function editCartAjax(id, action) {
     // Make AJAX request to add product to cart
     $.ajax({
-        url: '/AddToCart?productId=' + id,
+        url: '/AddToCart?productId=' + id + '&action=' + action,
         type: 'GET',
         success: function (result) {
             // Handle success response
             console.log(result);
             updateCart(result);
             showCart();
-
         },
         error: function (xhr, status, error) {
             // Handle error response
@@ -62,9 +62,14 @@ function updateCart(jsonString) {
     //Remove all existing cart contents
     cartContentContainer.innerHTML = '';
 
+    //Price values
+    let subTotal = 0;
+
     //Loop through the updated cart items and add them to the cart content container
     for (const itemId in updatedCart._items) {
         const item = updatedCart._items[itemId];
+
+        subTotal += item.Product.Price * item.Quantity
 
         const cartContent = document.createElement('div');
         cartContent.classList.add('cart-content');
@@ -87,12 +92,14 @@ function updateCart(jsonString) {
 
         cartContent.appendChild(contentInfo);
 
-        const contentQuantity = document.createElement('form');
+        const contentQuantity = document.createElement('div');
         contentQuantity.classList.add('content-quantity');
 
-        const quantityIncreaseBtn = document.createElement('input');
-        quantityIncreaseBtn.type = 'submit';
-        quantityIncreaseBtn.value = '+';
+        const quantityIncreaseBtn = document.createElement('button');
+        quantityIncreaseBtn.textContent = '+';
+        quantityIncreaseBtn.addEventListener('click', function () {
+            editCartAjax(item.Product.Id, 'add');
+        });
         contentQuantity.appendChild(quantityIncreaseBtn);
 
         const quantityDisplay = document.createElement('h2');
@@ -101,14 +108,20 @@ function updateCart(jsonString) {
         quantityDisplay.textContent = item.Quantity;
         contentQuantity.appendChild(quantityDisplay);
 
-        const quantityDecreaseBtn = document.createElement('input');
-        quantityDecreaseBtn.type = 'submit';
-        quantityDecreaseBtn.value = '-';
+        const quantityDecreaseBtn = document.createElement('button');
+        quantityDecreaseBtn.textContent = '-';
+        quantityDecreaseBtn.addEventListener('click', function () {
+            editCartAjax(item.Product.Id, 'remove');
+        });
         contentQuantity.appendChild(quantityDecreaseBtn);
 
         cartContent.appendChild(contentQuantity);
 
         cartContentContainer.appendChild(cartContent);
     }
+
+    //subtotal
+    const myHeading = document.getElementById("subtotal");
+    myHeading.textContent = "€" + subTotal;
 }
 

@@ -1,4 +1,7 @@
 ﻿@using Logic
+@{
+    decimal subtotal = 0;
+}
 <div class="cart-wrap">
     <div class="cart-top">
         <h2 id="cart-close" style="cursor:grab">X</h2>
@@ -17,17 +20,18 @@
         } else {
             foreach (var item in ShoppingCart.GetItems())
             {
+                subtotal += item.Product.Price * item.Quantity;
                 <div class="cart-content">
                     <img src="@item.Product.ImageUrl" alt="@item.Product.Name">
                     <div class="content-info">
                         <h4>@item.Product.Name</h4>
                         <h3>€@item.Product.Price</h3>
                     </div>
-                    <form class="content-quantity">
-                        <input type="submit" value="+">
+                    <div class="content-quantity">
+                        <button onclick="editCartAjax(@item.Product.Id, 'add')">+</button>
                         <h2 style="text-align: center;margin: 10px;">@item.Quantity</h2>
-                        <input type="submit" value="-">
-                    </form>
+                        <button onclick="editCartAjax(@item.Product.Id, 'remove')">-</button>
+                    </div>
                 </div>
             }
         }
@@ -35,7 +39,7 @@
     <div class="cart-subinfo">
         <div class="sub1">
             <h4 style="color:#9f9f9f;">Subtotal: </h4>
-            <h4>$13000.99</h4>
+            <h4 id="subtotal">$@subtotal</h4>
         </div>
         <div class="sub2">
             <h4 style="color:#9f9f9f;">Taxes: </h4>
