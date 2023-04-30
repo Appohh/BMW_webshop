@@ -23,14 +23,14 @@ namespace Beamer_shop.Pages
         {
 
             //Check if id is valid
-            if (productId <= 0)
+            if (productId <= 0 && action != "clear")
             {
                 return BadRequest("Id not valid.");
             }
 
             //Check if product exists
             Product? product = _productService.getProductById(productId);
-            if (product == null)
+            if (product == null && action != "clear")
             {
                 return NotFound("Product not found.");
             }

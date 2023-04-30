@@ -63,13 +63,15 @@ function updateCart(jsonString) {
     cartContentContainer.innerHTML = '';
 
     //Price values
-    let subTotal = 0;
+    let Total = 0;
+    let taxRate = updatedCart.Taxrate;
+    let taxes = 0;
 
     //Loop through the updated cart items and add them to the cart content container
     for (const itemId in updatedCart._items) {
         const item = updatedCart._items[itemId];
 
-        subTotal += item.Product.Price * item.Quantity
+        Total += item.Product.Price * item.Quantity
 
         const cartContent = document.createElement('div');
         cartContent.classList.add('cart-content');
@@ -120,8 +122,18 @@ function updateCart(jsonString) {
         cartContentContainer.appendChild(cartContent);
     }
 
-    //subtotal
-    const myHeading = document.getElementById("subtotal");
-    myHeading.textContent = "€" + subTotal;
+    //prices
+
+    taxes = Total * (taxRate / 100);
+
+
+    const subTotalScr = document.getElementById("subtotal");
+    subTotalScr.textContent = "€" + (Total - taxes).toLocaleString();
+
+    const taxesScr = document.getElementById("taxes");
+    taxesScr.textContent = "€" + taxes.toLocaleString();
+
+    const totalScr = document.getElementById("total");
+    totalScr.textContent = "€" + Total.toLocaleString();
 }
 

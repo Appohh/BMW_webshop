@@ -12,10 +12,11 @@ namespace Logic
     public class ShoppingCart : IShoppingCart
     {
         public IDictionary<int, CartItem> _items;
-
+        public int Taxrate;
         public ShoppingCart()
         {
             _items = new Dictionary<int, CartItem>();
+            Taxrate = 21;
         }
 
         public void AddItem(Product product)
@@ -50,15 +51,6 @@ namespace Logic
             return _items.Values.ToList();
         }
 
-        public decimal GetTotal()
-        {
-            decimal total = 0;
-            foreach (CartItem item in _items.Values)
-            {
-                total += item.Product.Price * item.Quantity;
-            }
-            return total;
-        }
         public void Clear()
         {
             _items.Clear();

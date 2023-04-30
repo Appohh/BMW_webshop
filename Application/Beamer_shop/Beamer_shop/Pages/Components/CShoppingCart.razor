@@ -1,12 +1,14 @@
 ﻿@using Logic
 @{
-    decimal subtotal = 0;
+    decimal total = 0;
+    decimal taxes = 0;
+    int taxrate = ShoppingCart.Taxrate;
 }
 <div class="cart-wrap">
     <div class="cart-top">
         <h2 id="cart-close" style="cursor:grab">X</h2>
         <h2>My Cart</h2>
-        <h2 id="cart-trash" style="cursor:grab"><i class="fa fa-trash"></i></h2>
+        <h2 id="cart-trash" style="cursor:grab"><i onclick="editCartAjax(-901, 'clear')" class="fa fa-trash"></i></h2>
     </div>
     <div class="cart-content-container">
 
@@ -20,7 +22,7 @@
         } else {
             foreach (var item in ShoppingCart.GetItems())
             {
-                subtotal += item.Product.Price * item.Quantity;
+                total += item.Product.Price * item.Quantity;
                 <div class="cart-content">
                     <img src="@item.Product.ImageUrl" alt="@item.Product.Name">
                     <div class="content-info">
@@ -37,17 +39,22 @@
         }
     </div>
     <div class="cart-subinfo">
+        @{
+            taxes = total * ((decimal)taxrate / 100);
+            decimal subtotal = total - taxes;
+        }
         <div class="sub1">
             <h4 style="color:#9f9f9f;">Subtotal: </h4>
-            <h4 id="subtotal">$@subtotal</h4>
+            <h4 id="subtotal">€@subtotal.ToString("N")</h4>
         </div>
         <div class="sub2">
             <h4 style="color:#9f9f9f;">Taxes: </h4>
-            <h4>$1330.00</h4>
+            <h4 id="taxes">€@taxes.ToString("N")</h4>
         </div>
     </div>
     <div class="cart-total">
-        <h1>$54.390</h1>
+
+        <h1 id="total">€@total.ToString("N")</h1>
         <form class="checkout">
             <input type="submit" value="Checkout" />
         </form>
