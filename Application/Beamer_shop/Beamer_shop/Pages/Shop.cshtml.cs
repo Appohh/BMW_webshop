@@ -55,7 +55,7 @@ namespace Beamer_shop.Pages
         {
             if (ProductFilter != null)
             {
-                productCollection = ProductFilter.FilterProducts(productCollection);
+                productCollection = ProductFilter.FilterProducts(storedProductCollection);
             }
         }
 

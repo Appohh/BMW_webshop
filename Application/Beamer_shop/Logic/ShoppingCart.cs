@@ -13,6 +13,8 @@ namespace Logic
     {
         public IDictionary<int, CartItem> _items;
         public int Taxrate;
+        public decimal Taxes;
+        public decimal Total;
         public ShoppingCart()
         {
             _items = new Dictionary<int, CartItem>();
@@ -29,6 +31,8 @@ namespace Logic
             {
                 _items.Add(product.Id, new CartItem { Product = product, Quantity = 1 });
             }
+
+            CalculatePrices();
         }
 
         public void RemoveItem(Product product)
@@ -44,6 +48,21 @@ namespace Logic
                     _items.Remove(product.Id);
                 }
             }
+            CalculatePrices();
+        }
+
+        public void CalculatePrices()
+        {
+            decimal tax = 0;
+            decimal total = 0;
+            foreach (CartItem item in _items.Values)
+            {
+               tax += ((item.Product.Price / (item.Product.Taxrate + 100)) * item.Product.Taxrate) * item.Quantity;
+               total += item.Product.Price * item.Quantity;
+            }
+            Taxes = tax;
+            Total = total;
+
         }
 
         public List<CartItem> GetItems()
@@ -54,6 +73,7 @@ namespace Logic
         public void Clear()
         {
             _items.Clear();
+            CalculatePrices();
         }
     }
 }

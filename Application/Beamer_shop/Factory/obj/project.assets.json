@@ -857,11 +857,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\dev_projects_pc\\beamer_shop\\Application\\Beamer_shop\\Factory\\Factory.csproj",
+      "projectUniqueName": "C:\\Users\\alpay\\Dev_projects\\Beamer_Shop\\Application\\Beamer_shop\\Factory\\Factory.csproj",
       "projectName": "Factory",
-      "projectPath": "C:\\dev_projects_pc\\beamer_shop\\Application\\Beamer_shop\\Factory\\Factory.csproj",
+      "projectPath": "C:\\Users\\alpay\\Dev_projects\\Beamer_Shop\\Application\\Beamer_shop\\Factory\\Factory.csproj",
       "packagesPath": "C:\\Users\\alpay\\.nuget\\packages\\",
-      "outputPath": "C:\\dev_projects_pc\\beamer_shop\\Application\\Beamer_shop\\Factory\\obj\\",
+      "outputPath": "C:\\Users\\alpay\\Dev_projects\\Beamer_Shop\\Application\\Beamer_shop\\Factory\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\alpay\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -878,11 +878,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\dev_projects_pc\\beamer_shop\\Application\\Beamer_shop\\Data\\Data.csproj": {
-              "projectPath": "C:\\dev_projects_pc\\beamer_shop\\Application\\Beamer_shop\\Data\\Data.csproj"
+            "C:\\Users\\alpay\\Dev_projects\\Beamer_Shop\\Application\\Beamer_shop\\Data\\Data.csproj": {
+              "projectPath": "C:\\Users\\alpay\\Dev_projects\\Beamer_Shop\\Application\\Beamer_shop\\Data\\Data.csproj"
             },
-            "C:\\dev_projects_pc\\beamer_shop\\Application\\Beamer_shop\\Logic\\Logic.csproj": {
-              "projectPath": "C:\\dev_projects_pc\\beamer_shop\\Application\\Beamer_shop\\Logic\\Logic.csproj"
+            "C:\\Users\\alpay\\Dev_projects\\Beamer_Shop\\Application\\Beamer_shop\\Logic\\Logic.csproj": {
+              "projectPath": "C:\\Users\\alpay\\Dev_projects\\Beamer_Shop\\Application\\Beamer_shop\\Logic\\Logic.csproj"
             }
           }
         }
@@ -912,7 +912,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

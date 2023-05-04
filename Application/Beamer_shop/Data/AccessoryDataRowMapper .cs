@@ -24,7 +24,10 @@ namespace Data
                     .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src["Description"]))
                     .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src["ImageUrl"]))
                     .ForMember(dest => dest.Keyword, opt => opt.MapFrom(src => src["Type"]))
-                    .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src["Type"]));
+                    .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src["Type"]))
+                    .ForMember(dest => dest.Taxrate, opt => opt.MapFrom(src => src["Taxrate"]));
+
+
 
 
 

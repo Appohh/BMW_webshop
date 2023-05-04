@@ -14,8 +14,9 @@ namespace Logic.Models
         public string? Description { get; set; }
         public string ImageUrl { get; set; }
         public string Keyword { get; set; }
+        public int Taxrate { get; set; }
 
-        protected Product(int id, string name, decimal price, string? description, string imageUrl, string keyword)
+        protected Product(int id, string name, decimal price, string? description, string imageUrl, string keyword, int taxrate)
         {
             Id = id;
             Name = name;
@@ -23,6 +24,7 @@ namespace Logic.Models
             Description = description;
             ImageUrl = imageUrl;
             Keyword = keyword;
+            Taxrate = taxrate;
         }
 
         public virtual string getDetails()

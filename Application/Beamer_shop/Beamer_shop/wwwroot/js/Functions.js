@@ -63,15 +63,12 @@ function updateCart(jsonString) {
     cartContentContainer.innerHTML = '';
 
     //Price values
-    let Total = 0;
-    let taxRate = updatedCart.Taxrate;
-    let taxes = 0;
+    let total = updatedCart.Total
+    let taxes = updatedCart.Taxes
 
     //Loop through the updated cart items and add them to the cart content container
     for (const itemId in updatedCart._items) {
         const item = updatedCart._items[itemId];
-
-        Total += item.Product.Price * item.Quantity
 
         const cartContent = document.createElement('div');
         cartContent.classList.add('cart-content');
@@ -123,17 +120,15 @@ function updateCart(jsonString) {
     }
 
     //prices
-
-    taxes = Total * (taxRate / 100);
-
+    const options = {maximumFractionDigits: 0 };
 
     const subTotalScr = document.getElementById("subtotal");
-    subTotalScr.textContent = "€" + (Total - taxes).toLocaleString();
+    subTotalScr.textContent = "€" + (total - taxes).toLocaleString('nl-NL', options);
 
     const taxesScr = document.getElementById("taxes");
-    taxesScr.textContent = "€" + taxes.toLocaleString();
+    taxesScr.textContent = "€" + taxes.toLocaleString('nl-NL', options);
 
     const totalScr = document.getElementById("total");
-    totalScr.textContent = "€" + Total.toLocaleString();
+    totalScr.textContent = "€" + total.toLocaleString('nl-NL', options);
 }
 

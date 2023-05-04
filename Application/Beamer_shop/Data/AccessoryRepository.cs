@@ -15,7 +15,7 @@ namespace Data
         {
             get
             {
-                return "SELECT Product.[Id] ,[Name] ,[Price] ,[Description] ,[ImageUrl] ,[Type] FROM [Product] INNER JOIN [Accessory] ON Product.[Id] = Accessory.[Id]";
+                return "SELECT Product.[Id] ,[Name] ,[Price] ,[Description] ,[ImageUrl], [Product-Taxes].[Percentage] as 'Taxrate', [Type] FROM [Product] INNER JOIN [Accessory] ON Product.[Id] = Accessory.[Id] INNER JOIN [Product-Taxes] ON Product.TaxId = [Product-Taxes].Id";
             }
         }
 
