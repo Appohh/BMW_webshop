@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yLzwieQzTCFtzT/OUuHqgwnvCVE7Czzni2IlXyUJfezPk1CxLfwk/dMxUwF80bu0Gqpyr8kv20ypORDynnvVLQ==",
+  "dgSpecHash": "PTltt821tOgcOabQvhutmobioWgvOj5zo4kTGt9LArzfDzGm0nfgiMXLAyj5N0iWndTFF6bAmEI0y8Mk4WrO3A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\alpay\\Dev_projects\\Beamer_Shop\\Application\\Beamer_shop\\Logic\\Logic.csproj",
+  "projectFilePath": "C:\\dev_projects_pc\\beamer_shop\\Application\\Beamer_shop\\Logic\\Logic.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alpay\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\alpay\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",

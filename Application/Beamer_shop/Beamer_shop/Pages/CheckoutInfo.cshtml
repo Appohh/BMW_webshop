@@ -1,0 +1,30 @@
+﻿@page
+@model Beamer_shop.Pages.CheckoutInfoModel
+@{
+}
+
+
+
+<div class="checkout-container">
+
+
+    @if (User?.Identity?.IsAuthenticated ?? false)
+    {
+        <h1>Hi</h1>
+
+    }
+    else
+    {
+        //not logged in
+        //logged in
+        <button>Login</button>
+
+        <br />
+        <button>Register</button>
+    }
+
+</div>
+
+
+
+

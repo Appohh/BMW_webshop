@@ -9419,11 +9419,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\alpay\\Dev_projects\\Beamer_Shop\\Application\\Beamer_shop\\Beamer_shop\\Beamer_shop.csproj",
+      "projectUniqueName": "C:\\dev_projects_pc\\beamer_shop\\Application\\Beamer_shop\\Beamer_shop\\Beamer_shop.csproj",
       "projectName": "Beamer_shop",
-      "projectPath": "C:\\Users\\alpay\\Dev_projects\\Beamer_Shop\\Application\\Beamer_shop\\Beamer_shop\\Beamer_shop.csproj",
+      "projectPath": "C:\\dev_projects_pc\\beamer_shop\\Application\\Beamer_shop\\Beamer_shop\\Beamer_shop.csproj",
       "packagesPath": "C:\\Users\\alpay\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\alpay\\Dev_projects\\Beamer_Shop\\Application\\Beamer_shop\\Beamer_shop\\obj\\",
+      "outputPath": "C:\\dev_projects_pc\\beamer_shop\\Application\\Beamer_shop\\Beamer_shop\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\alpay\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -9440,8 +9440,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\alpay\\Dev_projects\\Beamer_Shop\\Application\\Beamer_shop\\Factory\\Factory.csproj": {
-              "projectPath": "C:\\Users\\alpay\\Dev_projects\\Beamer_Shop\\Application\\Beamer_shop\\Factory\\Factory.csproj"
+            "C:\\dev_projects_pc\\beamer_shop\\Application\\Beamer_shop\\Factory\\Factory.csproj": {
+              "projectPath": "C:\\dev_projects_pc\\beamer_shop\\Application\\Beamer_shop\\Factory\\Factory.csproj"
             }
           }
         }
@@ -9484,7 +9484,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }
