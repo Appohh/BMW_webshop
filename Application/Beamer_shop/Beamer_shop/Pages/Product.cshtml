@@ -24,7 +24,7 @@
 
     <div class="product-right">
         <h1>@product.Name</h1>
-        <h1>€@product.Price</h1>
+        <h1>€@product.Price.ToString("N0")</h1>
             <button onclick="editCartAjax(@product.Id, 'add')">Add to cart</button>
         <h2>@product.Description</h2>
     </div>

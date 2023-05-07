@@ -9,15 +9,25 @@ using Logic.Models;
 using Logic;
 using Factory;
 using System.Security.Cryptography.X509Certificates;
+using Factory.Interfaces;
+using Logic.Interfaces;
 
 namespace Beamer_shop.Pages
 {
     public class LoginModel : PageModel
     {
+
+        ICustomerFactory _customerFactory;
+        ICustomerService _customerService;
+
         [BindProperty]
         public Login login { get; set; }
 
-        CustomerService customerService = CustomerFactory.CustomerService;
+        public LoginModel(ICustomerFactory customerFactory) 
+        {
+            _customerFactory = customerFactory;
+            _customerService = _customerFactory.CustomerService;
+        }
 
         public void OnGet()
         {
@@ -27,7 +37,7 @@ namespace Beamer_shop.Pages
         {
 
             Customer? validCustomer = null;
-            (string hash, string salt, int id)? output = customerService.GetHashSalt(login.Email);
+            (string hash, string salt, int id)? output = _customerService.GetHashSalt(login.Email);
 
             if (output != null)
             {
@@ -36,7 +46,7 @@ namespace Beamer_shop.Pages
                 if (output.Value.hash == inputHash)
                 {
                     //User validated
-                    validCustomer = customerService.GetCustomerById(output.Value.id);
+                    validCustomer = _customerService.GetCustomerById(output.Value.id);
                 }
 
                 // Make claims

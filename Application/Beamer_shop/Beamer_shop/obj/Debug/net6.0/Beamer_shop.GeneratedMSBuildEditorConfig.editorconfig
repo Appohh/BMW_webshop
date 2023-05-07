@@ -28,16 +28,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/dev_projects_pc/beamer_shop/Application/Beamer_shop/Beamer_shop/Pages/AddToCart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkVG9DYXJ0LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/dev_projects_pc/beamer_shop/Application/Beamer_shop/Beamer_shop/Pages/CheckoutInfo.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2hlY2tvdXRJbmZvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/dev_projects_pc/beamer_shop/Application/Beamer_shop/Beamer_shop/Pages/Contact.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGFjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/dev_projects_pc/beamer_shop/Application/Beamer_shop/Beamer_shop/Pages/EditCart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdENhcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/dev_projects_pc/beamer_shop/Application/Beamer_shop/Beamer_shop/Pages/Error.cshtml]

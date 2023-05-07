@@ -15,9 +15,14 @@ builder.Services.AddRazorPages();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddHttpContextAccessor();
 
+builder.Services.AddTransient<ICustomerRepository, CustomerRepository>();
 builder.Services.AddTransient<ICarRepository, CarRepository>();
 builder.Services.AddTransient<IAccessoryRepository, AccessoryRepository>();
+
+builder.Services.AddTransient<ICustomerService, CustomerService>();
 builder.Services.AddTransient<IProductService, ProductService>();
+
+builder.Services.AddTransient<ICustomerFactory, CustomerFactory>();
 builder.Services.AddTransient<IProductFactory, ProductFactory>();
 builder.Services.AddScoped<IShoppingCartService, ShoppingCartService>();
 

@@ -1,4 +1,5 @@
 ﻿@page
+@using Logic.Models;
 @model Beamer_shop.Pages.CheckoutInfoModel
 @{
 }
@@ -10,21 +11,112 @@
 
     @if (User?.Identity?.IsAuthenticated ?? false)
     {
-        <h1>Hi</h1>
+        @if (Model.LoggedCustomer != null)
+        {
+            Customer customer = Model.LoggedCustomer;
 
+            <div class="chk-account-info"> 
+                <h2>Buyer information:</h2>
+                <h3>@customer.FirstName @customer.LastName</h3>
+                <h3>@customer.BirthDate</h3>
+                <h3>@customer.Email</h3>
+                <br> 
+                <h2>Buyer address:</h2>
+                <h3>@customer.Address, @customer.City</h3>
+                <h3>@customer.ZipCode</h3> 
+            </div>
+
+            <div class="chk-cart">
+                <div class="chk-cart-item"> BMW 3 series 123214 gfdgfda gfasdgd gfsdgdfggggg </div>
+            </div>
+
+        }
     }
     else
     {
         //not logged in
-        //logged in
-        <button>Login</button>
+        <div id="reg1" class="Checkout-Register">
+            <div class="Checkout-register-text">
+            <h2>Contact information</h2>
+                <h4 style="float:right">Returning customer? <a id="Register-toggle" style="text-decoration: underline; color: #117cec; cursor:grab;">Login</a></h4>
+            </div>
+            <form method="post" asp-page-handler="CheckoutRegisterUser">
+                <label asp-for="newCustomer.FirstName">First Name</label>
+                <span asp-validation-for="newCustomer.FirstName"></span>
+                <input asp-for="newCustomer.FirstName" type="text" placeholder="Your name..">
 
-        <br />
-        <button>Register</button>
+                <label asp-for="newCustomer.LastName">Last Name</label>
+                <span asp-validation-for="newCustomer.LastName"></span>
+                <input asp-for="newCustomer.LastName" type="text" placeholder="Your last name..">
+
+                <label asp-for="newCustomer.Email">Email</label>
+                <span asp-validation-for="newCustomer.Email"></span>
+                <input asp-for="newCustomer.Email" placeholder="Your email..">
+
+                <label asp-for="newCustomer.BirthDate">Birthdate</label>
+                <span asp-validation-for="newCustomer.BirthDate"></span>
+                <input asp-for="newCustomer.BirthDate" type="date" placeholder="Your birthdate..">
+
+                <label asp-for="newCustomer.Address">Address</label>
+                <span asp-validation-for="newCustomer.Address"></span>
+                <input asp-for="newCustomer.Address" placeholder="Your address..">
+
+                <label asp-for="newCustomer.ZipCode">Zipcode</label>
+                <span asp-validation-for="newCustomer.ZipCode"></span>
+                <input asp-for="newCustomer.ZipCode" placeholder="Your zipcode..">
+
+                <label asp-for="newCustomer.City">City</label>
+                <span asp-validation-for="newCustomer.City"></span>
+                <input asp-for="newCustomer.City" placeholder="Your city..">
+
+                <label asp-for="newCustomer.Password">Password</label>
+                <span asp-validation-for="newCustomer.Password"></span>
+                <input asp-for="newCustomer.Password" type="password" placeholder="Your password..">
+
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+
+        <div id="log1" class="Checkout-Login" style="display:none;">
+            <h3>Login</h3>
+            <form method="post" asp-page-handler="CheckoutLoginUser">
+                <label asp-for="login.Email">Email</label>
+                <span asp-validation-for="login.Email"></span>
+                <input asp-for="login.Email" type="email" placeholder="Your email..">
+
+                <label asp-for="login.Password">Password</label>
+                <span asp-validation-for="login.Password"></span>
+                <input asp-for="login.Password" type="password" placeholder="Your password..">
+
+                <input type="submit" value="Log in">
+                <h4>No account? <a id="Login-toggle" style="text-decoration: underline; color: #117cec; cursor:grab;">Sign up</a></h4>
+            </form>
+        </div>
     }
 
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+<script>
+    // Use the jQuery.noConflict() method to avoid conflicts with other libraries using the $ symbol
+    jQuery(document).ready(function ($) {
+        // Add click event handler to the button
+        $('#Register-toggle').click(function () {
+            $('#reg1').toggle();
+            $('#log1').toggle();
+        });
+
+        $('#Login-toggle').click(function () {
+            $('#reg1').toggle();
+            $('#log1').toggle();
+        });
+    });
+</script>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+
+}
 
 

@@ -34,6 +34,8 @@ namespace Data
             //get datatable of queried data
             DataTable table = base.ReadData();
 
+            if (table == null) { return Customers; }
+
             //itterate trough all datarows, validate and convert to objects
             foreach (DataRow dr in table.Rows)
             {

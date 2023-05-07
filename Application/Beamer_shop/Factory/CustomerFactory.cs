@@ -1,11 +1,17 @@
 ﻿using Data;
+using Factory.Interfaces;
 using Logic;
+using Logic.Interfaces;
 
 namespace Factory
 {
-    public class CustomerFactory
+    public class CustomerFactory : ICustomerFactory
     {
-        public static CustomerService CustomerService { get; } =
-            new CustomerService(new CustomerRepository());
+        public ICustomerService CustomerService { get; }
+
+        public CustomerFactory(ICustomerService customerService)
+        {
+            CustomerService = customerService;
+        }
     }
 }

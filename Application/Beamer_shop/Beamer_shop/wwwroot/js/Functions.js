@@ -23,12 +23,7 @@ cartOpenLi.addEventListener('click', showCart);
 cartCloseX.addEventListener('click', closeCart);
 
 
-////////////////////////////////////////////////////////////////////////////
-//Add to cart
-function addToCart(id) {
-    const url = '/AddToCart?productId=' + id;
-    window.location.href = url;
-}
+
 
 
 ////////////////////////////////////////////////////////////////////////////
@@ -36,7 +31,7 @@ function addToCart(id) {
 function editCartAjax(id, action) {
     // Make AJAX request to add product to cart
     $.ajax({
-        url: '/AddToCart?productId=' + id + '&action=' + action,
+        url: '/EditCart?productId=' + id + '&action=' + action,
         type: 'GET',
         success: function (result) {
             // Handle success response
@@ -44,7 +39,7 @@ function editCartAjax(id, action) {
             updateCart(result);
             showCart();
         },
-        error: function (xhr, status, error) {
+        error: function (xhr) {
             // Handle error response
             console.log(xhr.responseText);
         }

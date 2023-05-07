@@ -1,5 +1,7 @@
 using Factory;
+using Factory.Interfaces;
 using Logic;
+using Logic.Interfaces;
 using Logic.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -10,7 +12,14 @@ namespace Beamer_shop.Pages
 {
     public class RegisterModel : PageModel
     {
-        CustomerService customerService = CustomerFactory.CustomerService;
+        ICustomerFactory _customerFactory;
+        ICustomerService _customerService;
+
+        public RegisterModel(ICustomerFactory customerFactory) 
+        {
+            _customerFactory = customerFactory;
+            _customerService = _customerFactory.CustomerService;
+        }
 
         [BindProperty]
         public Register newCustomer { get; set; }
@@ -25,7 +34,7 @@ namespace Beamer_shop.Pages
                 newCustomer.Salt = output.Salt;
                 newCustomer.Hash = output.HashedPassword;
                 //Send
-                customerService.RegisterCustomer(newCustomer);
+                _customerFactory.CustomerService.RegisterCustomer(newCustomer);
 
                 TempData["Contact"] = JsonSerializer.Serialize(newCustomer);
                 return new RedirectToPageResult("Index");

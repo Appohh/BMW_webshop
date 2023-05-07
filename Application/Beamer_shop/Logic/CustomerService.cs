@@ -3,7 +3,7 @@ using Logic.Models;
 
 namespace Logic
 {
-    public class CustomerService
+    public class CustomerService : ICustomerService
     {
         private readonly ICustomerRepository customerRepository;
 
