@@ -1,0 +1,92 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Beamer_shop
+build_property.RootNamespace = Beamer_shop
+build_property.ProjectDir = C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/alpay/Dev_projects/Beamer_Shop/Application/Beamer_shop/Beamer_shop/Pages/Components/CProductCard.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcG9uZW50c1xDUHJvZHVjdENhcmQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alpay/Dev_projects/Beamer_Shop/Application/Beamer_shop/Beamer_shop/Pages/Components/CShoppingCart.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcG9uZW50c1xDU2hvcHBpbmdDYXJ0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alpay/Dev_projects/Beamer_Shop/Application/Beamer_shop/Beamer_shop/Pages/Account.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alpay/Dev_projects/Beamer_Shop/Application/Beamer_shop/Beamer_shop/Pages/CheckoutInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2hlY2tvdXRJbmZvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alpay/Dev_projects/Beamer_Shop/Application/Beamer_shop/Beamer_shop/Pages/Contact.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGFjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alpay/Dev_projects/Beamer_Shop/Application/Beamer_shop/Beamer_shop/Pages/EditCart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdENhcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alpay/Dev_projects/Beamer_Shop/Application/Beamer_shop/Beamer_shop/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alpay/Dev_projects/Beamer_Shop/Application/Beamer_shop/Beamer_shop/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alpay/Dev_projects/Beamer_Shop/Application/Beamer_shop/Beamer_shop/Pages/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alpay/Dev_projects/Beamer_Shop/Application/Beamer_shop/Beamer_shop/Pages/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nb3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alpay/Dev_projects/Beamer_Shop/Application/Beamer_shop/Beamer_shop/Pages/Oops.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT29wcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alpay/Dev_projects/Beamer_Shop/Application/Beamer_shop/Beamer_shop/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alpay/Dev_projects/Beamer_Shop/Application/Beamer_shop/Beamer_shop/Pages/Product.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alpay/Dev_projects/Beamer_Shop/Application/Beamer_shop/Beamer_shop/Pages/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alpay/Dev_projects/Beamer_Shop/Application/Beamer_shop/Beamer_shop/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alpay/Dev_projects/Beamer_Shop/Application/Beamer_shop/Beamer_shop/Pages/Shop.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hvcC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alpay/Dev_projects/Beamer_Shop/Application/Beamer_shop/Beamer_shop/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alpay/Dev_projects/Beamer_Shop/Application/Beamer_shop/Beamer_shop/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/alpay/Dev_projects/Beamer_Shop/Application/Beamer_shop/Beamer_shop/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-5tusojkuga
