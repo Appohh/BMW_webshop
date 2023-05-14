@@ -64,7 +64,11 @@
                 else {
                     <li><a asp-page="/Contact">Contact </a></li>
                 }
-                <li id="li-cart-open" style="float: right"><a id="a-cart-open" style="cursor:grab;">Cart</a></li>
+                @if (ViewData.ContainsKey("ActiveLink")
+                 && (string)ViewData["ActiveLink"] != "checkout")
+                {
+                    <li id="li-cart-open" style="float: right"><a id="a-cart-open" style="cursor:grab;">Cart</a></li>
+                }
             </ul>
         </div>
         <!-- main center container -->

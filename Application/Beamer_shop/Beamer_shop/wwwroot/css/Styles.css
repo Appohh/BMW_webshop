@@ -495,8 +495,8 @@ form span {
     border-radius: 15px;
     display: grid;
     background: #dcdcdc61;
-    grid-template-columns: 1fr 2fr;
-    gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    gap: 125px;
 }
 
 .Checkout-register-text {
@@ -511,7 +511,29 @@ form span {
     grid-column: 1;
 }
 
+#reg1 {
+    grid-column: 1;
+}
 
+#log1 {
+    grid-column: 1;
+}
+
+.checkout-cart-container {
+    grid-column: 2;
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
+
+.checkout-cart .cart-content {
+    justify-items: unset !important;
+    box-shadow: 2px 2px 2px 3px;
+}
+.checkout-price-details {
+    display: grid;
+    grid-template-rows: 55px 47px;
+    margin-top: auto;
+}
 
 
 /*Media querries*/

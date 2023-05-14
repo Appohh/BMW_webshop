@@ -9,19 +9,16 @@ using NuGet.Protocol.Plugins;
 using System.Security.Claims;
 using Logic.Interfaces;
 using Factory.Interfaces;
+using Beamer_shop.Services;
+using Beamer_shop.Interfaces;
 
 namespace Beamer_shop.Pages
 {
     public class CheckoutInfoModel : PageModel
     {
-        ICustomerFactory _customerFactory;
-        ICustomerService _customerService;
-
-        public CheckoutInfoModel(ICustomerFactory customerFactory)
-        {
-            _customerFactory = customerFactory;
-            _customerService = _customerFactory.CustomerService;
-        }
+        private ICustomerFactory _customerFactory;
+        private ICustomerService _customerService;
+        private IShoppingCartService _shoppingCartService;
 
         [BindProperty]
         public Register newCustomer { get; set; }
@@ -30,6 +27,18 @@ namespace Beamer_shop.Pages
         public Login login { get; set; }
 
         public Customer? LoggedCustomer { get; set; }
+
+        public ShoppingCart? ShoppingCart { get; set; }
+
+
+        public CheckoutInfoModel(ICustomerFactory customerFactory, IShoppingCartService shoppingCartService)
+        {
+            _customerFactory = customerFactory;
+            _customerService = _customerFactory.CustomerService;
+
+            _shoppingCartService = shoppingCartService;
+            ShoppingCart = _shoppingCartService.RetrieveShoppingCart();
+        }
 
 
         public void OnGet()

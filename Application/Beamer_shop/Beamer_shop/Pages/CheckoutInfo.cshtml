@@ -2,6 +2,8 @@
 @using Logic.Models;
 @model Beamer_shop.Pages.CheckoutInfoModel
 @{
+    ViewData["Title"] = "Checkout";
+    ViewData["ActiveLink"] = "checkout";
 }
 
 
@@ -93,6 +95,54 @@
             </form>
         </div>
     }
+    <div class="checkout-cart-container">
+        <div class="checkout-cart">
+            @if (Model.ShoppingCart != null && Model.ShoppingCart.GetItems() != null && Model.ShoppingCart.GetItems().Count > 0)
+            {
+                @foreach (var item in Model.ShoppingCart.GetItems())
+                {
+                    <div class="cart-content">
+                        <img src="@item.Product.ImageUrl" alt="@item.Product.Name">
+                        <div class="content-info">
+                            <h4>@item.Product.Name</h4>
+                            <h3>€@item.Product.Price</h3>
+                        </div>
+                        <div class="content-quantity">
+                            <button onclick="editCartAjax(@item.Product.Id, 'add', 'checkout')">+</button>
+                            <h2 style="text-align: center;margin: 10px;">@item.Quantity</h2>
+                            <button onclick="editCartAjax(@item.Product.Id, 'remove', 'checkout')">-</button>
+                        </div>
+                    </div>
+                }
+            } else 
+            {
+                <h2>Your cart is empty.</h2>
+            }   
+        </div>
+            @if (Model.ShoppingCart != null && Model.ShoppingCart.GetItems() != null && Model.ShoppingCart.GetItems().Count > 0)
+            {
+                <div class="checkout-price-details">
+                    <div class="cart-subinfo">
+                        @{
+                            decimal subtotal = Model.ShoppingCart.Total - Model.ShoppingCart.Taxes;
+                        }
+                        <div class="sub1">
+                            <h4 style="color:#9f9f9f;">Subtotal: </h4>
+                            <h4 id="subtotal">€@subtotal.ToString("N0")</h4>
+                        </div>
+                        <div class="sub2">
+                            <h4 style="color:#9f9f9f;">Taxes: </h4>
+                            <h4 id="taxes">€@Model.ShoppingCart.Taxes.ToString("N0")</h4>
+                        </div>
+                    </div>
+                    <div class="cart-total">
+
+                        <h1 id="total">€@Model.ShoppingCart.Total.ToString("N0")</h1>
+                        <button onclick="window.location.href = '/CheckoutInfo'">Checkout</button>
+                    </div>
+                </div>
+            }
+    </div>
 
 </div>
 

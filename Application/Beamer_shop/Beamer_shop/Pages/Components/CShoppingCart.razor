@@ -4,7 +4,7 @@
     <div class="cart-top">
         <h2 id="cart-close" style="cursor:grab">X</h2>
         <h2>My Cart</h2>
-        <h2 id="cart-trash" style="cursor:grab"><i onclick="editCartAjax(-901, 'clear')" class="fa fa-trash"></i></h2>
+        <h2 id="cart-trash" style="cursor:grab"><i onclick="editCartAjax(-901, 'clear', 'cart')" class="fa fa-trash"></i></h2>
     </div>
     <div class="cart-content-container">
 
@@ -25,9 +25,9 @@
                         <h3>€@item.Product.Price</h3>
                     </div>
                     <div class="content-quantity">
-                        <button onclick="editCartAjax(@item.Product.Id, 'add')">+</button>
+                        <button onclick="editCartAjax(@item.Product.Id, 'add', 'cart')">+</button>
                         <h2 style="text-align: center;margin: 10px;">@item.Quantity</h2>
-                        <button onclick="editCartAjax(@item.Product.Id, 'remove')">-</button>
+                        <button onclick="editCartAjax(@item.Product.Id, 'remove', 'cart')">-</button>
                     </div>
                 </div>
             }
