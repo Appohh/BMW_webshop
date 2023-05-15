@@ -535,8 +535,15 @@ form span {
     margin-top: auto;
 }
 
-/*Checkout progress bar*/
+#chk-ship-c {
+    grid-template-columns: 1fr 1fr 2fr !important;
+}
 
+#chk-ship-c .checkout-cart-container {
+    grid-column: 3;
+}
+
+/*Checkout progress bar*/
 #bar-progress {
     grid-row: 1;
     grid-column: 1 / 6;

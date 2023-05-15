@@ -12,13 +12,11 @@ namespace Logic
     public class ShoppingCart : IShoppingCart
     {
         public IDictionary<int, CartItem> _items;
-        public int Taxrate;
         public decimal Taxes;
         public decimal Total;
         public ShoppingCart()
         {
             _items = new Dictionary<int, CartItem>();
-            Taxrate = 21;
         }
 
         public void AddItem(Product product)
