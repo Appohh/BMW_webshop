@@ -1,0 +1,116 @@
+﻿@page
+@using Logic.Models
+@model Beamer_shop.Pages.CheckoutShipModel
+@{
+    ViewData["Title"] = "Checkout";
+    ViewData["ActiveLink"] = "checkout";
+}
+
+
+    <div id="bar-progress" class="mt-5 mt-lg-0">
+        <div class="step step-active">
+            <span class="number-container">
+                <span class="number">1</span>
+            </span>
+            <h5>Login</h5>
+        </div>
+        <div class="seperator"></div>
+        <div class="step step-active">
+            <span class="number-container">
+                <span class="number">2</span>
+            </span>
+            <h5>Confirm cart items</h5>
+        </div>
+        <div class="seperator"></div>
+        <div class="step step-active">
+            <span class="number-container">
+                <span class="number">3</span>
+            </span>
+            <h5>Delivery</h5>
+        </div>
+        <div class="seperator"></div>
+        <div class="step">
+            <span class="number-container">
+                <span class="number">4</span>
+            </span>
+            <h5>Review &amp; Pay</h5>
+        </div>
+    </div>
+
+<div class="checkout-container">
+
+
+    @if (User?.Identity?.IsAuthenticated ?? false)
+    {
+        @if (Model.LoggedCustomer != null)
+        {
+            Customer customer = Model.LoggedCustomer;
+
+            <div class="chk-account-info">
+                <h2>Buyer information:</h2>
+                <h3>@customer.FirstName @customer.LastName</h3>
+                <h3>@customer.BirthDate</h3>
+                <h3>@customer.Email</h3>
+                <br>
+                <h2>Buyer address:</h2>
+                <h3>@customer.Address, @customer.City</h3>
+                <h3>@customer.ZipCode</h3>
+            </div>
+
+
+        }
+    }
+    else
+    {
+        //not logged in
+    }
+
+    <div class="checkout-cart-container">
+        <div class="checkout-cart">
+            @if (Model.ShoppingCart != null && Model.ShoppingCart.GetItems() != null && Model.ShoppingCart.GetItems().Count > 0)
+            {
+                @foreach (var item in Model.ShoppingCart.GetItems())
+                {
+                    <div class="cart-content">
+                        <img src="@item.Product.ImageUrl" alt="@item.Product.Name">
+                        <div class="content-info">
+                            <h4>@item.Product.Name</h4>
+                            <h3>€@item.Product.Price</h3>
+                        </div>
+                        <div class="content-quantity">
+                            <h2 style="text-align: center;margin: 10px;">@item.Quantity</h2>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <h2>Your cart is empty.</h2>
+            }
+        </div>
+        @if (Model.ShoppingCart != null && Model.ShoppingCart.GetItems() != null && Model.ShoppingCart.GetItems().Count > 0)
+        {
+            <div class="checkout-price-details">
+                <div class="cart-subinfo">
+                    @{
+                        decimal subtotal = Model.ShoppingCart.Total - Model.ShoppingCart.Taxes;
+                    }
+                    <div class="sub1">
+                        <h4 style="color:#9f9f9f;">Subtotal: </h4>
+                        <h4 id="subtotal">€@subtotal.ToString("N0")</h4>
+                    </div>
+                    <div class="sub2">
+                        <h4 style="color:#9f9f9f;">Taxes: </h4>
+                        <h4 id="taxes">€@Model.ShoppingCart.Taxes.ToString("N0")</h4>
+                    </div>
+                </div>
+                <div class="cart-total">
+
+                    <h1 id="total">€@Model.ShoppingCart.Total.ToString("N0")</h1>
+                    <button onclick="window.location.href = '/CheckoutInfo'">Checkout</button>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>

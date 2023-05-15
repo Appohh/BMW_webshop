@@ -15,7 +15,7 @@ namespace Data
         {
             get
             {
-                return "SELECT Product.[Id] ,[Name] ,[Price] ,[Description] ,[ImageUrl], [Product-Taxes].[Percentage] as 'Taxrate' ,[Chassisnumber] ,[Plate] ,[Brand] ,[Model] ,[Make] ,[Milage] ,[Engine] ,[Fuel] ,[Horsepower] ,[Torque] ,[Time0to60] ,[Topspeed] ,[Weight] FROM [Product] INNER JOIN [Car] ON Product.[Id] = Car.[Id] INNER JOIN [Product-Taxes] ON Product.TaxId = [Product-Taxes].Id";
+                return "SELECT Product.[Id] ,[Name] ,[Price] ,[Description] ,[ImageUrl], [Product-Taxes].[Percentage] as 'Taxrate', [Weight], [Chassisnumber] ,[Plate] ,[Brand] ,[Model] ,[Make] ,[Milage] ,[Engine] ,[Fuel] ,[Horsepower] ,[Torque] ,[Time0to60] ,[Topspeed] ,[Weight] FROM [Product] INNER JOIN [Car] ON Product.[Id] = Car.[Id] INNER JOIN [Product-Taxes] ON Product.TaxId = [Product-Taxes].Id";
             }
         }
 

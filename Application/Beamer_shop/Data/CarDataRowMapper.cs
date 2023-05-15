@@ -25,6 +25,7 @@ namespace Data
                     .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src["ImageUrl"]))
                     .ForMember(dest => dest.Keyword, opt => opt.MapFrom(src => src["Make"]))
                     .ForMember(dest => dest.Taxrate, opt => opt.MapFrom(src => src["Taxrate"]))
+                    .ForMember(dest => dest.Weight, opt => opt.MapFrom(src => src["Weight"]))
                     .ForMember(dest => dest.ChassisNumber, opt => opt.MapFrom(src => src["ChassisNumber"]))
                     .ForMember(dest => dest.Plate, opt => opt.MapFrom(src => src["Plate"]))
                     .ForMember(dest => dest.Brand, opt => opt.MapFrom(src => src["Brand"]))
@@ -36,8 +37,7 @@ namespace Data
                     .ForMember(dest => dest.HorsePower, opt => opt.MapFrom(src => src["HorsePower"]))
                     .ForMember(dest => dest.Torque, opt => opt.MapFrom(src => src["Torque"]))
                     .ForMember(dest => dest.Time0to60, opt => opt.MapFrom(src => src["Time0to60"]))
-                    .ForMember(dest => dest.TopSpeed, opt => opt.MapFrom(src => src["TopSpeed"]))
-                    .ForMember(dest => dest.Weight, opt => opt.MapFrom(src => src["Weight"]));
+                    .ForMember(dest => dest.TopSpeed, opt => opt.MapFrom(src => src["TopSpeed"]));
             });
 
              _mapper = config.CreateMapper();

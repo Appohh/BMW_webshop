@@ -15,8 +15,10 @@ namespace Logic.Models
         public string ImageUrl { get; set; }
         public string Keyword { get; set; }
         public int Taxrate { get; set; }
+        public int Weight { get; set; }
 
-        protected Product(int id, string name, decimal price, string? description, string imageUrl, string keyword, int taxrate)
+
+        protected Product(int id, string name, decimal price, string? description, string imageUrl, string keyword, int taxrate, int weight)
         {
             Id = id;
             Name = name;
@@ -25,11 +27,12 @@ namespace Logic.Models
             ImageUrl = imageUrl;
             Keyword = keyword;
             Taxrate = taxrate;
+            Weight = weight;
         }
 
         public virtual string getDetails()
         {
-            return "";
+            return $"Weight: {Weight}kg\n";
         }
     }
 

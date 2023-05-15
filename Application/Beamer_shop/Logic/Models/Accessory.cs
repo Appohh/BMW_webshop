@@ -13,10 +13,10 @@ namespace Logic.Models
         public string Type { get; set; }
 
 
-        public Accessory() : base(0, "", 0, "", "", "", 0)
+        public Accessory() : base(0, "", 0, "", "", "", 0, 0)
         {
         }
-        public Accessory(string type, int id, string name, decimal price, string description, string imageUrl, string keyword, int taxrate) : base(id, name, price, description, imageUrl, keyword, taxrate)
+        public Accessory(string type, int id, string name, decimal price, string description, string imageUrl, string keyword, int taxrate, int weight) : base(id, name, price, description, imageUrl, keyword, taxrate, weight)
         {
             Type = type;
         }
