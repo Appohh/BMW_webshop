@@ -4,6 +4,7 @@
 @{
     ViewData["Title"] = "Checkout";
     ViewData["ActiveLink"] = "checkout";
+
 }
 
 
@@ -72,7 +73,7 @@
                 <br> 
                 <h2>Buyer address:</h2>
                 <h3>@customer.Address, @customer.City</h3>
-                <h3>@customer.ZipCode</h3> 
+                <h3>@customer.ZipCode, @customer.Country</h3> 
             </div>
 
         }
@@ -113,6 +114,32 @@
                 <label asp-for="newCustomer.City">City</label>
                 <span asp-validation-for="newCustomer.City"></span>
                 <input asp-for="newCustomer.City" placeholder="Your city..">
+
+                <label asp-for="newCustomer.Country">Country</label>
+                <span asp-validation-for="newCustomer.Country"></span>
+                <select asp-for="newCustomer.Country">
+                    <option value="">Select a country</option>
+                    <option value="US">United States</option>
+                    <option value="CA">Canada</option>
+                    <option value="GB">United Kingdom</option>
+                    <option value="DE">Germany</option>
+                    <option value="FR">France</option>
+                    <option value="IT">Italy</option>
+                    <option value="ES">Spain</option>
+                    <option value="JP">Japan</option>
+                    <option value="AU">Australia</option>
+                    <option value="BR">Brazil</option>
+                    <option value="MX">Mexico</option>
+                    <option value="IN">India</option>
+                    <option value="CN">China</option>
+                    <option value="RU">Russia</option>
+                    <option value="ZA">South Africa</option>
+                    <option value="AR">Argentina</option>
+                    <option value="NZ">New Zealand</option>
+                    <option value="NL">Netherlands</option>
+                    <option value="SE">Sweden</option>
+                    <option value="CH">Switzerland</option>
+                </select>
 
                 <label asp-for="newCustomer.Password">Password</label>
                 <span asp-validation-for="newCustomer.Password"></span>
@@ -192,9 +219,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    // Use the jQuery.noConflict() method to avoid conflicts with other libraries using the $ symbol
     jQuery(document).ready(function ($) {
-        // Add click event handler to the button
         $('#Register-toggle').click(function () {
             $('#reg1').toggle();
             $('#log1').toggle();

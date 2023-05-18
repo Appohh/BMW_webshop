@@ -23,6 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Geocoding.Google" Version="4.0.1" />
+    <PackageReference Include="Geocoding.MapQuest" Version="4.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
   </ItemGroup>

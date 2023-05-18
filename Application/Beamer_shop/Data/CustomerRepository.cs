@@ -56,8 +56,8 @@ namespace Data
         {
             if(string.IsNullOrEmpty(customer.Salt) || string.IsNullOrEmpty(customer.Hash)) { return false; }
 
-            string query = $"INSERT INTO Customer (Firstname, Lastname, Email, Birthdate, Address, Zipcode, City) OUTPUT INSERTED.Id " +
-                           $"VALUES ('{customer.FirstName}', '{customer.LastName}', '{customer.Email}', '{customer.BirthDate}', '{customer.Address}', '{customer.ZipCode}', '{customer.City}' );";
+            string query = $"INSERT INTO Customer (Firstname, Lastname, Email, Birthdate, Address, Zipcode, City, Country) OUTPUT INSERTED.Id " +
+                           $"VALUES ('{customer.FirstName}', '{customer.LastName}', '{customer.Email}', '{customer.BirthDate}', '{customer.Address}', '{customer.ZipCode}', '{customer.City}', '{customer.Country}' );";
             int createdId = executeIdScalar(query);
             if(createdId > 0)
             {               

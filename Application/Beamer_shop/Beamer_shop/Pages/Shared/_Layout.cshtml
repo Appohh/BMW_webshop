@@ -70,6 +70,15 @@
                     <li id="li-cart-open" style="float: right"><a id="a-cart-open" style="cursor:grab;">Cart</a></li>
                 }
             </ul>
+
+            @{if (TempData.ContainsKey("ErrorMessage"))
+            {
+                string errorMsg = TempData["ErrorMessage"].ToString();
+                if (!string.IsNullOrEmpty(errorMsg)){
+                    <component type="typeof(Components.CErrorPopUp)" render-mode="Static" param-Message='errorMsg' />
+                }
+            }}
+            
         </div>
         <!-- main center container -->
         <div class="center-main">
@@ -99,11 +108,11 @@
 
         @inject IShoppingCartService ShoppingCartService
 
-        <!-- Retrieve the shopping cart from service -->
+        <!--retrieve the shopping cart from service -->
         @{
             var shoppingCart = ShoppingCartService.RetrieveShoppingCart();
         }
-        <!-- Use component to render shoppingcart -->
+        <!-- component to render shoppingcart -->
         <component type="typeof(Components.CShoppingCart)" render-mode="Static" param-ShoppingCart='shoppingCart' />
 
     </div>

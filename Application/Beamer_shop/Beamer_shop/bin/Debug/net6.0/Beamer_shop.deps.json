@@ -9,6 +9,8 @@
       "Beamer_shop/1.0.0": {
         "dependencies": {
           "Factory": "1.0.0",
+          "Geocoding.Google": "4.0.1",
+          "Geocoding.MapQuest": "4.0.1",
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.13"
         },
@@ -24,6 +26,53 @@
           "lib/netstandard2.1/AutoMapper.dll": {
             "assemblyVersion": "12.0.0.0",
             "fileVersion": "12.0.1.0"
+          }
+        }
+      },
+      "Geocoding.Core/4.0.1": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "runtime": {
+          "lib/netstandard1.3/Geocoding.Core.dll": {
+            "assemblyVersion": "4.0.1.0",
+            "fileVersion": "4.0.1.0"
+          }
+        }
+      },
+      "Geocoding.Google/4.0.1": {
+        "dependencies": {
+          "Geocoding.Core": "4.0.1",
+          "NETStandard.Library": "1.6.1",
+          "System.Net.Http": "4.3.1",
+          "System.Xml.XPath": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.3/Geocoding.Google.dll": {
+            "assemblyVersion": "4.0.1.0",
+            "fileVersion": "4.0.1.0"
+          }
+        }
+      },
+      "Geocoding.MapQuest/4.0.1": {
+        "dependencies": {
+          "Geocoding.Core": "4.0.1",
+          "NETStandard.Library": "1.6.1",
+          "System.Net.Requests": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.3/Geocoding.MapQuest.dll": {
+            "assemblyVersion": "4.0.1.0",
+            "fileVersion": "4.0.1.0"
+          }
+        }
+      },
+      "GoogleMaps.LocationServices/1.2.0.5": {
+        "runtime": {
+          "lib/netstandard2.0/GoogleMaps.LocationServices.dll": {
+            "assemblyVersion": "1.2.0.5",
+            "fileVersion": "1.2.0.5"
           }
         }
       },
@@ -1048,7 +1097,7 @@
           "System.IO.FileSystem.Primitives": "4.3.0",
           "System.Linq": "4.3.0",
           "System.Linq.Expressions": "4.3.0",
-          "System.Net.Http": "4.3.0",
+          "System.Net.Http": "4.3.1",
           "System.Net.Primitives": "4.3.0",
           "System.Net.Sockets": "4.3.0",
           "System.ObjectModel": "4.3.0",
@@ -1634,7 +1683,7 @@
         }
       },
       "System.Memory/4.5.5": {},
-      "System.Net.Http/4.3.0": {
+      "System.Net.Http/4.3.1": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.1",
           "System.Collections": "4.3.0",
@@ -1672,6 +1721,23 @@
           "System.Runtime.Handles": "4.3.0"
         }
       },
+      "System.Net.Requests/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.1",
+          "System.Collections": "4.3.0",
+          "System.Diagnostics.Debug": "4.3.0",
+          "System.Diagnostics.Tracing": "4.3.0",
+          "System.Globalization": "4.3.0",
+          "System.IO": "4.3.0",
+          "System.Net.Http": "4.3.1",
+          "System.Net.Primitives": "4.3.0",
+          "System.Net.WebHeaderCollection": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Threading": "4.3.0",
+          "System.Threading.Tasks": "4.3.0"
+        }
+      },
       "System.Net.Sockets/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.1",
@@ -1680,6 +1746,14 @@
           "System.Net.Primitives": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Threading.Tasks": "4.3.0"
+        }
+      },
+      "System.Net.WebHeaderCollection/4.3.0": {
+        "dependencies": {
+          "System.Collections": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Extensions": "4.3.0"
         }
       },
       "System.ObjectModel/4.3.0": {
@@ -2073,6 +2147,19 @@
           "System.Xml.ReaderWriter": "4.3.0"
         }
       },
+      "System.Xml.XPath/4.3.0": {
+        "dependencies": {
+          "System.Collections": "4.3.0",
+          "System.Diagnostics.Debug": "4.3.0",
+          "System.Globalization": "4.3.0",
+          "System.IO": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Threading": "4.3.0",
+          "System.Xml.ReaderWriter": "4.3.0"
+        }
+      },
       "Data/1.0.0": {
         "dependencies": {
           "AutoMapper": "12.0.1",
@@ -2094,6 +2181,8 @@
       },
       "Logic/1.0.0": {
         "dependencies": {
+          "Geocoding.Core": "4.0.1",
+          "GoogleMaps.LocationServices": "1.2.0.5",
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
           "Newtonsoft.Json": "13.0.1"
         },
@@ -2115,6 +2204,34 @@
       "sha512": "sha512-hvV62vl6Hp/WfQ24yzo3Co9+OPl8wH8hApwVtgWpiAynVJkUcs7xvehnSftawL8Pe8FrPffBRM3hwzLQqWDNjA==",
       "path": "automapper/12.0.1",
       "hashPath": "automapper.12.0.1.nupkg.sha512"
+    },
+    "Geocoding.Core/4.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-R1TccrqWjrb7kmQ5HLn0KiE0VkT+beHGvK8IMoq/93kBer2OkiZ9UZNw/zyz91JtY8NMh0e1jqbNW+dv/JeOfA==",
+      "path": "geocoding.core/4.0.1",
+      "hashPath": "geocoding.core.4.0.1.nupkg.sha512"
+    },
+    "Geocoding.Google/4.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-w1ef/Z6IjFBpfoNB1VRA0MVRkLdBZlmEbknvNP1hvc4Im69h9MCz9U9IBJhvnd6HCVaDJ7EvwyFRTeXObR/kTQ==",
+      "path": "geocoding.google/4.0.1",
+      "hashPath": "geocoding.google.4.0.1.nupkg.sha512"
+    },
+    "Geocoding.MapQuest/4.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YYkMfEX4zLKNvimxdYsBCr8p74b93loMcrJ4R4tRUvDzBtUWY/RdMUMhbtJDKsri3FP7GhAIDDHv4suwJh62XA==",
+      "path": "geocoding.mapquest/4.0.1",
+      "hashPath": "geocoding.mapquest.4.0.1.nupkg.sha512"
+    },
+    "GoogleMaps.LocationServices/1.2.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0j3RL5+acxYgQNz72JdXJ1nUKxMGaY+6UvrOIOxZfp0qpJOUmo/ivCAm53atbnuy0z3vrZK+j9mZifh35UBqag==",
+      "path": "googlemaps.locationservices/1.2.0.5",
+      "hashPath": "googlemaps.locationservices.1.2.0.5.nupkg.sha512"
     },
     "Humanizer.Core/2.2.0": {
       "type": "package",
@@ -2872,12 +2989,12 @@
       "path": "system.memory/4.5.5",
       "hashPath": "system.memory.4.5.5.nupkg.sha512"
     },
-    "System.Net.Http/4.3.0": {
+    "System.Net.Http/4.3.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-sYg+FtILtRQuYWSIAuNOELwVuVsxVyJGWQyOnlAzhV4xvhyFnON1bAzYYC+jjRW8JREM45R0R5Dgi8MTC5sEwA==",
-      "path": "system.net.http/4.3.0",
-      "hashPath": "system.net.http.4.3.0.nupkg.sha512"
+      "sha512": "sha512-UrTyRczM3ZvNk6oetBuwlu67MFKKRva+r7bw4JDVZ6Y2IukyZ24td5ppsieu/4yZlogVAIuZul9GIQ3hoiz0yA==",
+      "path": "system.net.http/4.3.1",
+      "hashPath": "system.net.http.4.3.1.nupkg.sha512"
     },
     "System.Net.Primitives/4.3.0": {
       "type": "package",
@@ -2886,12 +3003,26 @@
       "path": "system.net.primitives/4.3.0",
       "hashPath": "system.net.primitives.4.3.0.nupkg.sha512"
     },
+    "System.Net.Requests/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OZNUuAs0kDXUzm7U5NZ1ojVta5YFZmgT2yxBqsQ7Eseq5Ahz88LInGRuNLJ/NP2F8W1q7tse1pKDthj3reF5QA==",
+      "path": "system.net.requests/4.3.0",
+      "hashPath": "system.net.requests.4.3.0.nupkg.sha512"
+    },
     "System.Net.Sockets/4.3.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-m6icV6TqQOAdgt5N/9I5KNpjom/5NFtkmGseEH+AK/hny8XrytLH3+b5M8zL/Ycg3fhIocFpUMyl/wpFnVRvdw==",
       "path": "system.net.sockets/4.3.0",
       "hashPath": "system.net.sockets.4.3.0.nupkg.sha512"
+    },
+    "System.Net.WebHeaderCollection/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XZrXYG3c7QV/GpWeoaRC02rM6LH2JJetfVYskf35wdC/w2fFDFMphec4gmVH2dkll6abtW14u9Rt96pxd9YH2A==",
+      "path": "system.net.webheadercollection/4.3.0",
+      "hashPath": "system.net.webheadercollection.4.3.0.nupkg.sha512"
     },
     "System.ObjectModel/4.3.0": {
       "type": "package",
@@ -3207,6 +3338,13 @@
       "sha512": "sha512-5zJ0XDxAIg8iy+t4aMnQAu0MqVbqyvfoUVl1yDV61xdo3Vth45oA2FoY4pPkxYAH5f8ixpmTqXeEIya95x0aCQ==",
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
+    },
+    "System.Xml.XPath/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-v1JQ5SETnQusqmS3RwStF7vwQ3L02imIzl++sewmt23VGygix04pEH+FCj1yWb+z4GDzKiljr1W7Wfvrx0YwgA==",
+      "path": "system.xml.xpath/4.3.0",
+      "hashPath": "system.xml.xpath.4.3.0.nupkg.sha512"
     },
     "Data/1.0.0": {
       "type": "project",

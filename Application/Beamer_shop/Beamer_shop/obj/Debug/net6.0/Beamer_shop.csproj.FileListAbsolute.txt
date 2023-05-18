@@ -513,3 +513,7 @@ C:\dev_projects_pc\beamer_shop\Application\Beamer_shop\Beamer_shop\obj\Debug\net
 C:\dev_projects_pc\beamer_shop\Application\Beamer_shop\Beamer_shop\obj\Debug\net6.0\Beamer_shop.pdb
 C:\dev_projects_pc\beamer_shop\Application\Beamer_shop\Beamer_shop\obj\Debug\net6.0\Beamer_shop.genruntimeconfig.cache
 C:\dev_projects_pc\beamer_shop\Application\Beamer_shop\Beamer_shop\obj\Debug\net6.0\ref\Beamer_shop.dll
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\bin\Debug\net6.0\Geocoding.Core.dll
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\bin\Debug\net6.0\Geocoding.Google.dll
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\bin\Debug\net6.0\Geocoding.MapQuest.dll
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\bin\Debug\net6.0\GoogleMaps.LocationServices.dll

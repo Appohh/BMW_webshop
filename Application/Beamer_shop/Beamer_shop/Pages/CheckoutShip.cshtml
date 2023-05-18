@@ -54,8 +54,73 @@
                 <br>
                 <h2>Buyer address:</h2>
                 <h3>@customer.Address, @customer.City</h3>
-                <h3>@customer.ZipCode</h3>
+                <h3>@customer.ZipCode, @customer.Country</h3>
             </div>
+
+            <div class="chk-account-shipping" id="seeShippingAdr">
+                <h2 style="display:inline-block;">Shipping address: </h2> <i style="cursor:grab;" id="toggleChangeShip" class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                <h3 style="display:inline;">@Model.adress</h3>
+                <h3>@Model.zipcode</h3>
+
+                <br>
+
+                <h2>Shipping:</h2>
+                <h3>Cost: €@Model.ShippingCalculator.TotalShippingCost</h3>
+
+                <h3>Estimated delivery: Between @Model.ShippingCalculator.EstimatedDeliveryTime.Item1 - @Model.ShippingCalculator.EstimatedDeliveryTime.Item2 days.</h3>
+
+
+            </div>
+
+            <form id="changeShippingAdr" method="post" asp-page-handler="ChangeShippingAddress" style="grid-column: 2; display:none;">
+                <h2>Change shipping address</h2>
+                <label asp-for="ShippingAddress.Street">Street</label>
+                <span asp-validation-for="ShippingAddress.Street"></span>
+                <input asp-for="ShippingAddress.Street" type="text" placeholder="Your shipping street..">
+
+                <label asp-for="ShippingAddress.HouseNumber">Housenumber</label>
+                <span asp-validation-for="ShippingAddress.HouseNumber"></span>
+                <input asp-for="ShippingAddress.HouseNumber" type="text" placeholder="Your shipping house number.." style="width:40%;margin-right:100%;">
+
+                <label asp-for="ShippingAddress.City">City</label>
+                <span asp-validation-for="ShippingAddress.City"></span>
+                <input asp-for="ShippingAddress.City" type="text" placeholder="Your shipping city..">
+
+                <label asp-for="ShippingAddress.Zipcode">Zipcode</label>
+                <span asp-validation-for="ShippingAddress.Zipcode"></span>
+                <input asp-for="ShippingAddress.Zipcode" type="text" placeholder="Your shipping zipcode..">
+
+                <label asp-for="ShippingAddress.Country">Country</label>
+                <span asp-validation-for="ShippingAddress.Country"></span>
+                <select asp-for="ShippingAddress.Country">
+                    <option value="">Select a country</option>
+                    <option value="US">United States</option>
+                    <option value="CA">Canada</option>
+                    <option value="GB">United Kingdom</option>
+                    <option value="DE">Germany</option>
+                    <option value="FR">France</option>
+                    <option value="IT">Italy</option>
+                    <option value="ES">Spain</option>
+                    <option value="JP">Japan</option>
+                    <option value="AU">Australia</option>
+                    <option value="BR">Brazil</option>
+                    <option value="MX">Mexico</option>
+                    <option value="IN">India</option>
+                    <option value="CN">China</option>
+                    <option value="RU">Russia</option>
+                    <option value="ZA">South Africa</option>
+                    <option value="AR">Argentina</option>
+                    <option value="NZ">New Zealand</option>
+                    <option value="NL">Netherlands</option>
+                    <option value="SE">Sweden</option>
+                    <option value="CH">Switzerland</option>
+                </select>
+
+                <input type="submit" value="Save">
+                <a id="toggleGoBackShip" style="color:blue; cursor:grab; float:right;">Go back</a>
+            </form>
+
+            
 
 
         }
@@ -114,3 +179,24 @@
     </div>
 
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    jQuery(document).ready(function ($) {
+        $('#toggleChangeShip').click(function () {
+            $('#changeShippingAdr').toggle();
+            $('#seeShippingAdr').toggle();
+        });
+
+        $('#toggleGoBackShip').click(function () {
+            $('#changeShippingAdr').toggle();
+            $('#seeShippingAdr').toggle();
+        });
+    });
+</script>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+
+}
