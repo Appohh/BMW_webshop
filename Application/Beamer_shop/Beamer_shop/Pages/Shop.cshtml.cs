@@ -21,7 +21,7 @@ namespace Beamer_shop.Pages
         IProductService _productService;
 
         //Shopping cart
-        public ShoppingCart? shoppingCart;
+        public IShoppingCart? shoppingCart;
         private IShoppingCartService _shoppingCartService;
 
         [BindProperty]

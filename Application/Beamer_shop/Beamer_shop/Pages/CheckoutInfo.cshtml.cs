@@ -28,7 +28,7 @@ namespace Beamer_shop.Pages
 
         public Customer? LoggedCustomer { get; set; }
 
-        public ShoppingCart? ShoppingCart { get; set; }
+        public IShoppingCart? ShoppingCart { get; set; }
 
 
         public CheckoutInfoModel(ICustomerFactory customerFactory, IShoppingCartService shoppingCartService)

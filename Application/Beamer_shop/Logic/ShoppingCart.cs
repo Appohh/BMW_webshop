@@ -1,5 +1,6 @@
 ﻿using Logic.Interfaces;
 using Logic.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +12,17 @@ namespace Logic
 {
     public class ShoppingCart : IShoppingCart
     {
-        public IDictionary<int, CartItem> _items;
-        public decimal Taxes;
-        public decimal Total;
+        public IDictionary<int, CartItem> _items { get; private set;  }
+        [JsonProperty]
+        public decimal Taxes { get; private set; }
+        [JsonProperty]
+        public decimal Total { get; private set; }
+
         public ShoppingCart()
         {
             _items = new Dictionary<int, CartItem>();
         }
+
 
         public void AddItem(Product product)
         {

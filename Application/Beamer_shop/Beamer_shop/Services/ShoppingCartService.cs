@@ -1,5 +1,6 @@
 ﻿using Beamer_shop.Interfaces;
 using Logic;
+using Logic.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using System.Text;
@@ -15,7 +16,7 @@ namespace Beamer_shop.Services
             TypeNameHandling = TypeNameHandling.Auto
         };
 
-        private ShoppingCart? shoppingCart = null;
+        private IShoppingCart? shoppingCart = null;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
         public ShoppingCartService(IHttpContextAccessor httpContextAccessor)
@@ -23,7 +24,7 @@ namespace Beamer_shop.Services
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public ShoppingCart? RetrieveShoppingCart()
+        public IShoppingCart? RetrieveShoppingCart()
         {
             var httpContext = _httpContextAccessor.HttpContext;
 
@@ -66,7 +67,7 @@ namespace Beamer_shop.Services
             return shoppingCart;
         }
 
-        public string SaveShoppingCart(ShoppingCart shoppingCart)
+        public string SaveShoppingCart(IShoppingCart shoppingCart)
         {
             var httpContext = _httpContextAccessor.HttpContext;
 

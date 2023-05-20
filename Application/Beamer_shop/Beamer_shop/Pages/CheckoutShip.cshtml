@@ -53,14 +53,15 @@
                 <h3>@customer.Email</h3>
                 <br>
                 <h2>Buyer address:</h2>
-                <h3>@customer.Address, @customer.City</h3>
+                <h3>@customer.Street @customer.HouseNumber, @customer.City</h3>
                 <h3>@customer.ZipCode, @customer.Country</h3>
             </div>
 
+             Beamer_shop.Models.Address address = Model.ShippingAddress;
             <div class="chk-account-shipping" id="seeShippingAdr">
                 <h2 style="display:inline-block;">Shipping address: </h2> <i style="cursor:grab;" id="toggleChangeShip" class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                <h3 style="display:inline;">@Model.adress</h3>
-                <h3>@Model.zipcode</h3>
+                <h3 style="display:inline;">@address.Street @address.HouseNumber, @address.City</h3>
+                <h3>@address.Zipcode, @address.Country</h3>
 
                 <br>
 
@@ -74,25 +75,25 @@
 
             <form id="changeShippingAdr" method="post" asp-page-handler="ChangeShippingAddress" style="grid-column: 2; display:none;">
                 <h2>Change shipping address</h2>
-                <label asp-for="ShippingAddress.Street">Street</label>
-                <span asp-validation-for="ShippingAddress.Street"></span>
-                <input asp-for="ShippingAddress.Street" type="text" placeholder="Your shipping street..">
+                <label asp-for="ChangedShippingAddress.Street">Street</label>
+                <span asp-validation-for="ChangedShippingAddress.Street"></span>
+                <input asp-for="ChangedShippingAddress.Street" type="text" placeholder="Your shipping street..">
 
-                <label asp-for="ShippingAddress.HouseNumber">Housenumber</label>
-                <span asp-validation-for="ShippingAddress.HouseNumber"></span>
-                <input asp-for="ShippingAddress.HouseNumber" type="text" placeholder="Your shipping house number.." style="width:40%;margin-right:100%;">
+                <label asp-for="ChangedShippingAddress.HouseNumber">Housenumber</label>
+                <span asp-validation-for="ChangedShippingAddress.HouseNumber"></span>
+                <input asp-for="ChangedShippingAddress.HouseNumber" type="text" placeholder="Your shipping house number.." style="width:40%;margin-right:100%;">
 
-                <label asp-for="ShippingAddress.City">City</label>
-                <span asp-validation-for="ShippingAddress.City"></span>
-                <input asp-for="ShippingAddress.City" type="text" placeholder="Your shipping city..">
+                <label asp-for="ChangedShippingAddress.City">City</label>
+                <span asp-validation-for="ChangedShippingAddress.City"></span>
+                <input asp-for="ChangedShippingAddress.City" type="text" placeholder="Your shipping city..">
 
-                <label asp-for="ShippingAddress.Zipcode">Zipcode</label>
-                <span asp-validation-for="ShippingAddress.Zipcode"></span>
-                <input asp-for="ShippingAddress.Zipcode" type="text" placeholder="Your shipping zipcode..">
+                <label asp-for="ChangedShippingAddress.Zipcode">Zipcode</label>
+                <span asp-validation-for="ChangedShippingAddress.Zipcode"></span>
+                <input asp-for="ChangedShippingAddress.Zipcode" type="text" placeholder="Your shipping zipcode..">
 
-                <label asp-for="ShippingAddress.Country">Country</label>
-                <span asp-validation-for="ShippingAddress.Country"></span>
-                <select asp-for="ShippingAddress.Country">
+                <label asp-for="ChangedShippingAddress.Country">Country</label>
+                <span asp-validation-for="ChangedShippingAddress.Country"></span>
+                <select asp-for="ChangedShippingAddress.Country">
                     <option value="">Select a country</option>
                     <option value="US">United States</option>
                     <option value="CA">Canada</option>
@@ -172,7 +173,9 @@
                 <div class="cart-total">
 
                     <h1 id="total">€@Model.ShoppingCart.Total.ToString("N0")</h1>
-                    <button onclick="window.location.href = '/CheckoutInfo'">Checkout</button>
+                    <form method="post" asp-page-handler="PrepareOrder">
+                        <input type="submit" value="Review & Pay">
+                    </form>
                 </div>
             </div>
         }

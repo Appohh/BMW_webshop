@@ -11,7 +11,7 @@ namespace Beamer_shop.Pages
     {
         private IProductService _productService;
         private IShoppingCartService _shoppingCartService;
-        private ShoppingCart? _shoppingCart = null;
+        private IShoppingCart? _shoppingCart = null;
 
         public EditCart(IProductService productService, IShoppingCartService shoppingCartService)
         {

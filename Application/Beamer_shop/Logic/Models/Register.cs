@@ -19,7 +19,9 @@ namespace Logic.Models
         [Required]
         public string BirthDate { get; set; }
         [Required]
-        public string Address { get; set; }
+        public string Street { get; set; }
+        [Required]
+        public string HouseNumber { get; set; }
         [Required]
         public string ZipCode { get; set; }
         [Required]

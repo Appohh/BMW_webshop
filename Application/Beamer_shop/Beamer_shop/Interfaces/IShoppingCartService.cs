@@ -1,4 +1,5 @@
 ﻿using Logic;
+using Logic.Interfaces;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace Beamer_shop.Interfaces
 {
     public interface IShoppingCartService
     {
-        ShoppingCart? RetrieveShoppingCart();
-        string SaveShoppingCart(ShoppingCart shoppingCart);
+        IShoppingCart? RetrieveShoppingCart();
+        string SaveShoppingCart(IShoppingCart shoppingCart);
     }
 }

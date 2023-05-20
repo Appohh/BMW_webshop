@@ -1,0 +1,116 @@
+﻿@page
+@using Logic;
+@using Logic.Models
+@model Beamer_shop.Pages.CheckoutReviewModel
+@{
+    ViewData["Title"] = "Checkout";
+    ViewData["ActiveLink"] = "checkout";
+}
+
+
+<div id="bar-progress" class="mt-5 mt-lg-0">
+    <div class="step step-active">
+        <span class="number-container">
+            <span class="number">1</span>
+        </span>
+        <h5>Login</h5>
+    </div>
+    <div class="seperator"></div>
+    <div class="step step-active">
+        <span class="number-container">
+            <span class="number">2</span>
+        </span>
+        <h5>Confirm cart items</h5>
+    </div>
+    <div class="seperator"></div>
+    <div class="step step-active">
+        <span class="number-container">
+            <span class="number">3</span>
+        </span>
+        <h5>Delivery</h5>
+    </div>
+    <div class="seperator"></div>
+    <div class="step step-active">
+        <span class="number-container">
+            <span class="number">4</span>
+        </span>
+        <h5>Review &amp; Pay</h5>
+    </div>
+</div>
+
+<div class="checkout-container" id="chk-ship-c">
+
+
+    @if (User?.Identity?.IsAuthenticated ?? false)
+    {
+        @if (Model.LoggedCustomer != null)
+        {
+            Customer customer = Model.LoggedCustomer;
+
+            <div class="chk-account-info">
+                <h2>Buyer information:</h2>
+                <h3>@customer.FirstName @customer.LastName</h3>
+                <h3>@customer.BirthDate</h3>
+                <h3>@customer.Email</h3>
+                <br>
+                <h2>Buyer address:</h2>
+                <h3>@customer.Street @customer.HouseNumber, @customer.City</h3>
+                <h3>@customer.ZipCode, @customer.Country</h3>
+            </div>
+
+            
+           Address address = Model.Order.DeliveryAddress;
+            
+
+            <div class="chk-account-shipping" id="seeShippingAdr">
+                <h2 style="display:inline-block;">Shipping address: </h2> <br>
+                <h3 style="display:inline;">@address.Street @address.HouseNumber, @address.City</h3>
+                <h3>@address.Zipcode, @address.Country</h3>
+
+                <br>
+
+                <h2>Shipping:</h2>
+                <h3>Cost: €@Model.Order.TotalShipping</h3>
+
+                <h3>Estimated delivery: Between @Model.Order.EstimatedDeliveryA - @Model.Order.EstimatedDeliveryB days.</h3>
+
+
+            </div>
+
+        }
+    }
+
+    <div class="checkout-cart-container">
+        @{
+            Order order = Model.Order;
+        }
+        <div class="checkout-cart">
+
+            <h2>Overview</h2>
+            <div class="chk-count-item">
+                <h3>Products (@order.Items.GetItems().Count)</h3><h3>€@order.Items.Total</h3>
+            </div>
+            <div class="chk-count-item">
+                <h3>Shipping</h3><h3>€@order.TotalShipping</h3>
+            </div>
+            <div class="chk-count-item">
+                <h3>Tax</h3><h3>€3213.00</h3>
+            </div>
+            <form asp-page-handler="ApplyDiscount" style="display: flex;align-items: baseline;gap:5px;">
+                <input type="text" placeholder="Coupon"><input type="submit" value="Apply">
+            </form>
+            <hr>
+            <h2>Total: $32432.00</h2>
+        </div>
+
+        <div class="checkout-price-details">
+
+            <div class="cart-total">
+                <button onclick="window.location.href = '/CheckoutInfo'" style="width: -webkit-fill-available;">
+                    Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>

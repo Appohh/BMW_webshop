@@ -10,7 +10,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using GoogleMaps.LocationServices;
-
+using Address = Beamer_shop.Models.Address;
+using Beamer_shop.Pages.Components;
+using Newtonsoft.Json;
+using NuGet.Configuration;
 
 namespace Beamer_shop.Pages
 {
@@ -22,16 +25,21 @@ namespace Beamer_shop.Pages
         private IShoppingCartService _shoppingCartService;
 
         [BindProperty]
+        public Address ChangedShippingAddress { get; set; }
         public Address ShippingAddress { get; set; }
 
         public Customer? LoggedCustomer { get; set; }
 
-        public ShoppingCart? ShoppingCart { get; set; }
+        public IShoppingCart? ShoppingCart { get; set; }
 
         public IShippingCalculator ShippingCalculator { get; set; }
 
-        public string adress = "";
-        public string zipcode = "";
+
+        private JsonSerializerSettings settings = new JsonSerializerSettings
+        {
+            //Type hinting
+            TypeNameHandling = TypeNameHandling.Auto
+        };
 
         public CheckoutShipModel(ICustomerFactory customerFactory, IShoppingCartService shoppingCartService)
         {
@@ -47,8 +55,8 @@ namespace Beamer_shop.Pages
             getUser();
             if (LoggedCustomer != null)
             {
-                adress = LoggedCustomer.Address + ", " + LoggedCustomer.City;
-                zipcode = LoggedCustomer.ZipCode + ", " + LoggedCustomer.Country;
+
+                setAddress();
                 if (!refreshShippingCost()) { TempData["ErrorMessage"] = "Your cart is empty."; return Redirect("/CheckoutInfo"); };
                 return Page();
             }
@@ -63,12 +71,37 @@ namespace Beamer_shop.Pages
         public IActionResult OnPostChangeShippingAddress()
         {
             getUser();
-            adress = ShippingAddress.Street + " " + ShippingAddress.HouseNumber + ", " + ShippingAddress.City;
-            zipcode = ShippingAddress.Zipcode + ", " + ShippingAddress.Country;
+            ShippingAddress = ChangedShippingAddress;
             if(!refreshShippingCost()) { TempData["ErrorMessage"] = "Your cart is empty."; return Redirect("/CheckoutInfo"); };
 
             return Page();
 
+        }
+
+        public IActionResult OnPostPrepareOrder()
+        {
+            getUser();
+            setAddress();
+
+            if (LoggedCustomer == null)
+            {
+                TempData["ErrorMessage"] = "No user logged in."; return Redirect("/CheckoutInfo");
+            }
+
+            if(ShoppingCart == null || ShoppingCart.GetItems().Count < 1)
+            {
+                TempData["ErrorMessage"] = "Your cart is empty."; return Redirect("/CheckoutInfo");
+            }
+
+            if (!refreshShippingCost()) { TempData["ErrorMessage"] = "Update your delivery address."; return Redirect("/CheckoutInfo"); };
+
+            Order prepOrder = new Order(ShoppingCart, LoggedCustomer, ShippingCalculator.EstimatedDeliveryTime.Item1, ShippingCalculator.EstimatedDeliveryTime.Item2, new Logic.Models.Address(ShippingAddress.Street, ShippingAddress.HouseNumber, ShippingAddress.City, ShippingAddress.Zipcode, ShippingAddress.Country), ShippingCalculator.TotalShippingCost);
+
+            //serialize order object
+            var json = JsonConvert.SerializeObject(prepOrder, settings);
+
+            TempData["preparedOrder"] = json;
+            return Redirect("/CheckoutReview");
         }
 
         private void getUser()
@@ -81,6 +114,18 @@ namespace Beamer_shop.Pages
                 LoggedCustomer = _customerService.GetCustomerById(idValue);
             }
         }
+
+        public void setAddress()
+        {
+            ShippingAddress = new Address
+            {
+                Street = LoggedCustomer.Street,
+                HouseNumber = LoggedCustomer.HouseNumber,
+                City = LoggedCustomer.City,
+                Zipcode = LoggedCustomer.ZipCode,
+                Country = LoggedCustomer.Country
+            };
+        }
         
         private bool refreshShippingCost()
         {
@@ -88,7 +133,8 @@ namespace Beamer_shop.Pages
             
                 try
                 {
-                    ShippingCalculator = new ShippingCalculator(adress, ShoppingCart);
+                    string address = ShippingAddress.Street + " " + ShippingAddress.HouseNumber;
+                    ShippingCalculator = new ShippingCalculator(address, ShoppingCart);
                     return true;
                 } catch
                 {

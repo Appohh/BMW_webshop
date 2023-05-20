@@ -565,6 +565,11 @@ form span {
     grid-column: 3;
 }
 
+.chk-count-item {
+    display: flex;
+    justify-content: space-between;
+}
+
 /*Checkout progress bar*/
 #bar-progress {
     grid-row: 1;
