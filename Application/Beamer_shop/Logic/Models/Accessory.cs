@@ -16,7 +16,7 @@ namespace Logic.Models
         public Accessory() : base(0, "", 0, "", "", "", 0, 0)
         {
         }
-        public Accessory(string type, int id, string name, decimal price, string description, string imageUrl, string keyword, int taxrate, int weight) : base(id, name, price, description, imageUrl, keyword, taxrate, weight)
+        public Accessory(string type, int id, string name, double price, string description, string imageUrl, string keyword, int taxrate, int weight) : base(id, name, price, description, imageUrl, keyword, taxrate, weight)
         {
             Type = type;
         }

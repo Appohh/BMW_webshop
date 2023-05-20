@@ -24,7 +24,7 @@ namespace Logic.Models
         public Car() : base(0, "", 0, "", "", "", 0, 0)
         {
         }
-        public Car(string chassisNumber, string plate, string brand, string model, string make, string milage, string engine, int fuel, int horsePower, int torque, decimal time0to60, int topSpeed, int id, string name, decimal price, string description, string imageUrl, string keyword, int taxrate, int weight) : base(id, name, price, description, imageUrl, keyword, taxrate, weight)
+        public Car(string chassisNumber, string plate, string brand, string model, string make, string milage, string engine, int fuel, int horsePower, int torque, decimal time0to60, int topSpeed, int id, string name, double price, string description, string imageUrl, string keyword, int taxrate, int weight) : base(id, name, price, description, imageUrl, keyword, taxrate, weight)
         {
             ChassisNumber = chassisNumber;
             Plate = plate;

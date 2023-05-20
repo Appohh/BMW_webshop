@@ -62,10 +62,15 @@ namespace Beamer_shop.Pages
                 return Redirect("/CheckoutInfo");
             }
 
+            Order.CalculateTotalTax();
+            Order.CalculateTotalTotal();
+            //Order.ApplyDiscounts();
+
             return Page();
 
 
         }
+
 
 
 

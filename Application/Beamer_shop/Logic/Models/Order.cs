@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -56,6 +57,44 @@ namespace Logic.Models
             TotalTotal = totalTotal;
             TimeStamp = timeStamp;
         }
+
+
+        public void CalculateTotalTax()
+        {
+            double tax = Items.Taxes + (TotalShipping / (21 + 100) * 21);
+            TotalTax = Math.Round(tax, 2);
+        }
+
+        public void CalculateTotalTotal()
+        {
+            TotalTotal = Items.Total + TotalShipping;
+        }
+        public bool ApplyDiscounts(IEnumerable<IDiscount> discounts, [Optional] string coupon)
+        {
+            double discounted = 0;
+
+            foreach (IDiscount discount in discounts)
+            {
+
+                double x = discount.ApplyDiscount(this);
+                TotalTotal -= x;
+                discounted += x;
+            }
+
+            if (!string.IsNullOrEmpty(coupon))
+            {
+                IDiscount? validCoupon = discounts.OfType<ICouponDiscount>().FirstOrDefault(d => d.CouponCode == coupon);
+                if(validCoupon != null)
+                {
+                    double x = validCoupon.ApplyDiscount(this);
+                    TotalTotal -= x;
+                    discounted += x;
+                }
+            }
+
+            return discounted > 0;
+        }
+
 
 
     }

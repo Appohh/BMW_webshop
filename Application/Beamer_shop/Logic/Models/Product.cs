@@ -10,7 +10,7 @@ namespace Logic.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public decimal Price { get; set; }
+        public double Price { get; set; }
         public string? Description { get; set; }
         public string ImageUrl { get; set; }
         public string Keyword { get; set; }
@@ -18,7 +18,7 @@ namespace Logic.Models
         public int Weight { get; set; }
 
 
-        protected Product(int id, string name, decimal price, string? description, string imageUrl, string keyword, int taxrate, int weight)
+        protected Product(int id, string name, double price, string? description, string imageUrl, string keyword, int taxrate, int weight)
         {
             Id = id;
             Name = name;

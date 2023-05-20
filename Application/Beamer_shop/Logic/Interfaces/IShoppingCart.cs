@@ -5,8 +5,8 @@ namespace Logic.Interfaces
     public interface IShoppingCart
     {
         IDictionary<int, CartItem> _items { get; }
-        decimal Taxes { get; }
-        decimal Total { get; }
+        double Taxes { get; }
+        double Total { get; }
 
         void AddItem(Product product);
         void RemoveItem(Product product);

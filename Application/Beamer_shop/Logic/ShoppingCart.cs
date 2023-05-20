@@ -14,9 +14,9 @@ namespace Logic
     {
         public IDictionary<int, CartItem> _items { get; private set;  }
         [JsonProperty]
-        public decimal Taxes { get; private set; }
+        public double Taxes { get; private set; }
         [JsonProperty]
-        public decimal Total { get; private set; }
+        public double Total { get; private set; }
 
         public ShoppingCart()
         {
@@ -56,11 +56,11 @@ namespace Logic
 
         public void CalculatePrices()
         {
-            decimal tax = 0;
-            decimal total = 0;
+            double tax = 0;
+            double total = 0;
             foreach (CartItem item in _items.Values)
             {
-               tax += ((item.Product.Price / (item.Product.Taxrate + 100)) * item.Product.Taxrate) * item.Quantity;
+               tax += (item.Product.Price / (item.Product.Taxrate + 100)) * item.Product.Taxrate * item.Quantity;
                total += item.Product.Price * item.Quantity;
             }
             Taxes = tax;

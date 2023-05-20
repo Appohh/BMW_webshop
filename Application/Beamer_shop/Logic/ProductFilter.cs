@@ -64,12 +64,12 @@ namespace Logic
             if (StartPrice.HasValue)
             {
                 FilteredProducts = FilteredProducts.Where(product =>
-                product.Price >= Convert.ToDecimal(StartPrice)).ToList();
+                product.Price >= Convert.ToDouble(StartPrice)).ToList();
             }
             if (EndPrice.HasValue)
             {
                 FilteredProducts = FilteredProducts.Where(product =>
-                product.Price <= Convert.ToDecimal(EndPrice)).ToList();
+                product.Price <= Convert.ToDouble(EndPrice)).ToList();
             }
 
             return FilteredProducts;
