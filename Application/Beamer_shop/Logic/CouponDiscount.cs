@@ -18,10 +18,12 @@ namespace Logic
 
         public double MaxDiscount { get; private set; }
 
-        public CouponDiscount(string couponCode, int percentage)
+        public CouponDiscount(string couponCode, int percentage, double minimalSpend, double maxDiscount)
         {
             CouponCode = couponCode;
             Percentage = percentage;
+            MinimalSpend = minimalSpend;
+            MaxDiscount = maxDiscount;
         }
 
         public double ApplyDiscount(Order order)
@@ -37,6 +39,8 @@ namespace Logic
 
         public bool IsApplicable(Order order)
         {
+            if (order.DiscountsApplied?.Find(d => d.Equals(this)) != null) { return false; }
+
             if (order.TotalTotal - CalculateDiscount(order.TotalTotal) < 1) { return false; }
             
             if(CalculateDiscount(order.TotalTotal) > MaxDiscount) { return false; }
@@ -52,5 +56,13 @@ namespace Logic
             return total / 100 * Percentage;
         }
 
+        public override bool Equals(object? obj)
+        {
+            return obj is CouponDiscount discount &&
+                   CouponCode == discount.CouponCode &&
+                   Percentage == discount.Percentage &&
+                   MinimalSpend == discount.MinimalSpend &&
+                   MaxDiscount == discount.MaxDiscount;
+        }
     }
 }

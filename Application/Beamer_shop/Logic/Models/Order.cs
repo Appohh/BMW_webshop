@@ -17,7 +17,7 @@ namespace Logic.Models
         public Customer Customer { get; set; }
         public int PaymentType { get; set; }
         public int Paid { get; set; }
-        public int? DiscountId { get; set; }
+        public double? Discount { get; set; }
         public DateTime? Shipped { get; set; }
         public int EstimatedDeliveryA { get; set; }
         public int EstimatedDeliveryB { get; set; }
@@ -26,10 +26,11 @@ namespace Logic.Models
         public double TotalShipping { get; set; }
         public double TotalTotal { get; set; }
         public DateTime? TimeStamp { get; set; }
+        public List<IDiscount>? DiscountsApplied { get; set; }
 
         //Prep order
         [JsonConstructor]
-        public Order(IShoppingCart items, Customer customer, int estimatedDeliveryA, int estimatedDeliveryB, Address deliveryAddress, double totalShipping)
+        public Order(IShoppingCart items, Customer customer, int estimatedDeliveryA, int estimatedDeliveryB, Address deliveryAddress, double totalShipping,[Optional] List<IDiscount> discountsApplied)
         {
             Items = items;
             Customer = customer;
@@ -37,17 +38,22 @@ namespace Logic.Models
             EstimatedDeliveryB = estimatedDeliveryB;
             DeliveryAddress = deliveryAddress;
             TotalShipping = totalShipping;
+            if(discountsApplied != null)
+            {
+                DiscountsApplied = discountsApplied;
+            } else DiscountsApplied = new List<IDiscount>();
+
         }
 
         //Full order
-        public Order(int id, IShoppingCart items, Customer customer, int paymentType, int paid, int? discountId, DateTime? shipped, int estimatedDeliveryA, int estimatedDeliveryB, Address deliveryAddress, double totalTax, double totalShipping, double totalTotal, DateTime timeStamp)
+        public Order(int id, IShoppingCart items, Customer customer, int paymentType, int paid, double? discountId, DateTime? shipped, int estimatedDeliveryA, int estimatedDeliveryB, Address deliveryAddress, double totalTax, double totalShipping, double totalTotal, DateTime timeStamp, List<IDiscount> discountsApplied)
         {
             Id = id;
             Items = items;
             Customer = customer;
             PaymentType = paymentType;
             Paid = paid;
-            DiscountId = discountId;
+            Discount = discountId;
             Shipped = shipped;
             EstimatedDeliveryA = estimatedDeliveryA;
             EstimatedDeliveryB = estimatedDeliveryB;
@@ -56,6 +62,11 @@ namespace Logic.Models
             TotalShipping = totalShipping;
             TotalTotal = totalTotal;
             TimeStamp = timeStamp;
+            if (discountsApplied != null)
+            {
+                DiscountsApplied = discountsApplied;
+            }
+            else DiscountsApplied = new List<IDiscount>();
         }
 
 
@@ -75,10 +86,15 @@ namespace Logic.Models
 
             foreach (IDiscount discount in discounts)
             {
+                if(discount is ICouponDiscount) { continue; }
 
                 double x = discount.ApplyDiscount(this);
-                TotalTotal -= x;
-                discounted += x;
+                if (x > 0)
+                {
+                    TotalTotal -= x;
+                    discounted += x;
+                    this.DiscountsApplied.Add(discount);
+                }
             }
 
             if (!string.IsNullOrEmpty(coupon))
@@ -87,11 +103,16 @@ namespace Logic.Models
                 if(validCoupon != null)
                 {
                     double x = validCoupon.ApplyDiscount(this);
-                    TotalTotal -= x;
-                    discounted += x;
+                    if (x > 0)
+                    {
+                        TotalTotal -= x;
+                        discounted += x;
+                        this.DiscountsApplied.Add(validCoupon);
+                    }
                 }
             }
 
+            this.Discount = discounted;
             return discounted > 0;
         }
 

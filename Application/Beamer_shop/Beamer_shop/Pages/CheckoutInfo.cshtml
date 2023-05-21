@@ -68,7 +68,7 @@
             <div class="chk-account-info"> 
                 <h2>Buyer information:</h2>
                 <h3>@customer.FirstName @customer.LastName</h3>
-                <h3>@customer.BirthDate</h3>
+                <h3>@DateTime.Parse(customer.BirthDate).ToString("dd-MM-yyyy")</h3>
                 <h3>@customer.Email</h3>
                 <br> 
                 <h2>Buyer address:</h2>
@@ -179,7 +179,7 @@
                         <img src="@item.Product.ImageUrl" alt="@item.Product.Name">
                         <div class="content-info">
                             <h4>@item.Product.Name</h4>
-                            <h3>€@item.Product.Price</h3>
+                            <h3>€@item.Product.Price.ToString("N0")</h3>
                         </div>
                         <div class="content-quantity">
                             <button onclick="editCartAjax(@item.Product.Id, 'add', 'checkout')">+</button>

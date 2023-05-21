@@ -67,8 +67,10 @@ namespace Beamer_shop.Pages
                 
                 
             }
+
                     await HttpContext.ForbidAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-                    return Page();
+                    TempData["ErrorMessage"] = "Wrong credentials.";
+                    return Redirect("/Login");
              
         }
 

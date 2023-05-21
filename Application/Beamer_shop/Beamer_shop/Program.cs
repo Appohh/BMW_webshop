@@ -18,12 +18,18 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddTransient<ICustomerRepository, CustomerRepository>();
 builder.Services.AddTransient<ICarRepository, CarRepository>();
 builder.Services.AddTransient<IAccessoryRepository, AccessoryRepository>();
+builder.Services.AddTransient<IDiscountRepository, DiscountRepository>();
+
 
 builder.Services.AddTransient<ICustomerService, CustomerService>();
 builder.Services.AddTransient<IProductService, ProductService>();
+builder.Services.AddTransient<IDiscountService, DiscountService>();
+
 
 builder.Services.AddTransient<ICustomerFactory, CustomerFactory>();
 builder.Services.AddTransient<IProductFactory, ProductFactory>();
+builder.Services.AddTransient<IDiscountFactory, DiscountFactory>();
+
 builder.Services.AddScoped<IShoppingCartService, ShoppingCartService>();
 
 builder.Services.AddSession(options => {
