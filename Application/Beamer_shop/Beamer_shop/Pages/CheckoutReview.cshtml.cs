@@ -34,7 +34,7 @@ namespace Beamer_shop.Pages
             _customerService = _customerFactory.CustomerService;
 
             _discountFactory = discountFactory;
-            _discountService = discountFactory.DiscountService;
+            _discountService = _discountFactory.DiscountService;
         }
         public IActionResult OnGet()
         {
@@ -66,13 +66,23 @@ namespace Beamer_shop.Pages
             {
                 string coupon = value.ToString();
 
+                if(string.IsNullOrEmpty(coupon))
+                {
+                    //serialize order object
+                    var json_p = JsonConvert.SerializeObject(Order, settings);
+                    TempData["preparedOrder"] = json_p;
+
+                    TempData["ErrorMessage"] = "Please enter a coupon code.";
+                    return Redirect("/CheckoutReview");
+                }
+
                 if (!Order.ApplyDiscounts(_discountService.GetAllActiveDiscounts(), coupon))
                 {
                     Order.DiscountsApplied.Clear();
 
                     //serialize order object
-                    var json_ = JsonConvert.SerializeObject(Order, settings);
-                    TempData["preparedOrder"] = json_;
+                    var json__ = JsonConvert.SerializeObject(Order, settings);
+                    TempData["preparedOrder"] = json__;
 
                     TempData["ErrorMessage"] = "Coupon not applicable.";
                     return Redirect("/CheckoutReview");
@@ -85,10 +95,59 @@ namespace Beamer_shop.Pages
                 return Page();
             }
 
+            //serialize order object
+            var json_ = JsonConvert.SerializeObject(Order, settings);
+            TempData["preparedOrder"] = json_;
             TempData["ErrorMessage"] = "Please enter coupon code.";
+
             return Redirect("/CheckoutReview");
         }
 
+        public IActionResult OnPostCheckoutOrder()
+        {
+            var validationResult = setupPage();
+            if (validationResult != null)
+            {
+                return validationResult;
+            }
+
+
+            return Page();
+        }
+
+        public IActionResult OnPostPaymentMethodCreditCard()
+        {
+            var validationResult = setupPage();
+            if (validationResult != null)
+            {
+                return validationResult;
+            }
+
+            Order.PaymentType = 0;
+
+            //serialize order object
+            var json_ = JsonConvert.SerializeObject(Order, settings);
+            TempData["preparedOrder"] = json_;
+
+            return Page();
+        }
+
+        public IActionResult OnPostPaymentMethodKlarna()
+        {
+            var validationResult = setupPage();
+            if (validationResult != null)
+            {
+                return validationResult;
+            }
+
+            Order.PaymentType = 1;
+
+            //serialize order object
+            var json_ = JsonConvert.SerializeObject(Order, settings);
+            TempData["preparedOrder"] = json_;
+
+            return Page();
+        }
 
         private IActionResult? setupPage()
         {

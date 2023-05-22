@@ -95,7 +95,7 @@ namespace Beamer_shop.Pages
 
             if (!refreshShippingCost()) { TempData["ErrorMessage"] = "Update your delivery address."; return Redirect("/CheckoutInfo"); };
 
-            Order prepOrder = new Order(ShoppingCart, LoggedCustomer, ShippingCalculator.EstimatedDeliveryTime.Item1, ShippingCalculator.EstimatedDeliveryTime.Item2, new Logic.Models.Address(ShippingAddress.Street, ShippingAddress.HouseNumber, ShippingAddress.City, ShippingAddress.Zipcode, ShippingAddress.Country), ShippingCalculator.TotalShippingCost);
+            Order prepOrder = new Order(ShoppingCart, LoggedCustomer, 0, ShippingCalculator.EstimatedDeliveryTime.Item1, ShippingCalculator.EstimatedDeliveryTime.Item2, new Logic.Models.Address(ShippingAddress.Street, ShippingAddress.HouseNumber, ShippingAddress.City, ShippingAddress.Zipcode, ShippingAddress.Country), ShippingCalculator.TotalShippingCost);
 
             //serialize order object
             var json = JsonConvert.SerializeObject(prepOrder, settings);

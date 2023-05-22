@@ -563,11 +563,46 @@ form span {
 
 #chk-ship-c .checkout-cart-container {
     grid-column: 3;
+    grid-row: 1 / 3;
+    height: fit-content;
 }
 
 .chk-count-item {
     display: flex;
     justify-content: space-between;
+}
+
+.chk-cbn-shp {
+    display: grid;
+    grid-column: 1 / 3;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.pay-mthd {
+    width: 276px;
+    height: 152px;
+    border-radius: 10px;
+    padding: 4px;
+}
+
+.pay-mthd-cnt {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.chk-pay-mthd {
+    grid-column: 1 / 3;
+}
+
+.pymnt-mthd-b {
+    width: 276px;
+    height: 152px;
+    background-size: cover;
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy5WRZXYEU1ohkJBB7hNbkzm5McfqzIHSXew&usqp=CAU);
+    border-radius: 10px;
+    padding: 4px;
 }
 
 /*Checkout progress bar*/

@@ -30,10 +30,11 @@ namespace Logic.Models
 
         //Prep order
         [JsonConstructor]
-        public Order(IShoppingCart items, Customer customer, int estimatedDeliveryA, int estimatedDeliveryB, Address deliveryAddress, double totalShipping,[Optional] List<IDiscount> discountsApplied)
+        public Order(IShoppingCart items, Customer customer, int paymentType, int estimatedDeliveryA, int estimatedDeliveryB, Address deliveryAddress, double totalShipping,[Optional] List<IDiscount> discountsApplied)
         {
             Items = items;
             Customer = customer;
+            PaymentType = paymentType;
             EstimatedDeliveryA = estimatedDeliveryA;
             EstimatedDeliveryB = estimatedDeliveryB;
             DeliveryAddress = deliveryAddress;

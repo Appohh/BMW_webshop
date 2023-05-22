@@ -47,6 +47,8 @@
         {
             Customer customer = Model.LoggedCustomer;
 
+            <div class="chk-cbn-shp">
+              
             <div class="chk-account-info">
                 <h2>Buyer information:</h2>
                 <h3>@customer.FirstName @customer.LastName</h3>
@@ -59,7 +61,7 @@
             </div>
 
             
-           Address address = Model.Order.DeliveryAddress;
+                @{ Address address = Model.Order.DeliveryAddress; }
             
 
             <div class="chk-account-shipping" id="seeShippingAdr">
@@ -77,6 +79,33 @@
 
             </div>
 
+            <div class="chk-pay-mthd">
+                <h2>Select payment method</h2>
+                    <div class="pay-mthd-cnt">
+
+                        @if(Model.Order.PaymentType == 0){
+                            <form asp-page-handler="PaymentMethodCreditCard" method="post">
+                                <input value="" type="submit" class="pymnt-mthd-b" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy5WRZXYEU1ohkJBB7hNbkzm5McfqzIHSXew&usqp=CAU);border: 8px solid;outline-color: black;outline-style: solid;">
+                            </form>
+                            <form asp-page-handler="PaymentMethodKlarna" method="post">
+                                <input value="" type="submit" class="pymnt-mthd-b" style="background-image: url(https://www.deadsailorbmx.co.uk/wp-content/uploads/2019/09/Klarna_ActionBadge_Secondary_Pink-700x420.png);">
+                            </form>
+                        }
+
+                        @if (Model.Order.PaymentType == 1)
+                        {
+                            <form asp-page-handler="PaymentMethodCreditCard" method="post">
+                                <input value="" type="submit" class="pymnt-mthd-b" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy5WRZXYEU1ohkJBB7hNbkzm5McfqzIHSXew&usqp=CAU);">
+                            </form>
+                            <form asp-page-handler="PaymentMethodKlarna" method="post">
+                                <input value="" type="submit" class="pymnt-mthd-b" style="background-image: url(https://www.deadsailorbmx.co.uk/wp-content/uploads/2019/09/Klarna_ActionBadge_Secondary_Pink-700x420.png);border: 8px solid;outline-color: black;outline-style: solid;">
+                            </form>
+                        }
+
+
+                    </div>
+            </div>
+            </div>
         }
     }
 
@@ -105,7 +134,7 @@
             <hr />
             @{double _discount = 0; 
             if(order.Discount.HasValue) { _discount = Math.Round(order.Discount.Value, 2); } }
-            <h4>Discount: €@_discount</h4>
+            <h4>Discount: €@_discount.ToString("N0")</h4>
             @if(_discount < 1) {
                 <h2>Total: €@Math.Round(order.TotalTotal, 2).ToString("N0")</h2>
             } else {
@@ -119,9 +148,9 @@
         <div class="checkout-price-details">
 
             <div class="cart-total">
-                <button onclick="window.location.href = '/CheckoutInfo'" style="width: -webkit-fill-available;">
-                    Checkout
-                </button>
+                <form method="post" style="width: -webkit-fill-available;">
+                    <input asp-page-handler="CheckoutOrder" value="Checkout" type="submit" style="width:inherit;">
+                </form>
             </div>
         </div>
     </div>
