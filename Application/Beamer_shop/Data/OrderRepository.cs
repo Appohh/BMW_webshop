@@ -4,8 +4,10 @@ using Logic.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Data
@@ -16,7 +18,7 @@ namespace Data
         {
             get
             {
-                return "SELECT * FROM Order";
+                return "SELECT [Id] ,[CustomerId] ,[PaymentType] ,[Paid] ,[Discount] ,[Shipped] ,[EstimatedDeliveryA] ,[EstimatedDeliveryB] ,[Street], [Housenumber], [City] ,[Zipcode] ,[Country] ,[TotalTax] ,[TotalShipping] ,[TotalTotal] ,[Timestamp] FROM [Order]";
             }
         }
 
@@ -29,6 +31,8 @@ namespace Data
 
         public List<Order> GetAllOrders()
         {
+            OrderAutoMapper orderDataRowMapper = new OrderAutoMapper();
+
             List<Order> Orders = new List<Order>();
 
             //get datatable of queried data
@@ -39,7 +43,7 @@ namespace Data
             //itterate trough all datarows, validate and convert to objects
             foreach (DataRow dr in table.Rows)
             {
-               // Orders.Add(DataConvertingMethods.ConvertDataRowToObject<Order>(dr));
+               Orders.Add(orderDataRowMapper.MapDataRowToObject(dr));
             }
 
             //return collection of objects
@@ -54,19 +58,32 @@ namespace Data
 
         public bool MakeOrder(Order order)
         {
-            //if(string.IsNullOrEmpty(customer.Salt) || string.IsNullOrEmpty(customer.Hash)) { return false; }
+            CultureInfo culture = CultureInfo.CreateSpecificCulture("en-US");
 
-            //string query = $"INSERT INTO Order (Id, Lastname, Email, Birthdate, Street, HouseNumber, Zipcode, City, Country) OUTPUT INSERTED.Id " +
-            //               $"VALUES ('{customer.FirstName}', '{customer.LastName}', '{customer.Email}', '{customer.BirthDate}', '{customer.Street}', '{customer.HouseNumber}', '{customer.ZipCode}', '{customer.City}', '{customer.Country}' );";
-            //int createdId = executeIdScalar(query);
-            //if(createdId > 0)
-            //{               
-            //    string followQuery = $"INSERT INTO Auth_credential (customer_id, username, password_hash, salt) VALUES " +
-            //        $"({createdId}, '{customer.Email}', '{customer.Hash}', '{customer.Salt}')";
-            //    refreshCustomerData();
-            //    return executeQuery(followQuery) == 0 ? false : true;
-            //}
-            //else return false;
+            string query = $"INSERT INTO [Order] (CustomerId, PaymentType, Discount, EstimatedDeliveryA, EstimatedDeliveryB, Street, Housenumber, City, Zipcode, Country, TotalTax, TotalShipping, TotalTotal) OUTPUT INSERTED.Id " +
+                           $"VALUES ('{order.CustomerId}', '{order.PaymentType}', '{order.Discount.Value.ToString("0.00", culture)}', '{order.EstimatedDeliveryA}', '{order.EstimatedDeliveryB}', '{order.DeliveryAddress.Street}', '{order.DeliveryAddress.HouseNumber}', '{order.DeliveryAddress.City}', '{order.DeliveryAddress.Zipcode}', '{order.DeliveryAddress.Country}', '{order.TotalTax.ToString("0.00", culture)}', '{order.TotalShipping.ToString("0.00", culture)}', '{order.TotalTotal.ToString("0.00", culture)}' );";
+
+            int createdId = executeIdScalar(query);
+            if(createdId > 0)
+            {
+                int x = 0;
+                int y = 0;
+
+                foreach(CartItem item in order.Items.GetItems())
+                {
+                    x++;
+                    string followQuery = $"INSERT INTO Order_row (OrderId, ProductId, Quantity) VALUES " +
+                        $"({createdId}, '{item.Product.Id}', '{item.Quantity}')";
+
+                    y += executeQuery(followQuery);
+                }
+
+
+                refreshOrderData();
+                return x == y;
+
+
+            }
             return false;
         }
 

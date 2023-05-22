@@ -576,7 +576,7 @@ form span {
     display: grid;
     grid-column: 1 / 3;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr auto;
 }
 
 .pay-mthd {

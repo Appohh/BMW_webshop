@@ -1,3 +1,4 @@
+using AutoMapper.Configuration;
 using Factory.Interfaces;
 using Logic;
 using Logic.Interfaces;
@@ -7,6 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
 using NuGet.Configuration;
+using System;
+using System.ComponentModel.DataAnnotations;
+using ValidationContext = System.ComponentModel.DataAnnotations.ValidationContext;
 
 namespace Beamer_shop.Pages
 {
@@ -19,6 +23,9 @@ namespace Beamer_shop.Pages
         private IDiscountFactory _discountFactory;
         private IDiscountService _discountService;
 
+        private IOrderFactory _orderFactory;
+        private IOrderService _orderService;
+
         public Customer? LoggedCustomer { get; set; }
         public Order? Order { get; set; }
 
@@ -28,13 +35,16 @@ namespace Beamer_shop.Pages
             TypeNameHandling = TypeNameHandling.Auto
         };
 
-        public CheckoutReviewModel(ICustomerFactory customerFactory, IDiscountFactory discountFactory)
+        public CheckoutReviewModel(ICustomerFactory customerFactory, IDiscountFactory discountFactory, IOrderFactory orderFactory)
         {
             _customerFactory = customerFactory;
             _customerService = _customerFactory.CustomerService;
 
             _discountFactory = discountFactory;
             _discountService = _discountFactory.DiscountService;
+
+            _orderFactory = orderFactory;
+            _orderService = orderFactory.OrderService;
         }
         public IActionResult OnGet()
         {
@@ -44,9 +54,7 @@ namespace Beamer_shop.Pages
             Order.CalculateTotalTotal();
             _=Order.ApplyDiscounts(_discountService.GetAllActiveDiscounts());
 
-            //serialize order object
-            var json = JsonConvert.SerializeObject(Order, settings);
-            TempData["preparedOrder"] = json;
+            tempOrder();
 
             return Page();
 
@@ -68,39 +76,31 @@ namespace Beamer_shop.Pages
 
                 if(string.IsNullOrEmpty(coupon))
                 {
-                    //serialize order object
-                    var json_p = JsonConvert.SerializeObject(Order, settings);
-                    TempData["preparedOrder"] = json_p;
 
-                    TempData["ErrorMessage"] = "Please enter a coupon code.";
-                    return Redirect("/CheckoutReview");
+                    tempOrder();
+
+                    return throwError("/CheckoutReview", "Please enter a coupon code.");
+
                 }
 
                 if (!Order.ApplyDiscounts(_discountService.GetAllActiveDiscounts(), coupon))
                 {
                     Order.DiscountsApplied.Clear();
 
-                    //serialize order object
-                    var json__ = JsonConvert.SerializeObject(Order, settings);
-                    TempData["preparedOrder"] = json__;
+                    tempOrder();
 
-                    TempData["ErrorMessage"] = "Coupon not applicable.";
-                    return Redirect("/CheckoutReview");
+                    return throwError("/CheckoutReview", "Coupon not applicable.");
+
                 }
 
-                //serialize order object
-                var json = JsonConvert.SerializeObject(Order, settings);
-                TempData["preparedOrder"] = json;
+                tempOrder();
 
                 return Page();
             }
 
-            //serialize order object
-            var json_ = JsonConvert.SerializeObject(Order, settings);
-            TempData["preparedOrder"] = json_;
-            TempData["ErrorMessage"] = "Please enter coupon code.";
+            tempOrder();
 
-            return Redirect("/CheckoutReview");
+            return throwError("/CheckoutReview", "Please enter coupon code.");
         }
 
         public IActionResult OnPostCheckoutOrder()
@@ -111,8 +111,32 @@ namespace Beamer_shop.Pages
                 return validationResult;
             }
 
+            var validationResults = new List<ValidationResult>();
+            var validationContext = new ValidationContext(Order);
+            Validator.TryValidateObject(Order, validationContext, validationResults);
 
-            return Page();
+            if (validationResults.Any()) { return throwError("/CheckoutInfo", "There has occured an error, please try again or contact us."); }
+
+            switch (Order.PaymentType)
+            {
+                case 0:
+                    if (_orderService.MakeOrder(Order))
+                    {
+                        return Redirect("/PayCC");
+                    }
+                    else return throwError("/CheckoutInfo", "There has occured an error, please try again or contact us.");
+   
+                case 1:
+                    if (_orderService.MakeOrder(Order))
+                    {
+                        return Redirect("/Account");
+                    }
+                    else return throwError("/CheckoutInfo", "There has occured an error, please try again or contact us.");
+
+                default:
+                    return throwError("/CheckoutInfo", "There has occured an error, please try again or contact us.");
+            }
+
         }
 
         public IActionResult OnPostPaymentMethodCreditCard()
@@ -125,9 +149,7 @@ namespace Beamer_shop.Pages
 
             Order.PaymentType = 0;
 
-            //serialize order object
-            var json_ = JsonConvert.SerializeObject(Order, settings);
-            TempData["preparedOrder"] = json_;
+            tempOrder();
 
             return Page();
         }
@@ -142,9 +164,7 @@ namespace Beamer_shop.Pages
 
             Order.PaymentType = 1;
 
-            //serialize order object
-            var json_ = JsonConvert.SerializeObject(Order, settings);
-            TempData["preparedOrder"] = json_;
+            tempOrder();
 
             return Page();
         }
@@ -155,37 +175,50 @@ namespace Beamer_shop.Pages
             {
                 Order = JsonConvert.DeserializeObject<Order>(TempData["preparedOrder"].ToString(), settings);
             }
+            
 
-            if (Order == null) { TempData["ErrorMessage"] = "Order not found."; return Redirect("/CheckoutInfo"); }
+            if (Order == null) { return throwError("/CheckoutInfo", "Order not found."); }
 
             //check if user is logged in
             if (User?.Identity?.IsAuthenticated == false)
             {
-                TempData["ErrorMessage"] = "No user logged in."; return Redirect("/CheckoutInfo");
+                return throwError("/CheckoutInfo", "No user logged in.");
             }
 
             //get id of logged in user
             var idClaim = User.FindFirst("id");
             if (idClaim == null)
             {
-                TempData["ErrorMessage"] = "User not found."; return Redirect("/CheckoutInfo");
+                return throwError("/CheckoutInfo", "User not found.");
             }
+
             int idValue = Convert.ToInt32(idClaim.Value);
 
             //get user
             if ((LoggedCustomer = _customerService.GetCustomerById(idValue)) == null)
             {
-                TempData["ErrorMessage"] = "User not found.";
-                return Redirect("/CheckoutInfo");
+                return throwError("/CheckoutInfo", "User not found.");
             }
 
             if (!LoggedCustomer.Equals(_customerService.GetCustomerById(idValue)))
             {
-                TempData["ErrorMessage"] = "Failed to match user with order.";
-                return Redirect("/CheckoutInfo");
+                return throwError("/CheckoutInfo", "Failed to match user with order.");
             }
 
             return null;
+        }
+
+        private void tempOrder()
+        {
+            //serialize order object
+            var json = JsonConvert.SerializeObject(Order, settings);
+            TempData["preparedOrder"] = json;
+        }
+
+        private IActionResult throwError(string page, string error)
+        {
+            TempData["ErrorMessage"] = error;
+            return Redirect(page);
         }
 
     }

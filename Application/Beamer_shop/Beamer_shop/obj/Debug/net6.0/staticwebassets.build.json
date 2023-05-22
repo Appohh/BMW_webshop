@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "sA64RUJEEArk4vQtOmzjzwjwBw3MWSyyt5K5UlzqHkU=",
+  "Hash": "000IYe5NGhtYiJQe2ZF+F1+F8UgOIwdxJckcUu+T+Ww=",
   "Source": "Beamer_shop",
   "BasePath": "_content/Beamer_shop",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\alpay\\Dev_projects\\Beamer_Shop\\Application\\Beamer_shop\\Beamer_shop\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Beamer_shop.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\alpay\\Dev_projects\\Beamer_Shop\\Application\\Beamer_shop\\Beamer_shop\\wwwroot\\css\\CreditCard.css",
+      "SourceId": "Beamer_shop",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\alpay\\Dev_projects\\Beamer_Shop\\Application\\Beamer_shop\\Beamer_shop\\wwwroot\\",
+      "BasePath": "_content/Beamer_shop",
+      "RelativePath": "css/CreditCard.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\CreditCard.css"
     },
     {
       "Identity": "C:\\Users\\alpay\\Dev_projects\\Beamer_Shop\\Application\\Beamer_shop\\Beamer_shop\\wwwroot\\css\\site.css",

@@ -74,6 +74,10 @@ namespace Beamer_shop.Pages
             ShippingAddress = ChangedShippingAddress;
             if(!refreshShippingCost()) { TempData["ErrorMessage"] = "Your cart is empty."; return Redirect("/CheckoutInfo"); };
 
+            var json = JsonConvert.SerializeObject(ShippingAddress, settings);
+
+            TempData["newShippingAddress"] = json;
+
             return Page();
 
         }
@@ -82,6 +86,11 @@ namespace Beamer_shop.Pages
         {
             getUser();
             setAddress();
+            var shippingAdress = TempData["newShippingAddress"];
+            if(shippingAdress != null)
+            {
+                ShippingAddress = JsonConvert.DeserializeObject<Address>(shippingAdress.ToString());
+            }
 
             if (LoggedCustomer == null)
             {
@@ -95,7 +104,7 @@ namespace Beamer_shop.Pages
 
             if (!refreshShippingCost()) { TempData["ErrorMessage"] = "Update your delivery address."; return Redirect("/CheckoutInfo"); };
 
-            Order prepOrder = new Order(ShoppingCart, LoggedCustomer, 0, ShippingCalculator.EstimatedDeliveryTime.Item1, ShippingCalculator.EstimatedDeliveryTime.Item2, new Logic.Models.Address(ShippingAddress.Street, ShippingAddress.HouseNumber, ShippingAddress.City, ShippingAddress.Zipcode, ShippingAddress.Country), ShippingCalculator.TotalShippingCost);
+            Order prepOrder = new Order(ShoppingCart, LoggedCustomer.Id, 0, ShippingCalculator.EstimatedDeliveryTime.Item1, ShippingCalculator.EstimatedDeliveryTime.Item2, new Logic.Models.Address(ShippingAddress.Street, ShippingAddress.HouseNumber, ShippingAddress.City, ShippingAddress.Zipcode, ShippingAddress.Country), ShippingCalculator.TotalShippingCost);
 
             //serialize order object
             var json = JsonConvert.SerializeObject(prepOrder, settings);

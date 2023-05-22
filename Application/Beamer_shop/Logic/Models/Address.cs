@@ -16,6 +16,10 @@ namespace Logic.Models
         public string Zipcode { get; set; }
         public string Country { get; set; }
 
+        public Address()
+        {
+
+        }
         public Address(string street, string houseNumber, string city, string zipcode, string country)
         {
             Street = street;
