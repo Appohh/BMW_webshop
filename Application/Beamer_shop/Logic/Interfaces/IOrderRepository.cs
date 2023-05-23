@@ -10,8 +10,11 @@ namespace Logic.Interfaces
     public interface IOrderRepository
     {
         List<Order> GetAllOrders();
-        bool MakeOrder(Order order);
+        int MakeOrder(Order order);
         Order? GetOrderById(int id);
+        bool FinalizeOrderPayment(int id);
+        List<Order>GetCustomerOrders(int customerId);
+        List<Tuple<int, int>>GetOrderItems(int orderId);
 
     }
 }

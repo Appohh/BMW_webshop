@@ -6,6 +6,9 @@ namespace Logic.Interfaces
     {
         List<Order> GetAllOrders();
         Order? GetOrderById(int id);
-        bool MakeOrder(Order order);
+        int MakeOrder(Order order);
+        bool FinalizeOrderPayment(Order order);
+        List<Order>GetCustomerOrders(Customer customer);
+        List<Tuple<int, int>> GetOrderItems(Order order);
     }
 }

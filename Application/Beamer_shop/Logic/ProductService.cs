@@ -23,7 +23,7 @@ namespace Logic
                 ?? throw new ArgumentNullException(nameof(accessoryRepository));
 
             _products = new Dictionary<int, Product>();
-            retrieveData(); //timer?
+            retrieveData(); 
         }
 
         private void retrieveData()

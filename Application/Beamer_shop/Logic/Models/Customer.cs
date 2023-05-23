@@ -33,5 +33,6 @@ namespace Logic.Models
                    City == customer.City &&
                    Country == customer.Country;
         }
+
     }
 }

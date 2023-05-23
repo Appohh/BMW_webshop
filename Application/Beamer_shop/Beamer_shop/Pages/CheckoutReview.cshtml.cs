@@ -117,18 +117,25 @@ namespace Beamer_shop.Pages
 
             if (validationResults.Any()) { return throwError("/CheckoutInfo", "There has occured an error, please try again or contact us."); }
 
+            int orderId;
             switch (Order.PaymentType)
             {
                 case 0:
-                    if (_orderService.MakeOrder(Order))
+                    orderId = _orderService.MakeOrder(Order);
+                    if (orderId > 0)
                     {
+                        Order.Id = orderId;
+                        tempOrder();
                         return Redirect("/PayCC");
                     }
                     else return throwError("/CheckoutInfo", "There has occured an error, please try again or contact us.");
    
                 case 1:
-                    if (_orderService.MakeOrder(Order))
+                    orderId = _orderService.MakeOrder(Order);
+                    if (orderId > 0)
                     {
+                        Order.Id = orderId;
+                        tempOrder();
                         return Redirect("/Account");
                     }
                     else return throwError("/CheckoutInfo", "There has occured an error, please try again or contact us.");
