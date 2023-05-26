@@ -4,113 +4,34 @@
 @{
 }
 
-@{
-    Customer customer = Model.LoggedCustomer;
-}
 
-@foreach (Order order in Model.orders){
-<div class="ordr-order">
-<div class="chk-cbn-shp">
+<div class="orders-container">
 
-    <div class="chk-account-info">
-        <h2>Buyer information:</h2>
-        <h3>@customer.FirstName @customer.LastName</h3>
-        <h3>@DateTime.Parse(customer.BirthDate).ToString("dd-MM-yyyy")</h3>
-        <h3>@customer.Email</h3>
-        <br>
-        <h2>Buyer address:</h2>
-        <h3>@customer.Street @customer.HouseNumber, @customer.City</h3>
-        <h3>@customer.ZipCode, @customer.Country</h3>
-    </div>
-
-
-    @{
-        Address address = order.DeliveryAddress;
-    }
-
-
-    <div class="chk-account-shipping" id="seeShippingAdr">
-        <h2 style="display:inline-block;">Shipping address: </h2> <br>
-        <h3 style="display:inline;">@address.Street @address.HouseNumber, @address.City</h3>
-        <h3>@address.Zipcode, @address.Country</h3>
-
-        <br>
-
-        <h2>Shipping:</h2>
-        <h3>Cost: €@order.TotalShipping.ToString("N0")</h3>
-
-        <h3>Estimated delivery: Between @order.EstimatedDeliveryA - @order.EstimatedDeliveryB days.</h3>
-
-
-    </div>
-
-    <div class="chk-pay-mthd">
-        <h2>Select payment method</h2>
-        <div class="pay-mthd-cnt">
-
-            @if (order.PaymentType == 0)
-            {
-                <form asp-page-handler="PaymentMethodCreditCard" method="post">
-                    <input value="" type="submit" class="pymnt-mthd-b" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy5WRZXYEU1ohkJBB7hNbkzm5McfqzIHSXew&usqp=CAU);border: 8px solid;outline-color: black;outline-style: solid;">
-                </form>
-                <form asp-page-handler="PaymentMethodKlarna" method="post">
-                    <input value="" type="submit" class="pymnt-mthd-b" style="background-image: url(https://www.deadsailorbmx.co.uk/wp-content/uploads/2019/09/Klarna_ActionBadge_Secondary_Pink-700x420.png);">
-                </form>
-            }
-
-            @if (order.PaymentType == 1)
-            {
-                <form asp-page-handler="PaymentMethodCreditCard" method="post">
-                    <input value="" type="submit" class="pymnt-mthd-b" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy5WRZXYEU1ohkJBB7hNbkzm5McfqzIHSXew&usqp=CAU);">
-                </form>
-                <form asp-page-handler="PaymentMethodKlarna" method="post">
-                    <input value="" type="submit" class="pymnt-mthd-b" style="background-image: url(https://www.deadsailorbmx.co.uk/wp-content/uploads/2019/09/Klarna_ActionBadge_Secondary_Pink-700x420.png);border: 8px solid;outline-color: black;outline-style: solid;">
-                </form>
-            }
-
-
-        </div>
-    </div>
-   </div>
-        
-    
-
-<div class="checkout-cart-container">
-    <div class="checkout-cart">
-
-        <h2>Overview</h2>
-        <div class="chk-count-item">
-            <h3>Products (@order.Items.GetItems().Count)</h3><h3>€@order.Items.Total.ToString("N0")</h3>
-        </div>
-        <div class="chk-count-item">
-            <h3>Shipping</h3><h3>€@Math.Round(order.TotalShipping, 2).ToString("N0")</h3>
-        </div>
-        <div class="chk-count-item">
-            <h3>Tax</h3><h3>€@Math.Round(order.TotalTax, 2).ToString("N0")</h3>
-        </div>
-        <hr>
-        @{
-            double subtotal = order.Items.Total + order.TotalShipping;
-        }
-        <h3>Subtotal: €@Math.Round(subtotal, 2).ToString("N0")</h3>
-        <hr />
-        @{
-            double _discount = 0;
-            if (order.Discount.HasValue) { _discount = Math.Round(order.Discount.Value, 2); }
-        }
-        <h4>Discount: €@_discount.ToString("N0")</h4>
-        @if (_discount < 1)
-        {
-            <h2>Total: €@Math.Round(order.TotalTotal, 2).ToString("N0")</h2>
+@foreach(Order order in Model.orders){
+    <div class="ordrs-ordr">
+        <h3>Order: @order.TimeStamp.Value.ToString("dd-MM-yyyy");</h3>
+        <h4>Tax: @order.TotalTax.ToString("N0");</h4>
+        <h4>Shipping: @order.TotalShipping.ToString("N0");</h4>
+        <h4>Discount: @order.Discount.Value.ToString("N0");</h4>
+        <h4>Total: @order.TotalTotal.ToString("N0");</h4>
+        @if(order.Shipped.HasValue){
+            <h4>Shipped: @order.Shipped.Value.ToString("dd-MM-yyyy");</h4>
         }
         else
         {
-            <h2 style="display:inline;">Total: </h2>
-            <h2 style="display:inline;">€@Math.Round(order.TotalTotal, 2).ToString("N0")</h2>
-            <h3 style="color:red; display:inline;text-decoration: line-through;">€@Math.Round(order.TotalTotal + _discount, 2).ToString("N0")</h3>
+            <h4>Shipped: No</h4>
         }
+        <h3>Delivery address:</h3>
+        <h4>@order.DeliveryAddress.Street @order.DeliveryAddress.HouseNumber, @order.DeliveryAddress.City</h4>
+        <h4>@order.DeliveryAddress.Zipcode, @order.DeliveryAddress.Country</h4>
 
+        @if(order.Paid == 0){
+            <form method="post">
+                <input asp-page-handler="FinishOrder" value="Pay order" type="submit" style="">
+            </form>
+        } else{
+            <h2>Order is paid.</h2>
+        }
     </div>
-        </div>
-</div>
     }
+</div>

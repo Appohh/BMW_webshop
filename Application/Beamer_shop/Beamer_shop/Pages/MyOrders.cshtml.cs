@@ -16,20 +16,15 @@ namespace Beamer_shop.Pages
         private ICustomerFactory _customerFactory;
         private IOrderService _orderService;
         private ICustomerService _customerService;
-        private IProductFactory _productFactory;
-        private IProductService _productService;
+
         public Customer LoggedCustomer { get; set; }
         public List<Order> orders;
-        public MyOrdersModel(IOrderFactory orderFactory, ICustomerFactory customerFactory, IProductFactory productFactory)
+        public MyOrdersModel(IOrderFactory orderFactory, ICustomerFactory customerFactory)
         {
             _orderFactory = orderFactory;
             _customerFactory = customerFactory;
             _orderService = _orderFactory.OrderService;
             _customerService = _customerFactory.CustomerService;
-            _productFactory = productFactory;
-            _productService = _productFactory.ProductService;
-
-
 
             orders = new List<Order>();
         }
@@ -52,7 +47,6 @@ namespace Beamer_shop.Pages
             }
 
             orders = _orderService.GetCustomerOrders(LoggedCustomer);
-            getOrderProducts();
 
             return Page();
         }
@@ -61,26 +55,6 @@ namespace Beamer_shop.Pages
         {
             TempData["ErrorMessage"] = error;
             return Redirect(page);
-        }
-
-        private void getOrderProducts()
-        {
-            List<Order> filledOrders = new List<Order>();
-
-            foreach (Order order in orders)
-            {
-                List<Tuple<int,int>> Cart = _orderService.GetOrderItems(order);
-                order.Items = new ShoppingCart();
-                foreach(Tuple<int,int> Product in Cart)
-                {
-                    for (int i = 0; i < Product.Item2; i++)
-                    {
-                        order.Items.AddItem(_productService.getProductById(Product.Item1));
-                    }
-                }
-                filledOrders.Add(order);
-            }
-            orders = filledOrders;
         }
     }
 }

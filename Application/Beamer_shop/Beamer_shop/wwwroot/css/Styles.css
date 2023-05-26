@@ -605,6 +605,21 @@ form span {
     padding: 4px;
 }
 
+
+/*My orders*/
+.orders-container {
+    grid-column: 1 / 6;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 35px;
+}
+
+.ordrs-ordr {
+    background: whitesmoke;
+    padding: 17px;
+    border-radius: 18px;
+}
+
 /*Checkout progress bar*/
 #bar-progress {
     grid-row: 1;
