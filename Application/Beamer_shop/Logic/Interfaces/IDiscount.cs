@@ -9,7 +9,7 @@ namespace Logic.Interfaces
 {
     public interface IDiscount
     {
-        double CalculateDiscount(double total);
+        double CalculateDiscount();
         bool IsApplicable(Order order);
         double ApplyDiscount(Order order);
     }

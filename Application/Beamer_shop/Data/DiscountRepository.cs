@@ -48,6 +48,9 @@ namespace Data
                     case 0:
                         Discounts.Add(new CouponDiscount(dr["CouponCode"].ToString(), Convert.ToInt16(dr["Percentage"]), Convert.ToDouble(dr["MinSpend"]), Convert.ToDouble(dr["MaxDiscount"])));
                         break;
+                    case 1:
+                        Discounts.Add(new GetThreePayTwo(Convert.ToInt32(dr["ProductId"])));
+                        break;
 
                     default: continue;
                 }
@@ -78,6 +81,9 @@ namespace Data
                 {
                     case 0:
                         Discounts.Add(new CouponDiscount(dr["CouponCode"].ToString(), Convert.ToInt16(dr["Percentage"]), Convert.ToDouble(dr["MinSpend"]), Convert.ToDouble(dr["MaxDiscount"])));
+                        break;
+                    case 1:
+                        Discounts.Add(new GetThreePayTwo(Convert.ToInt32(dr["ProductId"])));
                         break;
 
                     default: continue;

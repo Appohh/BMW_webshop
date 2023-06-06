@@ -89,7 +89,7 @@ namespace Logic.Models
             {
                 Discount = discount;
             }
-            else Discount = discount;
+            else Discount = 0;
 
         }
 
@@ -107,10 +107,14 @@ namespace Logic.Models
         public bool ApplyDiscounts(IEnumerable<IDiscount> discounts, [Optional] string coupon)
         {
             double discounted = 0;
+            if(Discount != null)
+            {
+                discounted += (double)Discount;
+            }
 
             foreach (IDiscount discount in discounts)
             {
-                if(discount is ICouponDiscount) { continue; }
+                if(discount is CouponDiscount) { continue; }
 
                 double x = discount.ApplyDiscount(this);
                 if (x > 0)
@@ -123,7 +127,7 @@ namespace Logic.Models
 
             if (!string.IsNullOrEmpty(coupon))
             {
-                IDiscount? validCoupon = discounts.OfType<ICouponDiscount>().FirstOrDefault(d => d.CouponCode == coupon);
+                IDiscount? validCoupon = discounts.OfType<CouponDiscount>().FirstOrDefault(d => d.CouponCode == coupon);
                 if(validCoupon != null)
                 {
                     double x = validCoupon.ApplyDiscount(this);

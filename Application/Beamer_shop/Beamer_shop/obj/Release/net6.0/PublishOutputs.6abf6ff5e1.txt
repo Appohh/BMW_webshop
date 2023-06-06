@@ -6,6 +6,10 @@ C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\obj\
 C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\obj\Release\net6.0\PubTmp\Out\Beamer_shop.runtimeconfig.json
 C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\obj\Release\net6.0\PubTmp\Out\Beamer_shop.pdb
 C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\obj\Release\net6.0\PubTmp\Out\AutoMapper.dll
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\obj\Release\net6.0\PubTmp\Out\Geocoding.Core.dll
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\obj\Release\net6.0\PubTmp\Out\Geocoding.Google.dll
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\obj\Release\net6.0\PubTmp\Out\Geocoding.MapQuest.dll
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\obj\Release\net6.0\PubTmp\Out\GoogleMaps.LocationServices.dll
 C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\obj\Release\net6.0\PubTmp\Out\Humanizer.dll
 C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\obj\Release\net6.0\PubTmp\Out\MessagePack.dll
 C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_shop\obj\Release\net6.0\PubTmp\Out\MessagePack.Annotations.dll

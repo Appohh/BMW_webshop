@@ -51,6 +51,8 @@ namespace Beamer_shop.Pages
             return Page();
         }
 
+ 
+
         private IActionResult throwError(string page, string error)
         {
             TempData["ErrorMessage"] = error;

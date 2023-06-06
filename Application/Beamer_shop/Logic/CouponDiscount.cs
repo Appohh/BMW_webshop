@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Logic
 {
-    public class CouponDiscount : ICouponDiscount
+    public class CouponDiscount : IDiscount
     {
         public string CouponCode { get; private set; }
 
@@ -17,6 +17,8 @@ namespace Logic
         public double MinimalSpend { get; private set; }
 
         public double MaxDiscount { get; private set; }
+
+        private double Total;
 
         public CouponDiscount(string couponCode, int percentage, double minimalSpend, double maxDiscount)
         {
@@ -32,18 +34,20 @@ namespace Logic
 
             if (IsApplicable(order))
             {
-                return _order.TotalTotal - CalculateDiscount(_order.TotalTotal);
+                return _order.TotalTotal - CalculateDiscount();
             } else return 0;
             
         }
 
         public bool IsApplicable(Order order)
         {
+            Total = order.TotalTotal;
+
             if (order.DiscountsApplied?.Find(d => d.Equals(this)) != null) { return false; }
 
-            if (order.TotalTotal - CalculateDiscount(order.TotalTotal) < 1) { return false; }
+            if (order.TotalTotal - CalculateDiscount() < 1) { return false; }
             
-            if(CalculateDiscount(order.TotalTotal) > MaxDiscount) { return false; }
+            if(CalculateDiscount() > MaxDiscount) { return false; }
 
             if(order.TotalTotal < MinimalSpend) { return false; }
 
@@ -51,9 +55,9 @@ namespace Logic
 
         }
 
-        public double CalculateDiscount(double total)
+        public double CalculateDiscount()
         {
-            return total / 100 * Percentage;
+            return Total / 100 * Percentage;
         }
 
         public override bool Equals(object? obj)
