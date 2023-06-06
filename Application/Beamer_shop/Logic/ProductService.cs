@@ -2,6 +2,7 @@
 using Logic.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -64,5 +65,24 @@ namespace Logic
         {
             return accessoryRepository.GetProductAccessories(product.Id);
         }
+
+        public bool CreateProduct(Product product)
+        {
+
+            switch (product.GetType().Name)
+            {
+                case nameof(Car):
+                    carRepository.CreateCar((Car)product);
+                    break;
+                case nameof(Accessory):
+                    accessoryRepository.CreateAccessory((Accessory)product);
+                    break;
+                    default: return false;
+            }
+
+            return false;
+
+        }
+
     }
 }

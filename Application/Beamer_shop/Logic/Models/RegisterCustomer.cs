@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Logic.Models
 {
-    public class Register
+    public class RegisterCustomer
     {
         [Required]
         public string FirstName { get; set; }

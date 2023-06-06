@@ -21,7 +21,7 @@ namespace Beamer_shop.Pages
         private IShoppingCartService _shoppingCartService;
 
         [BindProperty]
-        public Register newCustomer { get; set; }
+        public RegisterCustomer newCustomer { get; set; }
 
         [BindProperty]
         public Login login { get; set; }

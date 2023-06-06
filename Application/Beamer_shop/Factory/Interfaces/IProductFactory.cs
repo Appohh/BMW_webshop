@@ -1,4 +1,5 @@
 ﻿using Logic.Interfaces;
+using Logic.Models;
 
 namespace Factory.Interfaces
 {
@@ -6,6 +7,6 @@ namespace Factory.Interfaces
     {
         IProductService ProductService { get; }
 
-        int CreateProduct(string type);
+        bool CreateProduct(Product product);
     }
 }

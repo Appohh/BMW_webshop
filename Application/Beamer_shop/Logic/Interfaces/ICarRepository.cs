@@ -12,5 +12,6 @@ namespace Logic.Interfaces
         public List<Product> GetAllCars();
         public void refreshCarData();
         public List<string> GetProductImages(int carId);
+        public bool CreateCar(Car car);
     }
 }

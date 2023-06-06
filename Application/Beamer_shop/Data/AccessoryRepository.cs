@@ -90,5 +90,10 @@ namespace Data
             }
             return images;
         }
+
+        public bool CreateAccessory(Accessory accessory)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

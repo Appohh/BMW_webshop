@@ -18,7 +18,7 @@ namespace Logic
             return customerRepository.GetAllCustomers();
         }
 
-        public bool RegisterCustomer(Register customer)
+        public bool RegisterCustomer(RegisterCustomer customer)
         {
             return customerRepository.RegisterCustomer(customer);
         }

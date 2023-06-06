@@ -1,4 +1,5 @@
-﻿using Logic.Interfaces;
+﻿using Logic;
+using Logic.Interfaces;
 using Logic.Models;
 using System;
 using System.Collections.Generic;
@@ -66,6 +67,23 @@ namespace Data
                 images.Add(dr["Image"].ToString());
             }
             return images;
+        }
+
+        public bool CreateCar(Car car)
+        {
+            ValidateFields.IsValid(car);
+            string query = $"INSERT INTO Product (Name, Price, Description, ImageUrl, Weight) OUTPUT INSERTED.Id " +
+                           $"VALUES ('{car.Name}', {Convert.ToInt32(car.Price)}, '{car.Description}', '{car.ImageUrl}', {car.Weight} );";
+            int createdId = executeIdScalar(query);
+            if (createdId > 0)
+            {
+                string followQuery = $"INSERT INTO Car (Id, Chassisnumber, Plate, Brand, Model, Make, Milage, Engine, Fuel, Horsepower, Torque, Time0to60, Topspeed) VALUES " +
+                    $"({createdId}, '{car.ChassisNumber}', '{car.Plate}', '{car.Brand}', '{car.Model}', '{car.Make}', '{Convert.ToInt32(car.Milage)}', '{car.Engine}', {car.Fuel}, {car.HorsePower}, {car.Torque}, {Convert.ToInt32(car.Time0to60)}, {car.TopSpeed})";
+
+                refreshCarData();
+                return executeQuery(followQuery) == 0 ? false : true;
+            }
+            else return false;
         }
     }
 }

@@ -8,5 +8,6 @@ namespace Logic.Interfaces
         List<Product> GetProductAccessories(Product product);
         Product? getProductById(int id);
         List<string> GetProductImages(Product product);
+        bool CreateProduct(Product product);
     }
 }

@@ -22,7 +22,7 @@ namespace Beamer_shop.Pages
         }
 
         [BindProperty]
-        public Register newCustomer { get; set; }
+        public RegisterCustomer newCustomer { get; set; }
 
         public IActionResult OnPost()
         {

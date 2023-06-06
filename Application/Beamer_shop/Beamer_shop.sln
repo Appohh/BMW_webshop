@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Factory", "Factory\Factory.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject1", "TestProject1\TestProject1.csproj", "{EB18538D-87E9-4808-8E6F-F8BB9E0036CF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beamer_desktop", "Beamer_desktop\Beamer_desktop.csproj", "{D7ABEE57-04AE-4E29-BDE8-1506DEE78D2C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{EB18538D-87E9-4808-8E6F-F8BB9E0036CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB18538D-87E9-4808-8E6F-F8BB9E0036CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB18538D-87E9-4808-8E6F-F8BB9E0036CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7ABEE57-04AE-4E29-BDE8-1506DEE78D2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7ABEE57-04AE-4E29-BDE8-1506DEE78D2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7ABEE57-04AE-4E29-BDE8-1506DEE78D2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7ABEE57-04AE-4E29-BDE8-1506DEE78D2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,6 +2,7 @@
 using Factory.Interfaces;
 using Logic;
 using Logic.Interfaces;
+using Logic.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,17 +20,9 @@ namespace Factory
             ProductService = productService;
         }
 
-        public int CreateProduct(string type)
+        public bool CreateProduct(Product product)
         {
-            switch (type)
-            {
-                case "car":
-                    return 1;
-                case "accessory":
-                    return 2;
-                default:
-                    return 0;
-            }
+            return ProductService.CreateProduct(product);
         }
     }
 }

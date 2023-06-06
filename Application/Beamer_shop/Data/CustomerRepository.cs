@@ -52,7 +52,7 @@ namespace Data
             _customerList.AddRange(GetAllCustomers());
         }
 
-        public bool RegisterCustomer(Register customer)
+        public bool RegisterCustomer(RegisterCustomer customer)
         {
             if(string.IsNullOrEmpty(customer.Salt) || string.IsNullOrEmpty(customer.Hash)) { return false; }
 

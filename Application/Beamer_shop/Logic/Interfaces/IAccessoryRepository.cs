@@ -13,6 +13,7 @@ namespace Logic.Interfaces
         public List<Product> GetProductAccessories(int productId);
         public void refreshAccessoryData();
         public List<string> GetProductImages(int carId);
+        public bool CreateAccessory(Accessory accessory);
 
 
     }
