@@ -1,6 +1,5 @@
 C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_desktop\obj\Debug\net6.0-windows\Beamer_desktop.csproj.AssemblyReference.cache
 C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_desktop\obj\Debug\net6.0-windows\Beamer_desktop.Login.resources
-C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_desktop\obj\Debug\net6.0-windows\Beamer_desktop.Register.resources
 C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_desktop\obj\Debug\net6.0-windows\Beamer_desktop.csproj.GenerateResource.cache
 C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_desktop\obj\Debug\net6.0-windows\Beamer_desktop.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_desktop\obj\Debug\net6.0-windows\Beamer_desktop.AssemblyInfoInputs.cache
@@ -37,3 +36,4 @@ C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_desktop\o
 C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_desktop\obj\Debug\net6.0-windows\Beamer_desktop.genruntimeconfig.cache
 C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_desktop\obj\Debug\net6.0-windows\ref\Beamer_desktop.dll
 C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_desktop\obj\Debug\net6.0-windows\Beamer_desktop.Content_Manager.resources
+C:\Users\alpay\Dev_projects\Beamer_Shop\Application\Beamer_shop\Beamer_desktop\obj\Debug\net6.0-windows\Beamer_desktop.HR.resources

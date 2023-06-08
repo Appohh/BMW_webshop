@@ -56,8 +56,8 @@ namespace Data
         {
             if(string.IsNullOrEmpty(employee.Salt) || string.IsNullOrEmpty(employee.Hash)) { return false; }
 
-            string query = $"INSERT INTO Employee (Firstname, Lastname, Birthdate, Email, Phone, BSN) OUTPUT INSERTED.Id " +
-                           $"VALUES ('{employee.FirstName}', '{employee.LastName}', '{employee.BirthDate}', '{employee.Email}', '{employee.Phone}', '{employee.BSN}' );";
+            string query = $"INSERT INTO Employee (Firstname, Lastname, Birthdate, Email, Phone, BSN, Role) OUTPUT INSERTED.Id " +
+                           $"VALUES ('{employee.FirstName}', '{employee.LastName}', '{employee.BirthDate}', '{employee.Email}', '{employee.Phone}', '{employee.BSN}', '{employee.Role}' );";
             int createdId = executeIdScalar(query);
             if(createdId > 0)
             {               
@@ -91,6 +91,19 @@ namespace Data
             return foundEmployee;
         }
 
+        public bool DeleteEmployee(int Id)
+        {
+            refreshEmployeeData();
+            var firstEmployee = _employeeList.FirstOrDefault(employee => employee.Id == Id);
+            if (firstEmployee == null) return false;
 
+            string query = $"DELETE FROM Auth_credential WHERE employee_id = {Id}";
+            if (executeQuery(query) > 0)
+            {
+                string followQuery = $"DELETE FROM Employee WHERE Id = {Id}";
+                return executeQuery(followQuery) == 0 ? false : true;
+            }
+            else { return false; }
+        }
     }
 }

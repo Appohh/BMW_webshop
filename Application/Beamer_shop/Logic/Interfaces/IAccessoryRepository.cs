@@ -14,6 +14,7 @@ namespace Logic.Interfaces
         public void refreshAccessoryData();
         public List<string> GetProductImages(int carId);
         public bool CreateAccessory(Accessory accessory);
+        bool DeleteAccessory(int Id);
 
 
     }

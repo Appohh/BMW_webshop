@@ -40,11 +40,25 @@ namespace Beamer_desktop
                 //Login good
                 if (validEmployee != null)
                 {
-                    MessageBox.Show("Login good.");
+                    switch (validEmployee.Role)
+                    {
+                        case 0:
+                            this.Hide();
+                            var HR_form = new HR();
+                            HR_form.Show();
+                            break;
+                        case 1:
+                            this.Hide();
+                            var Content_form = new Content_Manager();
+                            Content_form.Show();
+                            break;
+                        //case 2:
+                        default:
+                            MessageBox.Show("An error has occured");
+                            break;
+                    }
 
-                    //this.Hide();
-                    //var Content_Form = new Care_Taker(loggedInUser);
-                    //HR_form.Show();
+
 
                     return;
                 }

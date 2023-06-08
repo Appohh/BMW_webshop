@@ -22,7 +22,8 @@ namespace Logic.Models
         public string Phone { get; set; }
         [Required]
         public string BSN { get; set; }
-
+        [Required]
+        public int Role { get; set; }
 
         [Required]
 

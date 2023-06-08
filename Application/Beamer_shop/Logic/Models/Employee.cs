@@ -15,6 +15,7 @@ namespace Logic.Models
         public string Email { get; set; }
         public string Phone { get; set; }
         public string BSN { get; set; }
+        public int Role { get; set; }
 
         public override bool Equals(object? obj)
         {
@@ -25,7 +26,8 @@ namespace Logic.Models
                    BirthDate == employee.BirthDate &&
                    Email == employee.Email &&
                    Phone == employee.Phone &&
-                   BSN == employee.BSN;
+                   BSN == employee.BSN &&
+                   Role == employee.Role;
         }
     }
 }

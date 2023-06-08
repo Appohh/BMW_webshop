@@ -85,5 +85,19 @@ namespace Data
             }
             else return false;
         }
+
+        public bool DeleteCar(int Id)
+        {
+            refreshCarData();
+            var firstCar = _carList.FirstOrDefault();
+            if (firstCar == null) return false;
+            
+                string query = $"DELETE FROM Car WHERE Id = {Id}";
+                if (executeQuery(query) > 0)
+                {
+                    string followQuery = $"DELETE FROM Product WHERE Id = {Id}";
+                    return executeQuery(followQuery) == 0 ? false : true;
+                } else { return false; }  
+        }
     }
 }

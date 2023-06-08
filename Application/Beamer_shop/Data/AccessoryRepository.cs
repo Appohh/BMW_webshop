@@ -1,9 +1,11 @@
-﻿using Logic.Interfaces;
+﻿using Logic;
+using Logic.Interfaces;
 using Logic.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -93,7 +95,33 @@ namespace Data
 
         public bool CreateAccessory(Accessory accessory)
         {
-            throw new NotImplementedException();
+            string query = $"INSERT INTO Product (Name, Price, Description, ImageUrl, Weight) OUTPUT INSERTED.Id " +
+            $"VALUES ('{accessory.Name}', {Convert.ToInt32(accessory.Price)}, '{accessory.Description}', '{accessory.ImageUrl}', {accessory.Weight} );";
+            int createdId = executeIdScalar(query);
+            if (createdId > 0)
+            {
+                string followQuery = $"INSERT INTO Accessory (Id, Type) VALUES " +
+                $"({createdId}, '{accessory.Type}')";
+
+                refreshAccessoryData();
+                return executeQuery(followQuery) == 0 ? false : true;
+            }
+            else return false;
+        }
+
+        public bool DeleteAccessory(int Id)
+        {
+            refreshAccessoryData();
+            var firstCar = _accessoryList.FirstOrDefault();
+            if (firstCar == null) return false;
+
+            string query = $"DELETE FROM Accessory WHERE Id = {Id}";
+            if (executeQuery(query) > 0)
+            {
+                string followQuery = $"DELETE FROM Product WHERE Id = {Id}";
+                return executeQuery(followQuery) == 0 ? false : true;
+            }
+            else { return false; }
         }
     }
 }

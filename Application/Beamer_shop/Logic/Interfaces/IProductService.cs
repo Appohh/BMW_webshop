@@ -9,5 +9,6 @@ namespace Logic.Interfaces
         Product? getProductById(int id);
         List<string> GetProductImages(Product product);
         bool CreateProduct(Product product);
+        bool DeleteProduct(Product product);
     }
 }

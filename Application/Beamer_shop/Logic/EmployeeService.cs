@@ -32,6 +32,12 @@ namespace Logic
             return employeeRepository.GetEmployeeById(id);
         }
 
+        public bool DeleteEmployee(Employee employee)
+        {
+            return employeeRepository.DeleteEmployee(employee.Id);
+        }
+
+
 
     }
 }

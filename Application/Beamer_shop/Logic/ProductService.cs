@@ -37,6 +37,7 @@ namespace Logic
 
         public List<Product> GetAllProducts()
         {
+            retrieveData();
             return _products.Values.ToList();
         }
 
@@ -72,17 +73,23 @@ namespace Logic
             switch (product.GetType().Name)
             {
                 case nameof(Car):
-                    carRepository.CreateCar((Car)product);
-                    break;
+                    return carRepository.CreateCar((Car)product);
                 case nameof(Accessory):
-                    accessoryRepository.CreateAccessory((Accessory)product);
-                    break;
+                    return accessoryRepository.CreateAccessory((Accessory)product);
                     default: return false;
             }
-
-            return false;
-
         }
 
+        public bool DeleteProduct(Product product)
+        {
+            switch (product.GetType().Name)
+            {
+                case nameof(Car):
+                    return carRepository.DeleteCar(product.Id);
+                case nameof(Accessory):
+                    return accessoryRepository.DeleteAccessory(product.Id);
+                default: return false;
+            }
+        }
     }
 }

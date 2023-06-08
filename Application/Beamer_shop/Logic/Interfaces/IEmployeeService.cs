@@ -8,5 +8,6 @@ namespace Logic.Interfaces
         Employee? GetEmployeeById(int id);
         (string hash, string salt, int id)? GetHashSalt(string email);
         bool RegisterEmployee(RegisterEmployee employee);
+        bool DeleteEmployee(Employee employee);
     }
 }
