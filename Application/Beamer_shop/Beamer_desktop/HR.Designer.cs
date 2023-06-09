@@ -31,7 +31,6 @@
             this.btnRegister = new System.Windows.Forms.Button();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.txtLastName = new System.Windows.Forms.TextBox();
-            this.txtBirthDate = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.txtBSN = new System.Windows.Forms.TextBox();
@@ -46,6 +45,9 @@
             this.Register = new System.Windows.Forms.TabPage();
             this.nudRole = new System.Windows.Forms.NumericUpDown();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.dtpBirthdate = new System.Windows.Forms.DateTimePicker();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.Overview.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -55,7 +57,7 @@
             // 
             // btnRegister
             // 
-            this.btnRegister.Location = new System.Drawing.Point(16, 288);
+            this.btnRegister.Location = new System.Drawing.Point(149, 290);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(94, 29);
             this.btnRegister.TabIndex = 0;
@@ -65,7 +67,7 @@
             // 
             // txtFirstName
             // 
-            this.txtFirstName.Location = new System.Drawing.Point(16, 27);
+            this.txtFirstName.Location = new System.Drawing.Point(149, 29);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.PlaceholderText = "Firstname";
             this.txtFirstName.Size = new System.Drawing.Size(125, 27);
@@ -73,23 +75,15 @@
             // 
             // txtLastName
             // 
-            this.txtLastName.Location = new System.Drawing.Point(16, 60);
+            this.txtLastName.Location = new System.Drawing.Point(149, 62);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.PlaceholderText = "Lastname";
             this.txtLastName.Size = new System.Drawing.Size(125, 27);
             this.txtLastName.TabIndex = 3;
             // 
-            // txtBirthDate
-            // 
-            this.txtBirthDate.Location = new System.Drawing.Point(16, 93);
-            this.txtBirthDate.Name = "txtBirthDate";
-            this.txtBirthDate.PlaceholderText = "Birthdate";
-            this.txtBirthDate.Size = new System.Drawing.Size(125, 27);
-            this.txtBirthDate.TabIndex = 5;
-            // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(16, 126);
+            this.txtEmail.Location = new System.Drawing.Point(149, 128);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PlaceholderText = "Email";
             this.txtEmail.Size = new System.Drawing.Size(125, 27);
@@ -97,7 +91,7 @@
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(16, 159);
+            this.txtPhone.Location = new System.Drawing.Point(149, 161);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.PlaceholderText = "Phone";
             this.txtPhone.Size = new System.Drawing.Size(125, 27);
@@ -105,7 +99,7 @@
             // 
             // txtBSN
             // 
-            this.txtBSN.Location = new System.Drawing.Point(16, 192);
+            this.txtBSN.Location = new System.Drawing.Point(149, 194);
             this.txtBSN.Name = "txtBSN";
             this.txtBSN.PlaceholderText = "BSN";
             this.txtBSN.Size = new System.Drawing.Size(125, 27);
@@ -113,7 +107,7 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(16, 225);
+            this.txtPassword.Location = new System.Drawing.Point(149, 227);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(125, 27);
             this.txtPassword.TabIndex = 13;
@@ -195,6 +189,9 @@
             // 
             // Register
             // 
+            this.Register.Controls.Add(this.label1);
+            this.Register.Controls.Add(this.label9);
+            this.Register.Controls.Add(this.dtpBirthdate);
             this.Register.Controls.Add(this.nudRole);
             this.Register.Controls.Add(this.txtLastName);
             this.Register.Controls.Add(this.txtPassword);
@@ -202,7 +199,6 @@
             this.Register.Controls.Add(this.txtBSN);
             this.Register.Controls.Add(this.txtFirstName);
             this.Register.Controls.Add(this.txtPhone);
-            this.Register.Controls.Add(this.txtBirthDate);
             this.Register.Controls.Add(this.txtEmail);
             this.Register.Location = new System.Drawing.Point(4, 29);
             this.Register.Name = "Register";
@@ -214,7 +210,7 @@
             // 
             // nudRole
             // 
-            this.nudRole.Location = new System.Drawing.Point(16, 258);
+            this.nudRole.Location = new System.Drawing.Point(149, 260);
             this.nudRole.Name = "nudRole";
             this.nudRole.Size = new System.Drawing.Size(125, 27);
             this.nudRole.TabIndex = 14;
@@ -230,6 +226,33 @@
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // dtpBirthdate
+            // 
+            this.dtpBirthdate.Location = new System.Drawing.Point(149, 95);
+            this.dtpBirthdate.Name = "dtpBirthdate";
+            this.dtpBirthdate.Size = new System.Drawing.Size(235, 27);
+            this.dtpBirthdate.TabIndex = 37;
+            // 
+            // label9
+            // 
+            this.label9.BackColor = System.Drawing.Color.DarkGray;
+            this.label9.Location = new System.Drawing.Point(17, 95);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(126, 25);
+            this.label9.TabIndex = 38;
+            this.label9.Text = "Birthdate";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.DarkGray;
+            this.label1.Location = new System.Drawing.Point(17, 227);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(126, 25);
+            this.label1.TabIndex = 39;
+            this.label1.Text = "Password";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // HR
             // 
@@ -256,7 +279,6 @@
         private Button btnRegister;
         private TextBox txtFirstName;
         private TextBox txtLastName;
-        private TextBox txtBirthDate;
         private TextBox txtEmail;
         private TextBox txtPhone;
         private TextBox txtBSN;
@@ -271,5 +293,8 @@
         private ListBox lbView;
         private NumericUpDown nudRole;
         private Button btnLogout;
+        private DateTimePicker dtpBirthdate;
+        private Label label1;
+        private Label label9;
     }
 }

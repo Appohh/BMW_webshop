@@ -28,7 +28,8 @@ namespace Beamer_desktop
 
         private void btnAddCar_Click(object sender, EventArgs e)
         {
-            Product car = new Car(txtChassisNumber.Text.ToString(), txtPlate.Text.ToString(), txtBrand.Text.ToString(), txtModel.Text.ToString(), txtMake.Text.ToString(), nudMilage.Value.ToString(), txtEngine.Text.ToString(), Convert.ToInt32(cbFuel.SelectedValue), Convert.ToInt32(nudHorsePower.Value), Convert.ToInt32(nudTorque.Value), Convert.ToDecimal(nudTime0To60.Value), Convert.ToInt32(nudTopSpeed.Value), -99, txtName.Text.ToString(), Convert.ToDouble(nudPrice.Value), txtDescription.Text.ToString(), txtImageUrl.Text.ToString(), "null", -99, Convert.ToInt32(nudWeight.Value));
+            if (!validateCarFields()) { return; }
+            Product car = new Car(txtChassisNumber.Text.ToString(), txtPlate.Text.ToString(), txtBrand.Text.ToString(), txtModel.Text, dtpMake.Value.Date.ToString("yyyy-MM-dd"), nudMilage.Value.ToString(), txtEngine.Text.ToString(), Convert.ToInt32(cbFuel.SelectedValue), Convert.ToInt32(nudHorsePower.Value), Convert.ToInt32(nudTorque.Value), Convert.ToDecimal(nudTime0To60.Value), Convert.ToInt32(nudTopSpeed.Value), -99, txtName.Text.ToString(), Convert.ToDouble(nudPrice.Value), txtDescription.Text.ToString(), txtImageUrl.Text.ToString(), "null", -99, Convert.ToInt32(nudWeight.Value));
             if (_productFactory.CreateProduct(car)) { MessageBox.Show(car.Name + " Added succesfully!"); return; } else { MessageBox.Show("An error has occured, please try again."); }
         }
 
@@ -39,6 +40,7 @@ namespace Beamer_desktop
 
         private void btnAddAccessory_Click(object sender, EventArgs e)
         {
+            if (!validateAccessoryFields()) { return; }
             Product accessory = new Accessory(txtAType.Text, -99, txtAName.Text.ToString(), Convert.ToDouble(nudAPrice.Value), txtADescription.Text.ToString(), txtAImageUrl.Text.ToString(), "null", -99, Convert.ToInt32(nudAWeight.Value));
             if (_productFactory.CreateProduct(accessory)) { MessageBox.Show(accessory.Name + " Added succesfully!"); return; } else { MessageBox.Show("An error has occured, please try again."); }
 
@@ -89,7 +91,7 @@ namespace Beamer_desktop
                 else { MessageBox.Show("An error has occured while deleting product."); }
             }
             else { MessageBox.Show("An error has occured while deleting product."); }
-            
+
             RefreshData();
         }
 
@@ -103,6 +105,119 @@ namespace Beamer_desktop
         private void btnLogout_Click(object sender, EventArgs e)
         {
             Application.Restart();
+        }
+
+        private bool validateCarFields()
+        {
+            if (txtName.Text.Length < 1)
+            {
+                MessageBox.Show("Fill name.");
+                return false;
+            }
+
+            if (nudPrice.Value < 1)
+            {
+                MessageBox.Show("Fill price.");
+                return false;
+            }
+
+            if (txtDescription.Text.Length < 1)
+            {
+                MessageBox.Show("Fill description.");
+                return false;
+            }
+
+            if (txtImageUrl.Text.Length < 1)
+            {
+                MessageBox.Show("Fill image URL.");
+                return false;
+            }
+
+            if (nudWeight.Value < 1)
+            {
+                MessageBox.Show("Fill weight.");
+                return false;
+            }
+
+            if (txtChassisNumber.Text.Length < 1)
+            {
+                MessageBox.Show("Fill chassisnumber.");
+                return false;
+            }
+
+            if (txtPlate.Text.Length < 1)
+            {
+                MessageBox.Show("Fill plate.");
+                return false;
+            }
+
+            if (txtBrand.Text.Length < 1)
+            {
+                MessageBox.Show("Fill brand.");
+                return false;
+            }
+
+            if (txtModel.Text.Length < 1)
+            {
+                MessageBox.Show("Fill model.");
+                return false;
+            }
+
+            if (txtEngine.Text.Length < 1)
+            {
+                MessageBox.Show("Fill engine.");
+                return false;
+            }
+
+            if (cbFuel.SelectedIndex <= -1)
+            {
+                MessageBox.Show("Fill fuel.");
+                return false;
+            }
+
+            return true;
+
+        }
+
+        private bool validateAccessoryFields()
+        {
+            if (txtAName.Text.Length < 1)
+            {
+                MessageBox.Show("Fill name.");
+                return false;
+            }
+
+            if (nudAPrice.Value < 1)
+            {
+                MessageBox.Show("Fill price.");
+                return false;
+            }
+
+            if (txtADescription.Text.Length < 1)
+            {
+                MessageBox.Show("Fill description.");
+                return false;
+            }
+
+            if (txtAImageUrl.Text.Length < 1)
+            {
+                MessageBox.Show("Fill image URL.");
+                return false;
+            }
+
+            if (nudAWeight.Value < 1)
+            {
+                MessageBox.Show("Fill weight.");
+                return false;
+            }
+
+            if (txtAType.Text.Length < 1)
+            {
+                MessageBox.Show("Fill type.");
+                return false;
+            }
+
+            return true;
         }
     }
 }

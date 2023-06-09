@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Cars = new System.Windows.Forms.TabPage();
+            this.dtpMake = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.cbFuel = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -47,7 +48,6 @@
             this.nudWeight = new System.Windows.Forms.NumericUpDown();
             this.nudPrice = new System.Windows.Forms.NumericUpDown();
             this.txtEngine = new System.Windows.Forms.TextBox();
-            this.txtMake = new System.Windows.Forms.TextBox();
             this.txtModel = new System.Windows.Forms.TextBox();
             this.txtBrand = new System.Windows.Forms.TextBox();
             this.txtPlate = new System.Windows.Forms.TextBox();
@@ -73,6 +73,7 @@
             this.btnLoad = new System.Windows.Forms.Button();
             this.lbView = new System.Windows.Forms.ListBox();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.Cars.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTopSpeed)).BeginInit();
@@ -102,6 +103,8 @@
             // 
             // Cars
             // 
+            this.Cars.Controls.Add(this.label11);
+            this.Cars.Controls.Add(this.dtpMake);
             this.Cars.Controls.Add(this.label8);
             this.Cars.Controls.Add(this.cbFuel);
             this.Cars.Controls.Add(this.label7);
@@ -119,7 +122,6 @@
             this.Cars.Controls.Add(this.nudWeight);
             this.Cars.Controls.Add(this.nudPrice);
             this.Cars.Controls.Add(this.txtEngine);
-            this.Cars.Controls.Add(this.txtMake);
             this.Cars.Controls.Add(this.txtModel);
             this.Cars.Controls.Add(this.txtBrand);
             this.Cars.Controls.Add(this.txtPlate);
@@ -136,6 +138,13 @@
             this.Cars.Text = "Cars";
             this.Cars.UseVisualStyleBackColor = true;
             this.Cars.Click += new System.EventHandler(this.Cars_Click);
+            // 
+            // dtpMake
+            // 
+            this.dtpMake.Location = new System.Drawing.Point(148, 322);
+            this.dtpMake.Name = "dtpMake";
+            this.dtpMake.Size = new System.Drawing.Size(235, 27);
+            this.dtpMake.TabIndex = 36;
             // 
             // label8
             // 
@@ -321,14 +330,6 @@
             this.txtEngine.PlaceholderText = "Engine";
             this.txtEngine.Size = new System.Drawing.Size(125, 27);
             this.txtEngine.TabIndex = 12;
-            // 
-            // txtMake
-            // 
-            this.txtMake.Location = new System.Drawing.Point(148, 309);
-            this.txtMake.Name = "txtMake";
-            this.txtMake.PlaceholderText = "Make";
-            this.txtMake.Size = new System.Drawing.Size(125, 27);
-            this.txtMake.TabIndex = 10;
             // 
             // txtModel
             // 
@@ -577,6 +578,16 @@
             this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
+            // label11
+            // 
+            this.label11.BackColor = System.Drawing.Color.DarkGray;
+            this.label11.Location = new System.Drawing.Point(6, 322);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(126, 25);
+            this.label11.TabIndex = 37;
+            this.label11.Text = "Make";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Content_Manager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -612,7 +623,6 @@
         private TabControl tabControl1;
         private TabPage Cars;
         private TextBox txtEngine;
-        private TextBox txtMake;
         private TextBox txtModel;
         private TextBox txtBrand;
         private TextBox txtPlate;
@@ -654,5 +664,7 @@
         private Label lblProductInfo;
         private Button btnDelete;
         private Button btnLogout;
+        private DateTimePicker dtpMake;
+        private Label label11;
     }
 }

@@ -65,6 +65,7 @@ namespace Beamer_desktop
                 else
                 {
                     MessageBox.Show("Login not good.");
+                    return;
                 }
             }
 

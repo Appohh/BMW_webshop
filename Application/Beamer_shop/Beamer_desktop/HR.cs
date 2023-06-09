@@ -27,11 +27,11 @@ namespace Beamer_desktop
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-
+            if (!validateRegisterFields()) { return; }
             RegisterEmployee employee = new RegisterEmployee();
             employee.FirstName = txtFirstName.Text;
             employee.LastName = txtLastName.Text;
-            employee.BirthDate = txtBirthDate.Text;
+            employee.BirthDate = dtpBirthdate.Value.Date.ToString("yyyy-MM-dd");
             employee.Email = txtEmail.Text;
             employee.Phone = txtPhone.Text;
             employee.BSN = txtBSN.Text;
@@ -108,5 +108,47 @@ namespace Beamer_desktop
         {
             Application.Restart();
         }
+
+        private bool validateRegisterFields()
+        {
+            if (txtFirstName.Text.Length < 1)
+            {
+                MessageBox.Show("Fill firstname.");
+                return false;
+            }
+
+            if (txtLastName.Text.Length < 1)
+            {
+                MessageBox.Show("Fill lastname.");
+                return false;
+            }
+
+            if (txtEmail.Text.Length < 1)
+            {
+                MessageBox.Show("Fill email.");
+                return false;
+            }
+
+            if (txtBSN.Text.Length < 1)
+            {
+                MessageBox.Show("Fill BSN.");
+                return false;
+            }
+
+            if (txtPassword.Text.Length < 1)
+            {
+                MessageBox.Show("Fill password.");
+                return false;
+            }
+
+            if (txtPhone.Text.Length < 1)
+            {
+                MessageBox.Show("Fill phone.");
+                return false;
+            }
+
+            return true;
+        }
+
     }
 }
